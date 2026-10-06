@@ -25,10 +25,15 @@ Kaggle Notebook: [Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack](
 | 기록된 발견 (discovery) | 78건, 실패한 가설 포함 |
 | 실제 제출 수 | **단 12건** (2026년 10월 5~6일 UTC) |
 | 제출 효율 | 3번째 제출에서 0.81786, **4번째 제출에서 0.82020**. 그 사이 제출은 모두 CV 규칙을 통과한 챔피언 1개씩 |
+| 리더보드 순위 | **8위** (2026-10-06 기준, 12회 제출). 바로 위 6·7위 팀은 81회·82회 제출 |
 
 수치는 [제출 기록](docs/evidence/kaggle-submissions.csv), [실험 원장](docs/evidence/experiment-ledger.csv)과 [발견 기록](discoveries.md)에서 확인할 수 있다.
 
 ![승격된 모델의 정직한 OOF와 Public LB 변화](docs/assets/score-progression.png)
+
+이 대회의 리더보드는 **test 데이터 전체로 계산**된다. 따라서 public 점수가 곧 test 전체 정확도이고, 따로 숨겨진 private 점수는 없다. 상위 4개 팀의 0.895–0.965는 이 프로젝트에서 검증한 어떤 모델의 정확도(정직한 OOF 최대 약 0.831)보다 훨씬 높다. 개별 제출의 방법은 확인할 수 없으므로 판단하지 않는다.
+
+![2026-10-06 리더보드 상위 8개 팀의 점수와 제출 횟수](docs/assets/leaderboard-position.png)
 
 ## 정석적인 방법으로만 달성했다
 

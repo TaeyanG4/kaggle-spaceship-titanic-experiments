@@ -2,7 +2,7 @@
 
 Inputs: `docs/evidence/experiment-ledger.csv`, `docs/evidence/kaggle-submissions.csv`,
 `docs/evidence/final-stackers.json`, `reports/ha43_subgroup_audit.json`,
-`reports/ha44_adversarial_seeds.json`, and the per-run `reports/*_metrics.json` files.
+`reports/ha44_adversarial_seeds.json`, `docs/evidence/leaderboard-snapshot.csv`, and the per-run `reports/*_metrics.json` files.
 No model is trained and no Kaggle call is made. Run: `uv run python tools/build_report_assets.py`.
 """
 
@@ -231,6 +231,34 @@ def stacker_weights() -> None:
     save(fig, "stacker-weights.png")
 
 
+def leaderboard_position() -> None:
+    lb = pd.read_csv(EVIDENCE / "leaderboard-snapshot.csv")
+    ours = lb.team.str.startswith("Taeyang")
+    fig, ax = plt.subplots(figsize=(9.5, 5.2))
+    ax.scatter(lb.entries[~ours], lb.score[~ours], s=120, color=GREY, edgecolor=NAVY, zorder=3,
+               label="other teams (anonymised)")
+    ax.scatter(lb.entries[ours], lb.score[ours], s=260, color=GOLD, edgecolor=NAVY, marker="*",
+               zorder=4, label="this project")
+    offsets = {6: (8, 6), 7: (8, -12)}
+    for _, row in lb[~ours].iterrows():
+        ax.annotate(f"#{row['rank']}", (row.entries, row.score), textcoords="offset points",
+                    xytext=offsets.get(row["rank"], (9, -4)), fontsize=9, color=NAVY)
+    ax.annotate("#8 · 0.82604 · 12 entries", (12, 0.82604), textcoords="offset points",
+                xytext=(14, 16), fontsize=11, fontweight="bold", color=NAVY)
+    ax.axhspan(0.8253, 0.8311, color=TEAL, alpha=0.12, lw=0)
+    ax.text(2.3, 0.8145, "shaded: honest 3-seed OOF range of this project's champion and best "
+            "candidate", ha="left", va="center", fontsize=8.5, color=TEAL)
+    ax.set_xscale("log")
+    ax.set_xlim(2, 1000)
+    ax.set_xlabel("Number of submissions (entries, log scale)")
+    ax.set_ylabel("Leaderboard accuracy (all test data)")
+    ax.set_title("Kaggle leaderboard top 8 on 2026-10-06: rank 8 with only 12 submissions")
+    ax.set_ylim(0.81, 0.975)
+    ax.legend(frameon=False, loc="upper center")
+    ax.grid(alpha=0.25)
+    save(fig, "leaderboard-position.png")
+
+
 def main() -> None:
     ASSETS.mkdir(parents=True, exist_ok=True)
     score_progression()
@@ -240,6 +268,7 @@ def main() -> None:
     error_concentration()
     adversarial()
     stacker_weights()
+    leaderboard_position()
 
 
 if __name__ == "__main__":

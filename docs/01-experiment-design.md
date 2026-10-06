@@ -78,7 +78,7 @@
 
 | 측정함 | 측정하지 못함 |
 |---|---|
-| 그룹 단위 5-fold OOF 정확도 (seed 5개 이상) | private 점수 (제출 기록에 public 점수만 표시됨) |
+| 그룹 단위 5-fold OOF 정확도 (seed 5개 이상) | (해당 없음: 리더보드가 test 전체로 계산되어 숨겨진 private 점수가 없음) |
 | 대조군 대비 paired 차이, seed별 방향 | 통계적 유의성 (seed 간 행이 겹쳐 독립 표본이 아님) |
 | 세그먼트별 오류, 오류의 지속성 | 다른 하드웨어에서 TabPFN 파인튜닝의 정확한 재현 (GPU 비결정성) |
 | train/test 분포 차이 (adversarial validation) | LLM 사전학습 데이터에 이 대회 정보가 있었는지 |

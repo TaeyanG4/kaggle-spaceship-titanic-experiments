@@ -33,7 +33,7 @@ md(f"""
 
 **Public LB 0.82604** (best of one CV-ranked batch) · **0.82020** (official, CV-promoted champion)
 
-**Only 12 submissions in total** — the CV-promoted models reached 0.81786 on the **3rd** and 0.82020 on the **4th** submission; the remaining 8 were one CV-ranked batch at the end.
+**Rank 8 on the leaderboard (2026-10-06) with only 12 submissions in total** — the CV-promoted models reached 0.81786 on the **3rd** and 0.82020 on the **4th** submission; the remaining 8 were one CV-ranked batch at the end.
 
 This notebook rebuilds, from the official competition files only, the final model of a
 70+ experiment research log: a **nested logistic-regression stack of four TabPFN v3.5 variants**

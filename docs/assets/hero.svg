@@ -19,6 +19,6 @@
   </g>
   <text x="60" y="118" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" fill="#ffffff">Spaceship Titanic Experiments</text>
   <text x="60" y="164" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#cfe3ea">Leak-free TabPFN v3.5 stack · only 12 submissions · 0.82020 on the 4th · 78 findings</text>
-  <text x="60" y="222" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#e0a526" font-weight="700">Public 0.82604 (best batch)  ·  0.82020 (CV-promoted champion)</text>
+  <text x="60" y="222" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#e0a526" font-weight="700">Leaderboard #8 · 0.82604 (best batch) · 0.82020 (CV-promoted champion)</text>
   <text x="60" y="258" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#9fb7c4">Group-aware CV · nested stacking · fresh-seed confirmation · no leaked labels, no LB probing</text>
 </svg>

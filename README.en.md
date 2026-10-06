@@ -24,8 +24,13 @@ The rule was fixed from day one: **no recovered labels, no leakage, no leaderboa
 | Honest OOF accuracy, official champion | 0.8291 / 0.8288 / 0.8269 (SGKF seeds 42 / 123 / 2026) |
 | Recorded findings | 78, including negative results |
 | Submissions | **12 in total** (2026-10-05 to 10-06 UTC) |
+| Leaderboard rank | **8th** on 2026-10-06 with 12 entries; the teams ranked 6th and 7th used 81 and 82 |
 
 ![Score progression](docs/assets/score-progression.png)
+
+The leaderboard of this competition is **calculated on all of the test data**, so the public score is the full test accuracy; there is no hidden private split. The top four scores (0.895–0.965) are far above anything validated in this project (best honest OOF ≈ 0.831); individual entries cannot be verified, so no judgement is made about them.
+
+![Leaderboard top 8 on 2026-10-06](docs/assets/leaderboard-position.png)
 
 ## Achieved with standard, leak-free methods only
 
