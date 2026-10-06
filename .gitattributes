@@ -1,0 +1,5 @@
+# Normalise text to LF everywhere so hashes in docs/ match on every OS.
+* text=auto eol=lf
+*.png binary
+# Submission files are kept byte-for-byte as uploaded to Kaggle (hashes in submission-manifest.json).
+submissions/*.csv -text
