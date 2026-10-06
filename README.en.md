@@ -63,6 +63,40 @@ The public leaderboard page, captured logged-out with [`tools/leaderboard-captur
 
 ![Every idea tested](docs/assets/experiment-landscape.png)
 
+## Work log and notable findings
+
+**Selected work log** (from `handoff.md`, Korea time; the full log is in the repository)
+
+| When | Host | What happened | Result |
+|---|---|---|---|
+| 10-05 17:37 | Codex | Group-aware CatBoost baseline, **1st submission** | OOF 0.8188 → LB **0.80780** |
+| 10-05 19:39 | Codex | Static audit of top public notebooks | notebooks that overwrite predictions with embedded bits excluded |
+| 10-05 22:26 | Claude Code | A grid winner was +0.0053 on seed 42 and −0.0039 on seed 123 | 3-seed screen + 2 fresh-seed confirmation rule adopted |
+| 10-05 23:28 | Claude Code | Early stopping on the scored fold compared with honest stopping | CV was inflated by ~0.004 |
+| 10-05 23:52 | Claude Code | Honest inner-CV iteration choice promoted, **2nd submission** | LB **0.81131** |
+| 10-06 03:06 | ChatGPT | Cross-host review of earlier findings | 22 claims VERIFIED |
+| 10-06 09:22 | Claude Code | TabPFN v3.5 promoted, **3rd submission** | OOF +0.0078, LB **0.81786** |
+| 10-06 13:08 | Claude Code | Nested LR stack of TabPFN variants promoted, **4th submission** | fresh seeds +0.0033 / +0.0053, LB **0.82020** |
+| 10-06 13:11–14:06 | Claude Code | 9 recent tabular models and Playground Series ideas tested as stack members | none helped |
+| 10-06 14:43 | Claude Code | ChatGPT's re-review queue taken over | an earlier conclusion (D-D-021) overturned |
+| 10-06 17:48 | Claude Code | 8 CV-ranked candidates submitted **once, together** (5th–12th) | all beat the champion; best **0.82604**, rank 8 |
+
+**Notable findings** (from `discoveries.md`; cross-check state in brackets)
+
+1. **Train and test share zero travel groups** — CV that does not split by group solves an easier problem than the test set. *(VERIFIED)*
+2. **One split cannot resolve gains of a few thousandths** — a candidate whose bootstrap CI excluded zero flipped sign on another seed. *(VERIFIED)*
+3. **Early stopping on the scored fold inflates accuracy by ~0.004** — fixing it lowered CV but raised the leaderboard. *(VERIFIED)*
+4. **Some top public notebooks overwrite predictions with embedded bits** — a displayed score is not a model's skill. *(VERIFIED)*
+5. **The best clean-looking public notebook (0.81833) scores ~0.805 under honest CV.** *(VERIFIED)*
+6. **66% of ever-wrong rows are wrong on ≥ 4 of 5 seeds** — the plateau is signal-limited, not feature-limited. *(PENDING)*
+7. **TabPFN v3.5 beats every tuned GBDT by ~+0.008** on this 8.7k-row table. *(PENDING)*
+8. **Only frozen + fine-tuned versions of the same model help the stack** — other families, feature views and frozen variants add nothing; even a less correlated FFM (ρ 0.93) did not help. *(PENDING)*
+9. **A re-review overturned an earlier conclusion** ("Logloss models trade Earth for non-Earth accuracy"): it did not replicate under honest stopping. *(CHALLENGED)*
+10. **No train/test shift** — adversarial AUC 0.483–0.495 vs 0.506–0.520 for permuted labels. *(VERIFIED)*
+11. **All 8 fine-tuning candidates beat the champion on the leaderboard, but LB order did not follow CV order** — trust the direction, not the ranking. *(PENDING)*
+
+Full versions (Korean): [docs/09-log-and-findings.md](docs/09-log-and-findings.md), [handoff.md](handoff.md), [discoveries.md](discoveries.md).
+
 ## Skills used
 
 | Skill | Used by | Role | Snapshot |

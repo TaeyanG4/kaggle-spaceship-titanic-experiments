@@ -98,6 +98,24 @@ TabPFN을 fold 안에서 파인튜닝하면 3개 seed 모두 조금씩 좋아졌
 
 ![시험한 모든 아이디어와 대조군 대비 변화](docs/assets/experiment-landscape.png)
 
+## 작업 로그와 주목할 발견
+
+[handoff.md](handoff.md)의 작업 로그와 [discoveries.md](discoveries.md)의 발견 78건 중 흐름이 바뀐 순간과 쓸모 있는 결론만 [09. 작업 로그 하이라이트와 주목할 발견](docs/09-log-and-findings.md)에 골라 두었다. 몇 가지만 옮기면 다음과 같다.
+
+| 시각 (한국) | 일 | 결과 |
+|---|---|---|
+| 10-05 17:37 | CatBoost 기준선, 1번째 제출 | LB 0.80780 |
+| 10-05 23:28 | 채점 fold 조기종료가 CV를 0.004 부풀린다는 것을 발견 | 정직한 검증으로 전환 |
+| 10-06 09:22 | TabPFN v3.5 승격, 3번째 제출 | LB 0.81786 |
+| 10-06 13:08 | TabPFN 3종 nested 스택 승격, 4번째 제출 | LB 0.82020 |
+| 10-06 14:43 | 다른 호스트의 재검토로 기존 결론(D-D-021) 뒤집힘 | CHALLENGED |
+| 10-06 17:48 | CV 순위 후보 8개 일괄 제출 | 최고 0.82604, 8위 |
+
+* train과 test는 여행 그룹을 하나도 공유하지 않는다 (D-D-004, VERIFIED).
+* 채점 fold로 조기종료하면 정확도가 약 0.004 부풀려진다. 고치자 LB가 올랐다 (D-D-026/028, VERIFIED).
+* 깨끗해 보이는 최고 공개 노트북(0.81833)의 정직한 OOF는 약 0.805다 (D-A-014, VERIFIED).
+* 스택의 이득은 다른 모델 계열이 아니라 **같은 TabPFN의 파인튜닝 방향**에서만 나온다 (D-A-027/037).
+
 ## 문서 안내
 
 | 문서 | 내용 |
@@ -109,6 +127,7 @@ TabPFN을 fold 안에서 파인튜닝하면 3개 seed 모두 조금씩 좋아졌
 | [재현 방법](docs/05-reproduction.md) | 데이터 준비, 환경, 주요 실험과 최종 제출 재현 |
 | [결과와 교훈](docs/06-results-and-lessons.md) | 배운 점과 후속 과제 |
 | [참고 자료](docs/07-references.md) | 모델·라이브러리·공개 자료 출처 |
+| [작업 로그와 주목할 발견](docs/09-log-and-findings.md) | handoff·discoveries에서 고른 흐름의 전환점과 핵심 결론 |
 | [사용한 스킬](docs/08-skills.md) | research-orchestrator-skill, Kaggle 스킬의 역할·버전과 [문서 스냅샷](docs/skills/README.md) |
 
 ## 파일 구성
