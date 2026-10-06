@@ -1,0 +1,69 @@
+{
+  "completed_at": "2026-10-06T00:38:17.939912+09:00",
+  "item": "H-D-06",
+  "spec": {
+    "item": "H-D-06",
+    "prefix": "hm06",
+    "control": "hm10_innercv_logloss",
+    "members": [
+      "hm05_xgb_base"
+    ]
+  },
+  "per_seed": {
+    "42": {
+      "control": 0.8159438628781779,
+      "equal_blend": 0.816058897963879,
+      "nested_weight": 0.8151386172782699,
+      "nested_threshold": 0.8162889681352813
+    },
+    "123": {
+      "control": 0.817784424249396,
+      "equal_blend": 0.816058897963879,
+      "nested_weight": 0.8183595996779017,
+      "nested_threshold": 0.8200851259634189
+    },
+    "2026": {
+      "control": 0.8184746347636029,
+      "equal_blend": 0.8122627401357414,
+      "nested_weight": 0.8184746347636029,
+      "nested_threshold": 0.8184746347636029
+    }
+  },
+  "screening": [
+    {
+      "candidate": "nested_threshold",
+      "deltas": {
+        "42": 0.00034510525710340634,
+        "123": 0.002300701714022857,
+        "2026": 0.0
+      },
+      "mean_delta": 0.0008819356570420878,
+      "positive_seeds": 2,
+      "passes": false
+    },
+    {
+      "candidate": "nested_weight",
+      "deltas": {
+        "42": -0.0008052455999080221,
+        "123": 0.0005751754285057142,
+        "2026": 0.0
+      },
+      "mean_delta": -7.669005713410264e-05,
+      "positive_seeds": 1,
+      "passes": false
+    },
+    {
+      "candidate": "equal_blend",
+      "deltas": {
+        "42": 0.00011503508570109844,
+        "123": -0.0017255262855170317,
+        "2026": -0.006211894627861536
+      },
+      "mean_delta": -0.0026074619425591563,
+      "positive_seeds": 1,
+      "passes": false
+    }
+  ],
+  "confirmation": null,
+  "promoted": false
+}

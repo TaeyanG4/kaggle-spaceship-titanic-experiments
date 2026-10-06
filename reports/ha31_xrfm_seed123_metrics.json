@@ -1,0 +1,150 @@
+{
+  "experiment_id": "ha31_xrfm_seed123",
+  "config": {
+    "experiment_id": "ha31_xrfm_seed123",
+    "model": "xrfm",
+    "random_state": 123,
+    "n_splits": 5,
+    "feature_variant": "baseline",
+    "early_stopping": "SGKF(8) slice"
+  },
+  "fingerprint": "b6f3788067119224cab0b5831dcdacfbcf5ba4576f912bd5e1e5387d595ec489",
+  "completed_at": "2026-10-06T13:12:06.132043+09:00",
+  "accuracy": 0.7965029333946854,
+  "log_loss": 0.4648335241678759,
+  "fold_std": 0.0033606526090926223,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.7958596894767107,
+      "seconds": 1.9690000000409782
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.7947096032202415,
+      "seconds": 1.8439999999827705
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.7987349051178838,
+      "seconds": 1.7959999999729916
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.7917146144994246,
+      "seconds": 2.047000000020489
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.8014959723820483,
+      "seconds": 2.125
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 11.047000000020489,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/member_runner.py": "ab53376c24d7b93584bc8b73b0d0d8c403e0e5ddfdf3c21b02dc052127afd817",
+    "scripts/extra_features.py": "4669c63c693d3bc1672b2e35391b2b41bd7fba116426e4035aabcd7328b40334",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha31_xrfm_seed123.csv",
+    "test_probability": "outputs\\probabilities\\ha31_xrfm_seed123.csv",
+    "submission": "outputs\\submissions\\ha31_xrfm_seed123.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1326,
+        "error_rate": 0.288135593220339
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 173,
+        "error_rate": 0.08118254340685124
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 223,
+        "error_rate": 0.1267765776009096
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 47,
+        "error_rate": 0.23383084577114427
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1138,
+        "error_rate": 0.20922963780106638
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 587,
+        "error_rate": 0.19328284491274283
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 44,
+        "error_rate": 0.20276497695852536
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 1031,
+        "error_rate": 0.2145681581685744
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 274,
+        "error_rate": 0.1629013079667063
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 207,
+        "error_rate": 0.20294117647058824
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 257,
+        "error_rate": 0.2166947723440135
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1559,
+        "error_rate": 0.20025690430314708
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 210,
+        "error_rate": 0.23127753303964757
+      }
+    ]
+  }
+}

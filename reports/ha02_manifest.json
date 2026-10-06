@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-10-06T01:17:58.557936+09:00",
+  "spec": {
+    "item": "H-A-02",
+    "prefix": "ha02",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Surname as a CatBoost categorical (fold-local ordered target statistics); arms add within-group surname repeats or SurnameGroupSize",
+    "candidates": {
+      "surname": {
+        "model": "catboost_extra",
+        "extras": [
+          "surname_cat"
+        ]
+      },
+      "surname_repeat": {
+        "model": "catboost_extra",
+        "extras": [
+          "surname_cat",
+          "surname_repeat"
+        ]
+      },
+      "surname_groupsize": {
+        "model": "catboost_extra",
+        "extras": [
+          "surname_cat",
+          "surname_group_size"
+        ]
+      }
+    }
+  },
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing candidate confirmed on 7/99"
+}

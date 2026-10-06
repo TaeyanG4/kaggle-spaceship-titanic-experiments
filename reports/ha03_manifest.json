@@ -1,0 +1,49 @@
+{
+  "created_at": "2026-10-06T01:27:52.891660+09:00",
+  "spec": {
+    "item": "H-A-03",
+    "prefix": "ha03",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Location from boarding order (GroupId), CabinNum imputed from GroupId by per-deck linear fit (deck from row or groupmates), cabin occupancy, CabinNum parity; all target-free train+test",
+    "candidates": {
+      "group_id": {
+        "model": "catboost_extra",
+        "extras": [
+          "group_id"
+        ]
+      },
+      "group_id_fill": {
+        "model": "catboost_extra",
+        "extras": [
+          "group_id",
+          "cabinnum_fill"
+        ]
+      },
+      "cabin_size": {
+        "model": "catboost_extra",
+        "extras": [
+          "cabin_size"
+        ]
+      },
+      "cabin_parity": {
+        "model": "catboost_extra",
+        "extras": [
+          "group_id",
+          "cabin_parity"
+        ]
+      }
+    }
+  },
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing candidate confirmed on 7/99"
+}

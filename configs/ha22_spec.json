@@ -1,0 +1,10 @@
+{
+  "item": "H-A-22",
+  "prefix": "ha22",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "model": "tabpfn",
+  "control_id": "ha12_tabpfn",
+  "rationale": "TabPFN v3.5 with an explicit internal ensemble of 32 (default auto) vs the champion",
+  "candidates": {"ne32": {"model": "tabpfn", "n_estimators": 32}}
+}

@@ -1,0 +1,199 @@
+{
+  "runs": [
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      },
+      "experiment_id": "v1_name_fix",
+      "feature_variant": "v1_name"
+    },
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      },
+      "experiment_id": "v1_spend",
+      "feature_variant": "v1_spend"
+    },
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      },
+      "experiment_id": "v1",
+      "feature_variant": "v1"
+    },
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      },
+      "experiment_id": "v1_rules",
+      "feature_variant": "v1_rules"
+    },
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      },
+      "experiment_id": "v2_spending",
+      "feature_variant": "v2_spending"
+    },
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      },
+      "experiment_id": "v2_group",
+      "feature_variant": "v2_group"
+    },
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      },
+      "experiment_id": "v2",
+      "feature_variant": "v2"
+    },
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Logloss"
+      },
+      "experiment_id": "v2_logloss",
+      "feature_variant": "v2"
+    },
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "lightgbm",
+      "model_params": {
+        "n_estimators": 1600,
+        "learning_rate": 0.03,
+        "num_leaves": 15,
+        "max_depth": 6,
+        "min_child_samples": 40,
+        "reg_lambda": 5.0,
+        "subsample": 0.85,
+        "subsample_freq": 1,
+        "colsample_bytree": 0.9,
+        "early_stopping_rounds": 100
+      },
+      "experiment_id": "v2_lightgbm",
+      "feature_variant": "v2"
+    },
+    {
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "xgboost",
+      "model_params": {
+        "n_estimators": 1200,
+        "learning_rate": 0.04,
+        "max_depth": 4,
+        "min_child_weight": 5,
+        "reg_lambda": 5.0,
+        "subsample": 0.85,
+        "colsample_bytree": 0.9,
+        "tree_method": "hist",
+        "eval_metric": "logloss",
+        "early_stopping_rounds": 100
+      },
+      "experiment_id": "v2_xgboost",
+      "feature_variant": "v2"
+    }
+  ],
+  "threads": 2,
+  "confirmation_seeds": [
+    123,
+    2026
+  ],
+  "threshold": 0.5,
+  "predeclared_blend": [
+    "v2_logloss",
+    "v2_lightgbm",
+    "v2_xgboost"
+  ]
+}

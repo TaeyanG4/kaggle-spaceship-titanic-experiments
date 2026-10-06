@@ -1,0 +1,17 @@
+digraph gate {
+  graph [rankdir=LR, bgcolor="white", pad="0.30", nodesep="0.30", ranksep="0.45", fontname="Arial", label="Promotion rule (decided before every run)", labelloc="t", labeljust="l", fontsize=22, fontcolor="#16324a"];
+  node [shape=box, style="rounded,filled", fillcolor="#f3f7fa", color="#bdcbd5", fontname="Arial", fontsize=14, fontcolor="#16324a", margin="0.20,0.12", penwidth=1.2];
+  edge [color="#687c89", arrowsize=0.8, penwidth=1.3, fontname="Arial", fontsize=12, fontcolor="#465c6b"];
+  cand [label="Candidate + matched control\nsame folds, same honest stopping"];
+  screen [shape=diamond, label="Screen: seeds 42/123/2026\nmean Δ ≥ +0.002 and\n≥ 2 of 3 seeds positive", fillcolor="#fff5e7", color="#d2b587", margin="0.08,0.05"];
+  best [label="Only the best passing\ncandidate continues"];
+  confirm [shape=diamond, label="Confirm: fresh seeds 7/99\nboth deltas positive", fillcolor="#fff5e7", color="#d2b587", margin="0.08,0.05"];
+  promote [label="New champion\n→ one Kaggle submission", fillcolor="#e4f3ef", color="#82b5a7"];
+  reject [label="Negative discovery recorded\n(\"does not hold under ...\")", fillcolor="#fbeeea", color="#d9a597"];
+  cand -> screen;
+  screen -> best [label="pass"];
+  screen -> reject [label="fail"];
+  best -> confirm;
+  confirm -> promote [label="pass"];
+  confirm -> reject [label="fail"];
+}

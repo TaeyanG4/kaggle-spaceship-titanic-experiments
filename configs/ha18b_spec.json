@@ -1,0 +1,10 @@
+{
+  "item": "H-A-18 TabICL",
+  "prefix": "ha18b",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "model": "tabpfn",
+  "control_id": "ha12_tabpfn",
+  "rationale": "TabICL (open-weight in-context foundation model, different pretraining from TabPFN) as a single member vs the TabPFN v3.5 champion; nested blend afterwards",
+  "candidates": {"tabicl": {"model": "tabicl"}}
+}

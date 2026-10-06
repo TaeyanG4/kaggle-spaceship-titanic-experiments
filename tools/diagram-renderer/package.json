@@ -1,0 +1,12 @@
+{
+  "name": "spaceship-titanic-diagram-renderer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "@viz-js/viz": "^3.11.0",
+    "sharp": "^0.34.1"
+  }
+}

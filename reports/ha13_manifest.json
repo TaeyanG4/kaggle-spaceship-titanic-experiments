@@ -1,0 +1,29 @@
+{
+  "created_at": "2026-10-06T02:55:41.797289+09:00",
+  "spec": {
+    "item": "H-A-13",
+    "prefix": "ha13",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Fold-local confident learning: inner OOF finds training rows that strongly contradict their label; drop them (margin 0.35) or half-weight them (margin 0.25), then the champion recipe",
+    "candidates": {
+      "noise_drop35": {
+        "model": "noise_drop35"
+      },
+      "noise_half25": {
+        "model": "noise_half25"
+      }
+    }
+  },
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing candidate confirmed on 7/99"
+}

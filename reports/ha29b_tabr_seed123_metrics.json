@@ -1,0 +1,150 @@
+{
+  "experiment_id": "ha29b_tabr_seed123",
+  "config": {
+    "experiment_id": "ha29b_tabr_seed123",
+    "model": "tabr",
+    "random_state": 123,
+    "n_splits": 5,
+    "feature_variant": "baseline",
+    "early_stopping": "SGKF(8) slice"
+  },
+  "fingerprint": "f40f950e21e4754ce2d8e359b6ceadd7586e3b8d433fce6ed724568c53f68d6e",
+  "completed_at": "2026-10-06T13:38:58.633372+09:00",
+  "accuracy": 0.7907511791096284,
+  "log_loss": 0.4512988523840456,
+  "fold_std": 0.009547536202257182,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.7964347326049454,
+      "seconds": 56.18799999996554
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.7883841288096607,
+      "seconds": 30.25
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.777458309373203,
+      "seconds": 21.54700000002049
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.8055235903337169,
+      "seconds": 29.54599999997299
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.7859608745684695,
+      "seconds": 58.79700000002049
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 197.53200000000652,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/member_runner.py": "ab53376c24d7b93584bc8b73b0d0d8c403e0e5ddfdf3c21b02dc052127afd817",
+    "scripts/extra_features.py": "4669c63c693d3bc1672b2e35391b2b41bd7fba116426e4035aabcd7328b40334",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha29b_tabr_seed123.csv",
+    "test_probability": "outputs\\probabilities\\ha29b_tabr_seed123.csv",
+    "submission": "outputs\\submissions\\ha29b_tabr_seed123.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1356,
+        "error_rate": 0.29465449804432853
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 179,
+        "error_rate": 0.08399812294697326
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 236,
+        "error_rate": 0.13416714042069358
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 48,
+        "error_rate": 0.23880597014925373
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1200,
+        "error_rate": 0.2206287920573635
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 578,
+        "error_rate": 0.1903193941389529
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 41,
+        "error_rate": 0.1889400921658986
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 1107,
+        "error_rate": 0.2303850156087409
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 283,
+        "error_rate": 0.16825208085612367
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 193,
+        "error_rate": 0.1892156862745098
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 236,
+        "error_rate": 0.19898819561551434
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1602,
+        "error_rate": 0.20578034682080926
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 217,
+        "error_rate": 0.23898678414096916
+      }
+    ]
+  }
+}

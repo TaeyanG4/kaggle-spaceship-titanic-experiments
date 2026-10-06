@@ -1,0 +1,150 @@
+{
+  "experiment_id": "ha33_causilo_seed2026",
+  "config": {
+    "experiment_id": "ha33_causilo_seed2026",
+    "model": "causilo",
+    "random_state": 2026,
+    "n_splits": 5,
+    "feature_variant": "baseline",
+    "early_stopping": "none"
+  },
+  "fingerprint": "70dc9ad945b0c115d0f205c58029f039b7d614b9b22cf19a77a62138f2a769e9",
+  "completed_at": "2026-10-06T13:13:22.987719+09:00",
+  "accuracy": 0.8174393189922926,
+  "log_loss": 0.3715318457619062,
+  "fold_std": 0.006944631344212424,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.8204833141542003,
+      "seconds": 4.407000000006519
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.8187571921749137,
+      "seconds": 4.5
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.806674338319908,
+      "seconds": 4.467999999993481
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.8274870615296147,
+      "seconds": 2.7820000000065193
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.8137931034482758,
+      "seconds": 3.827999999979511
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 21.25,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/member_runner.py": "ab53376c24d7b93584bc8b73b0d0d8c403e0e5ddfdf3c21b02dc052127afd817",
+    "scripts/extra_features.py": "4669c63c693d3bc1672b2e35391b2b41bd7fba116426e4035aabcd7328b40334",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha33_causilo_seed2026.csv",
+    "test_probability": "outputs\\probabilities\\ha33_causilo_seed2026.csv",
+    "submission": "outputs\\submissions\\ha33_causilo_seed2026.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1183,
+        "error_rate": 0.2570621468926554
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 151,
+        "error_rate": 0.07085875175973722
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 212,
+        "error_rate": 0.12052302444570778
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 41,
+        "error_rate": 0.20398009950248755
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1001,
+        "error_rate": 0.18404118404118405
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 549,
+        "error_rate": 0.18077049720118538
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 37,
+        "error_rate": 0.17050691244239632
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 948,
+        "error_rate": 0.19729448491155047
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 248,
+        "error_rate": 0.14744351961950058
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 172,
+        "error_rate": 0.16862745098039217
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 219,
+        "error_rate": 0.18465430016863407
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1402,
+        "error_rate": 0.18008991650610148
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 185,
+        "error_rate": 0.20374449339207049
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+## Group label propagation
+test rows whose group has a labelled train member: 0 of 4277
+multi-member train rows predicted by groupmates' LOO mean >= 0.5: 0.5782 (n=3888)
+multi-member train groups with a unanimous label: 0.436 (n=1412)
+## Hard lock R1 (CryoSleep & NoSpend -> Transported)
+R1 rows: train 3135, test 1582; train precision 0.8147
+seed 42: champion 0.815944 -> locked 0.814218 (-0.001726; 225 rows flipped)
+seed 123: champion 0.817784 -> locked 0.813988 (-0.003796; 239 rows flipped)
+seed 2026: champion 0.818475 -> locked 0.815714 (-0.002761; 260 rows flipped)
+seed 7: champion 0.813988 -> locked 0.811688 (-0.002301; 294 rows flipped)
+seed 99: champion 0.816749 -> locked 0.813528 (-0.003221; 232 rows flipped)

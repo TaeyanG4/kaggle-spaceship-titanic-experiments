@@ -1,0 +1,108 @@
+{
+  "completed_at": "2026-10-06T02:00:23.900287+09:00",
+  "item": "H-A-04",
+  "spec": {
+    "item": "H-A-04",
+    "prefix": "ha04",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Reverse/forward CryoSleep inference from spending (age >= 13 for zero-spend -> True); plus unanimous-group Cabin/VIP fill and deck -> HomePlanet",
+    "candidates": {
+      "cryo": {
+        "model": "catboost_extra",
+        "extras": [
+          "cryo_rules"
+        ]
+      },
+      "cryo_fills": {
+        "model": "catboost_extra",
+        "extras": [
+          "cryo_rules",
+          "group_deck_fills"
+        ]
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "control_mean_accuracy": 0.8174009739637255,
+  "control_earth_errors": {
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158
+  },
+  "screening": [
+    {
+      "candidate": "cryo_fills",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "catboost_extra",
+      "extras": [
+        "cryo_rules",
+        "group_deck_fills"
+      ],
+      "deltas": {
+        "42": 0.0016104911998159332,
+        "123": -0.00011503508570109844,
+        "2026": -0.00011503508570120946
+      },
+      "mean_delta": 0.0004601403428045418,
+      "positive_seeds": 1,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8175543540779938,
+        "123": 0.8176693891636949,
+        "2026": 0.8183595996779017
+      },
+      "earth_errors": {
+        "42": 1168,
+        "123": 1165,
+        "2026": 1162
+      }
+    },
+    {
+      "candidate": "cryo",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "catboost_extra",
+      "extras": [
+        "cryo_rules"
+      ],
+      "deltas": {
+        "42": -0.001265385942712527,
+        "123": -0.0004601403428045048,
+        "2026": -0.003566087656735384
+      },
+      "mean_delta": -0.0017638713140841384,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8146784769354654,
+        "123": 0.8173242839065915,
+        "2026": 0.8149085471068676
+      },
+      "earth_errors": {
+        "42": 1191,
+        "123": 1166,
+        "2026": 1188
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

@@ -1,0 +1,27 @@
+{
+  "created_at": "2026-10-06T09:51:41.580978+09:00",
+  "spec": {
+    "item": "H-A-23",
+    "prefix": "ha23",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "model": "tabpfn",
+    "control_id": "ha12_tabpfn",
+    "rationale": "Fold-local fine-tuning of TabPFN v3.5 (30 epochs, lr 1e-5, early stopping on an SGKF(8) slice of the fit fold, 600 s cap) vs the frozen TabPFN v3.5 champion",
+    "candidates": {
+      "ft": {
+        "model": "tabpfn_ft"
+      }
+    }
+  },
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing candidate confirmed on 7/99"
+}

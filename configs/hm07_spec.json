@@ -1,0 +1,9 @@
+{
+  "item": "H-D-07",
+  "prefix": "hm07",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "cv13j0-style supervised k=1 class-distance KNN features rebuilt strictly inside each outer fold with inner group-aware folds",
+  "candidates": {"knn_k1": {"model": "catboost_knn"}}
+}

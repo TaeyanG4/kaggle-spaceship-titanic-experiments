@@ -1,0 +1,41 @@
+{
+  "completed_at": "2026-10-06T02:25:06.176903+09:00",
+  "plan_item": "H-A-11",
+  "rule": "accept p<=0.03 or p>=0.97 with teacher agreement",
+  "per_seed": {
+    "42": {
+      "seed": 42,
+      "control": 0.8150235821925688,
+      "student": 0.8151386172782699,
+      "accepted_pseudo_rows": 1166,
+      "pseudo_label_errors": 3
+    },
+    "123": {
+      "seed": 123,
+      "control": 0.8159438628781779,
+      "student": 0.8159438628781779,
+      "accepted_pseudo_rows": 1290,
+      "pseudo_label_errors": 11
+    },
+    "2026": {
+      "seed": 2026,
+      "control": 0.8112274243644312,
+      "student": 0.8097319682503163,
+      "accepted_pseudo_rows": 1310,
+      "pseudo_label_errors": 10
+    }
+  },
+  "screen": {
+    "deltas": {
+      "42": 0.00011503508570109844,
+      "123": 0.0,
+      "2026": -0.0014954561141148348
+    },
+    "mean_delta": -0.0004601403428045788,
+    "positive_seeds": 1,
+    "passes": false
+  },
+  "confirmation": null,
+  "promoted": false,
+  "note": "simulation only; the real test set was not used"
+}

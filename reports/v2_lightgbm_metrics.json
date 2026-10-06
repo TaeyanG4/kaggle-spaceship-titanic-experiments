@@ -1,0 +1,250 @@
+{
+  "experiment_id": "v2_lightgbm",
+  "config": {
+    "random_state": 42,
+    "n_splits": 5,
+    "threshold": 0.5,
+    "model": "lightgbm",
+    "model_params": {
+      "n_estimators": 1600,
+      "learning_rate": 0.03,
+      "num_leaves": 15,
+      "max_depth": 6,
+      "min_child_samples": 40,
+      "reg_lambda": 5.0,
+      "subsample": 0.85,
+      "subsample_freq": 1,
+      "colsample_bytree": 0.9,
+      "early_stopping_rounds": 100
+    },
+    "experiment_id": "v2_lightgbm",
+    "feature_variant": "v2"
+  },
+  "fingerprint": "0ea4464a8944c94ef390725e62f659d807a62a7bff236883c4ebe4154efd8f9b",
+  "completed_at": "2026-10-05T19:02:44.298896+09:00",
+  "accuracy": 0.8158288277924767,
+  "log_loss": 0.3776519069575025,
+  "fold_std": 0.007186169705329078,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.8113858539390454,
+      "best_iteration": 368,
+      "seconds": 0.610000000015134
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.828637147786084,
+      "best_iteration": 549,
+      "seconds": 0.75
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.816561242093157,
+      "best_iteration": 342,
+      "seconds": 0.514999999984866
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.8153049482163406,
+      "best_iteration": 334,
+      "seconds": 0.45300000000861473
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.8072497123130035,
+      "best_iteration": 578,
+      "seconds": 0.8289999999979045
+    }
+  ],
+  "feature_count": 51,
+  "categorical": [
+    "HomePlanet",
+    "CryoSleep",
+    "Destination",
+    "VIP",
+    "CabinDeck",
+    "CabinSide",
+    "PlanetCryo",
+    "DeckSide"
+  ],
+  "feature_columns": [
+    "HomePlanet",
+    "CryoSleep",
+    "Destination",
+    "Age",
+    "VIP",
+    "RoomService",
+    "FoodCourt",
+    "ShoppingMall",
+    "Spa",
+    "VRDeck",
+    "GroupMember",
+    "CabinDeck",
+    "CabinNum",
+    "CabinSide",
+    "TotalSpend",
+    "NoSpend",
+    "SpendMissingCount",
+    "IsChild",
+    "IsTeen",
+    "IsAdult",
+    "GroupSize",
+    "SurnameSize",
+    "IsAlone",
+    "NameMissing",
+    "ObservedNoSpend",
+    "SpendUnknownZero",
+    "SpendObservedCount",
+    "AgeMissing",
+    "RoomServiceMissing",
+    "FoodCourtMissing",
+    "ShoppingMallMissing",
+    "SpaMissing",
+    "VRDeckMissing",
+    "NoPeer",
+    "PeerCount",
+    "PeerSpendMean",
+    "PeerAgeMean",
+    "PeerCryoProportion",
+    "HomePlanetGroupFilled",
+    "CabinSideGroupFilled",
+    "CabinPosition",
+    "PositiveServiceCount",
+    "LuxurySpend",
+    "FoodShoppingSpend",
+    "RoomServiceShare",
+    "FoodCourtShare",
+    "ShoppingMallShare",
+    "SpaShare",
+    "VRDeckShare",
+    "PlanetCryo",
+    "DeckSide"
+  ],
+  "threads": 2,
+  "runtime_seconds": 4.203000000008615,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077",
+    "versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2"
+  },
+  "fold_hash": "891b7fb23cf5fc45c11ea158aa47eabd06ec51df7d08a3fc90f881a6cdeaaf73",
+  "git_revision": "uncommitted repository",
+  "python": "3.12.13",
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.5.3",
+    "scikit-learn": "1.9.1",
+    "catboost": "1.2.10",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\v2_lightgbm.csv",
+    "test_probability": "outputs\\probabilities\\v2_lightgbm.csv",
+    "submission": "outputs\\submissions\\v2_lightgbm.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1194,
+        "error_rate": 0.25945241199478486
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 149,
+        "error_rate": 0.06992022524636321
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 216,
+        "error_rate": 0.12279704377487209
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 42,
+        "error_rate": 0.208955223880597
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1013,
+        "error_rate": 0.18624747196175767
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 549,
+        "error_rate": 0.18077049720118538
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 39,
+        "error_rate": 0.17972350230414746
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 960,
+        "error_rate": 0.19979188345473464
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 236,
+        "error_rate": 0.1403091557669441
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 170,
+        "error_rate": 0.16666666666666666
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 235,
+        "error_rate": 0.1981450252951096
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1419,
+        "error_rate": 0.18227360308285165
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 182,
+        "error_rate": 0.20044052863436124
+      }
+    ]
+  },
+  "baseline_comparison": {
+    "accuracy_delta": -0.00299091222822961,
+    "ci95": [
+      -0.00810543329702949,
+      0.0024155584669660296
+    ],
+    "positive_fraction": 0.1375,
+    "draws": 2000,
+    "note": "Diagnostic conditional on fitted OOF models; not independent retraining uncertainty."
+  }
+}

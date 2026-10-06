@@ -1,0 +1,14 @@
+{
+  "item": "H-A-33",
+  "prefix": "ha33",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "ha12_tabpfn",
+  "rationale": "Causilo in-context classifier on fit-fold ordinal codes vs TabPFN v3.5",
+  "candidates": {
+    "causilo": {
+      "model": "causilo"
+    }
+  },
+  "model": "tabpfn"
+}

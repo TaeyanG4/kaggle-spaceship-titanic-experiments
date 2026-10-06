@@ -1,0 +1,6 @@
+{
+  "item": "H-A-19",
+  "prefix": "ha19",
+  "control": "ha12_tabpfn",
+  "members": ["hm10_innercv_logloss"]
+}

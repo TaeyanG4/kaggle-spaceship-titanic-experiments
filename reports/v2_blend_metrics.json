@@ -1,0 +1,120 @@
+{
+  "experiment_id": "v2_blend",
+  "accuracy": 0.818589669849304,
+  "log_loss": 0.37459777358921137,
+  "components": [
+    "v2_logloss",
+    "v2_lightgbm",
+    "v2_xgboost"
+  ],
+  "weights": [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+  ],
+  "completed_at": "2026-10-05T19:02:53.933104+09:00",
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1175,
+        "error_rate": 0.2553237722729248
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 149,
+        "error_rate": 0.06992022524636321
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 208,
+        "error_rate": 0.11824900511654349
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 45,
+        "error_rate": 0.22388059701492538
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1006,
+        "error_rate": 0.18496047067475638
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 535,
+        "error_rate": 0.17616068488640105
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 36,
+        "error_rate": 0.16589861751152074
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 940,
+        "error_rate": 0.19562955254942768
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 241,
+        "error_rate": 0.14328180737217597
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 171,
+        "error_rate": 0.1676470588235294
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 225,
+        "error_rate": 0.1897133220910624
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1392,
+        "error_rate": 0.1788053949903661
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 185,
+        "error_rate": 0.20374449339207049
+      }
+    ]
+  },
+  "fold_std": 0.007925593366410494,
+  "artifacts": {
+    "oof": "outputs\\oof\\v2_blend.csv",
+    "test_probability": "outputs\\probabilities\\v2_blend.csv",
+    "submission": "outputs\\submissions\\v2_blend.csv"
+  },
+  "baseline_comparison": {
+    "accuracy_delta": -0.0002300701714022777,
+    "ci95": [
+      -0.0053064015630540405,
+      0.0048611939248403456
+    ],
+    "positive_fraction": 0.4625,
+    "draws": 2000,
+    "note": "Diagnostic conditional on fitted OOF models; not independent retraining uncertainty."
+  }
+}

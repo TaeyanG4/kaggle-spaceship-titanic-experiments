@@ -1,0 +1,76 @@
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\Taeyang\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\concurrent\futures\process.py", line 264, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\scripts\run_feature_screen.py", line 76, in run_job
+    return run_member(experiment, seed, c["model"], threads)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\scripts\member_runner.py", line 177, in run_member
+    est.fit(fa, y[tr_idx], X_val=fe, y_val=y[es_idx], cat_col_names=categorical)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytabkit\models\sklearn\sklearn_base.py", line 434, in fit
+    self.cv_alg_interface_.fit(ds=ds, idxs_list=idxs_list, interface_resources=interface_resources,
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytabkit\models\alg_interfaces\sub_split_interfaces.py", line 81, in fit
+    hyper_results = self.sub_split_interfaces[i].fit(ds, sub_split_idxs, interface_resources, logger,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytabkit\models\alg_interfaces\tabr_interface.py", line 327, in fit
+    self.trainer.fit(self.model)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\trainer.py", line 1079, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\trainer.py", line 1121, in _run_stage
+    self._run_sanity_check()
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\trainer.py", line 1150, in _run_sanity_check
+    val_loop.run()
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\loops\utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\loops\evaluation_loop.py", line 146, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\loops\evaluation_loop.py", line 441, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\strategies\strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytabkit\models\nn_models\tabr.py", line 554, in validation_step
+    output = self.model(
+             ^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytabkit\models\nn_models\tabr.py", line 342, in forward
+    cfg = faiss.GpuIndexFlatConfig()
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'faiss' has no attribute 'GpuIndexFlatConfig'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\kaggle\practice\Spaceship Titanic\scripts\run_feature_screen.py", line 148, in main
+    return int(((oof.probability.to_numpy() >= 0.5) != target)[earth].sum())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\scripts\run_feature_screen.py", line 141, in run_all
+    initargs=(args.threads,)) as pool:
+    ^^^^^^^^^^
+  File "C:\Users\Taeyang\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Taeyang\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+AttributeError: module 'faiss' has no attribute 'GpuIndexFlatConfig'

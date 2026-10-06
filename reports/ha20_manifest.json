@@ -1,0 +1,39 @@
+{
+  "created_at": "2026-10-06T09:26:27.294434+09:00",
+  "spec": {
+    "item": "H-A-20",
+    "prefix": "ha20",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "model": "tabpfn",
+    "control_id": "ha12_tabpfn",
+    "rationale": "TabPFN v3.5 on other feature sets vs the TabPFN v3.5 baseline-feature champion: v1_spend, v1_rules, and raw-minimal (baseline minus engineered aggregates/flags/family counts)",
+    "candidates": {
+      "v1_spend": {
+        "model": "tabpfn_variant",
+        "variant": "v1_spend"
+      },
+      "v1_rules": {
+        "model": "tabpfn_variant",
+        "variant": "v1_rules"
+      },
+      "raw_minimal": {
+        "model": "tabpfn_variant",
+        "variant": "baseline",
+        "drop": [
+          "RAW_MINIMAL"
+        ]
+      }
+    }
+  },
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing candidate confirmed on 7/99"
+}

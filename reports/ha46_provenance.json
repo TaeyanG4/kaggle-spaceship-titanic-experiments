@@ -1,0 +1,46 @@
+{
+  "retrieved_at": "2026-10-06",
+  "plan_item": "H-A-46",
+  "our_submissions": [
+    {
+      "ref": "56869784",
+      "fileName": "ha27_stack3.csv",
+      "date": "2026-10-06 04:07:30.403000",
+      "publicScore": "0.82020"
+    },
+    {
+      "ref": "56865289",
+      "fileName": "ha12_tabpfn.csv",
+      "date": "2026-10-06 00:20:26.017000",
+      "publicScore": "0.81786"
+    },
+    {
+      "ref": "56855038",
+      "fileName": "hm10_innercv_logloss.csv",
+      "date": "2026-10-05 14:52:04.243000",
+      "publicScore": "0.81131"
+    },
+    {
+      "ref": "56847813",
+      "fileName": "baseline_catboost.csv",
+      "date": "2026-10-05 08:52:23.350000",
+      "publicScore": "0.80780"
+    }
+  ],
+  "source_submissions": "kaggle competitions submissions -c spaceship-titanic --csv (CLI 2.2.4)",
+  "viktor_reference": {
+    "notebook": "viktortaran/space-titanic",
+    "best_score": "0.81833",
+    "best_version": "V242",
+    "current_public_score": "0.81739",
+    "last_run": "2023-02-23",
+    "source": "public notebook page https://www.kaggle.com/code/viktortaran/space-titanic read via r.jina.ai; kernel ref from kaggle kernels list"
+  },
+  "not_rechecked": [
+    "Tao 0.81646 (V2)",
+    "twinpilgrim 0.81599 (V2)",
+    "Dmitry 0.81318 (V41)",
+    "Misael 0.81271 (V8)",
+    "Samuel 0.80874 (V47)"
+  ]
+}

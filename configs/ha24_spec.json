@@ -1,0 +1,10 @@
+{
+  "item": "H-A-24",
+  "prefix": "ha24",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "model": "tabpfn",
+  "control_id": "ha12_tabpfn",
+  "rationale": "TabPFN v3.5 fine-tuning with the epoch count chosen on an SGKF(8) slice of the fit fold, then a fixed-epoch refit on the whole fit fold (full context) vs the frozen champion",
+  "candidates": {"ftrefit": {"model": "tabpfn_ftrefit"}}
+}

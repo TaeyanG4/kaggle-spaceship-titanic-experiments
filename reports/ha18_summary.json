@@ -1,0 +1,69 @@
+{
+  "completed_at": "2026-10-06T09:24:47.231005+09:00",
+  "item": "H-A-18",
+  "spec": {
+    "item": "H-A-18",
+    "prefix": "ha18",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "ha12_tabpfn",
+    "rationale": "Another TabPFN generation (v2.5, license accepted) as a single member vs the TabPFN v3.5 champion; nested blend with v3.5 afterwards",
+    "candidates": {
+      "tabpfn_v25": {
+        "model": "tabpfn",
+        "version": "v2.5"
+      }
+    },
+    "model": "tabpfn"
+  },
+  "control_accuracy": {
+    "42": 0.8261819855055792,
+    "123": 0.8250316346485678,
+    "2026": 0.824341424134361
+  },
+  "control_mean_accuracy": 0.825185014762836,
+  "control_earth_errors": {
+    "42": 1133,
+    "123": 1134,
+    "2026": 1139
+  },
+  "screening": [
+    {
+      "candidate": "tabpfn_v25",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "tabpfn",
+      "extras": [],
+      "version": "v2.5",
+      "deltas": {
+        "42": -0.006211894627861536,
+        "123": -0.00862763142758538,
+        "2026": -0.0075923156562751615
+      },
+      "mean_delta": -0.007477280570574026,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8199700908777177,
+        "123": 0.8164040032209824,
+        "2026": 0.8167491084780858
+      },
+      "earth_errors": {
+        "42": 1188,
+        "123": 1208,
+        "2026": 1200
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

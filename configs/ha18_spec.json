@@ -1,0 +1,15 @@
+{
+  "item": "H-A-18",
+  "prefix": "ha18",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "ha12_tabpfn",
+  "rationale": "Another TabPFN generation (v2.5, license accepted) as a single member vs the TabPFN v3.5 champion; nested blend with v3.5 afterwards",
+  "candidates": {
+    "tabpfn_v25": {
+      "model": "tabpfn",
+      "version": "v2.5"
+    }
+  },
+  "model": "tabpfn"
+}

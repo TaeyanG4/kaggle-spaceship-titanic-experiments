@@ -1,0 +1,12 @@
+{
+  "item": "H-D-10",
+  "prefix": "hm10",
+  "stopping": "fixed300",
+  "variant": "baseline",
+  "candidates": {
+    "fixed200": {"stopping": "fixed200"},
+    "fixed500": {"stopping": "fixed500"},
+    "inner_logloss_refit": {"stopping": "inner_logloss_refit"},
+    "innercv_logloss": {"stopping": "innercv_logloss"}
+  }
+}

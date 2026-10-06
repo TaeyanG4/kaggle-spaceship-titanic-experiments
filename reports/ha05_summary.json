@@ -1,0 +1,134 @@
+{
+  "completed_at": "2026-10-06T02:09:48.669277+09:00",
+  "item": "H-A-05",
+  "spec": {
+    "item": "H-A-05",
+    "prefix": "ha05",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Single-model diversity arms (no new dependency): CatBoost Lossguide growth, ExtraTrees, HistGradientBoosting; screened alone, then error correlation decides which enter a nested stack (run_blend_screen)",
+    "candidates": {
+      "cb_lossguide": {
+        "params": {
+          "grow_policy": "Lossguide",
+          "max_leaves": 31,
+          "min_data_in_leaf": 20
+        }
+      },
+      "extratrees": {
+        "model": "extratrees"
+      },
+      "histgb": {
+        "model": "histgb"
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "control_mean_accuracy": 0.8174009739637255,
+  "control_earth_errors": {
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158
+  },
+  "screening": [
+    {
+      "candidate": "histgb",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "histgb",
+      "extras": [],
+      "deltas": {
+        "42": -0.0011503508570114285,
+        "123": -0.004026227999539778,
+        "2026": -0.0037961578281375807
+      },
+      "mean_delta": -0.0029909122282295955,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8147935120211665,
+        "123": 0.8137581962498562,
+        "2026": 0.8146784769354654
+      },
+      "earth_errors": {
+        "42": 1207,
+        "123": 1192,
+        "2026": 1204
+      }
+    },
+    {
+      "candidate": "cb_lossguide",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {
+        "grow_policy": "Lossguide",
+        "max_leaves": 31,
+        "min_data_in_leaf": 20
+      },
+      "variant": "baseline",
+      "model": "catboost",
+      "extras": [],
+      "deltas": {
+        "42": -0.0017255262855171427,
+        "123": -0.0029909122282295586,
+        "2026": -0.005636719199355822
+      },
+      "mean_delta": -0.0034510525710341744,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8142183365926607,
+        "123": 0.8147935120211665,
+        "2026": 0.8128379155642471
+      },
+      "earth_errors": {
+        "42": 1192,
+        "123": 1197,
+        "2026": 1207
+      }
+    },
+    {
+      "candidate": "extratrees",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "extratrees",
+      "extras": [],
+      "deltas": {
+        "42": -0.010123087541700215,
+        "123": -0.011273438398711533,
+        "2026": -0.013459105027033291
+      },
+      "mean_delta": -0.011618543655815014,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8058207753364777,
+        "123": 0.8065109858506845,
+        "2026": 0.8050155297365696
+      },
+      "earth_errors": {
+        "42": 1259,
+        "123": 1269,
+        "2026": 1278
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

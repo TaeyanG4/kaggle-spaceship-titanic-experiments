@@ -1,0 +1,150 @@
+{
+  "experiment_id": "ha29b_tabr",
+  "config": {
+    "experiment_id": "ha29b_tabr",
+    "model": "tabr",
+    "random_state": 42,
+    "n_splits": 5,
+    "feature_variant": "baseline",
+    "early_stopping": "SGKF(8) slice"
+  },
+  "fingerprint": "b21852bb16894121a4b1add297a1e12c9668672d01a9c56e7b3e0407814110c0",
+  "completed_at": "2026-10-06T13:45:39.598514+09:00",
+  "accuracy": 0.7984585298516047,
+  "log_loss": 0.4273355673855042,
+  "fold_std": 0.006884602236105933,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.7924094307073031,
+      "seconds": 48.98499999998603
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.8113858539390454,
+      "seconds": 43.32800000003772
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.7993099482461185,
+      "seconds": 37.625
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.7957422324510932,
+      "seconds": 21.889999999955762
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.7934407364787112,
+      "seconds": 31.51600000000326
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 184.375,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/member_runner.py": "ab53376c24d7b93584bc8b73b0d0d8c403e0e5ddfdf3c21b02dc052127afd817",
+    "scripts/extra_features.py": "4669c63c693d3bc1672b2e35391b2b41bd7fba116426e4035aabcd7328b40334",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha29b_tabr.csv",
+    "test_probability": "outputs\\probabilities\\ha29b_tabr.csv",
+    "submission": "outputs\\submissions\\ha29b_tabr.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1307,
+        "error_rate": 0.28400695349847893
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 173,
+        "error_rate": 0.08118254340685124
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 220,
+        "error_rate": 0.12507106310403637
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 52,
+        "error_rate": 0.25870646766169153
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1150,
+        "error_rate": 0.21143592572164
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 560,
+        "error_rate": 0.18439249259137305
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 42,
+        "error_rate": 0.1935483870967742
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 1067,
+        "error_rate": 0.22206035379812694
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 269,
+        "error_rate": 0.15992865636147444
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 185,
+        "error_rate": 0.18137254901960784
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 231,
+        "error_rate": 0.19477234401349072
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1549,
+        "error_rate": 0.1989723827874117
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 203,
+        "error_rate": 0.22356828193832598
+      }
+    ]
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "experiment_id": "ha23_ft_seed13",
+  "config": {
+    "experiment_id": "ha23_ft_seed13",
+    "model": "tabpfn_finetuned",
+    "model_version": "v3.5",
+    "tabpfn_version": "9.1.0",
+    "finetune": {
+      "epochs": 30,
+      "learning_rate": 1e-05,
+      "early_stopping_patience": 8,
+      "time_limit": 600,
+      "eval_metric": "log_loss"
+    },
+    "val_split": "SGKF(8) slice",
+    "feature_variant": "baseline",
+    "random_state": 13,
+    "n_splits": 5
+  },
+  "fingerprint": "f8a96f1db6ff147a64bf755e0631182d3f47e0f0d7a0e18e9f9b6200d88787a9",
+  "completed_at": "2026-10-06T11:17:41.540702+09:00",
+  "accuracy": 0.8262970205912803,
+  "log_loss": 0.34997769411298485,
+  "fold_std": 0.006957912696521656,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.816771970132108,
+      "seconds": 99.64100000000326
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.8355376653248994,
+      "seconds": 37.70299999997951
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.8210586881472958,
+      "seconds": 56.06199999997625
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.8256616800920599,
+      "seconds": 62.17200000002049
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.8324697754749568,
+      "seconds": 95.79700000002049
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 352.31300000002375,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/tabpfn_ft_runner.py": "913f7567527b2145175c9288f393786904e36607631f6b6d0b3b471bf376ec77",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha23_ft_seed13.csv",
+    "test_probability": "outputs\\probabilities\\ha23_ft_seed13.csv",
+    "submission": "outputs\\submissions\\ha23_ft_seed13.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1130,
+        "error_rate": 0.24554541503694047
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 130,
+        "error_rate": 0.06100422336931018
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 212,
+        "error_rate": 0.12052302444570778
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 38,
+        "error_rate": 0.1890547263681592
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 928,
+        "error_rate": 0.17061959919102776
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 550,
+        "error_rate": 0.18109976950938425
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 32,
+        "error_rate": 0.14746543778801843
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 916,
+        "error_rate": 0.1906347554630593
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 224,
+        "error_rate": 0.13317479191438764
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 165,
+        "error_rate": 0.16176470588235295
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 205,
+        "error_rate": 0.17284991568296795
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1340,
+        "error_rate": 0.17212588310854207
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 170,
+        "error_rate": 0.18722466960352424
+      }
+    ]
+  }
+}

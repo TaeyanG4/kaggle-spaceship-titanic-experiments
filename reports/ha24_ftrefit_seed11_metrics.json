@@ -1,0 +1,164 @@
+{
+  "experiment_id": "ha24_ftrefit_seed11",
+  "config": {
+    "experiment_id": "ha24_ftrefit_seed11",
+    "model": "tabpfn_finetuned_refit",
+    "model_version": "v3.5",
+    "tabpfn_version": "9.1.0",
+    "finetune": {
+      "epochs": 30,
+      "learning_rate": 1e-05,
+      "early_stopping_patience": 8,
+      "time_limit": 600,
+      "eval_metric": "log_loss"
+    },
+    "selection": "SGKF(8) slice, argmin val/log_loss epoch",
+    "refit": "whole fold",
+    "feature_variant": "baseline",
+    "random_state": 11,
+    "n_splits": 5
+  },
+  "fingerprint": "7ca6dbf060d5e3b44ba55a3e94d1502ae734ea8774bb00c872d84a2f0fd71605",
+  "completed_at": "2026-10-06T11:11:11.577595+09:00",
+  "accuracy": 0.8275624065339928,
+  "log_loss": 0.3509635383238761,
+  "fold_std": 0.01277463791126534,
+  "folds": [
+    {
+      "fold": 1,
+      "best_epochs": 28,
+      "accuracy": 0.8112773302646721,
+      "seconds": 173.56199999997625
+    },
+    {
+      "fold": 2,
+      "best_epochs": 27,
+      "accuracy": 0.8228867165037378,
+      "seconds": 170.73500000004424
+    },
+    {
+      "fold": 3,
+      "best_epochs": 30,
+      "accuracy": 0.8504887866589994,
+      "seconds": 180.0
+    },
+    {
+      "fold": 4,
+      "best_epochs": 1,
+      "accuracy": 0.8257619321449109,
+      "seconds": 35.45299999997951
+    },
+    {
+      "fold": 5,
+      "best_epochs": 29,
+      "accuracy": 0.8273878020713463,
+      "seconds": 175.93699999997625
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 736.6410000000033,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/tabpfn_ftrefit_runner.py": "3dfa3a949e464556f8593bf12075ceed1eda69b3b6a1ebcdaf35c2f5f1ffa1be",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha24_ftrefit_seed11.csv",
+    "test_probability": "outputs\\probabilities\\ha24_ftrefit_seed11.csv",
+    "submission": "outputs\\submissions\\ha24_ftrefit_seed11.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1119,
+        "error_rate": 0.24315514993481094
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 134,
+        "error_rate": 0.06288127639605819
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 206,
+        "error_rate": 0.11711199545196134
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 40,
+        "error_rate": 0.19900497512437812
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 932,
+        "error_rate": 0.17135502849788564
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 533,
+        "error_rate": 0.1755021402700033
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 34,
+        "error_rate": 0.15668202764976957
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 898,
+        "error_rate": 0.18688865764828305
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 229,
+        "error_rate": 0.1361474435196195
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 168,
+        "error_rate": 0.16470588235294117
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 204,
+        "error_rate": 0.17200674536256325
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1328,
+        "error_rate": 0.1705844572896596
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 171,
+        "error_rate": 0.1883259911894273
+      }
+    ]
+  }
+}

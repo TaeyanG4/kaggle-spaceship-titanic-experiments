@@ -1,0 +1,20 @@
+{
+  "random_state": 42,
+  "n_splits": 5,
+  "threshold": 0.5,
+  "model": "xgboost",
+  "model_params": {
+    "n_estimators": 1200,
+    "learning_rate": 0.04,
+    "max_depth": 4,
+    "min_child_weight": 5,
+    "reg_lambda": 5.0,
+    "subsample": 0.85,
+    "colsample_bytree": 0.9,
+    "tree_method": "hist",
+    "eval_metric": "logloss",
+    "early_stopping_rounds": 100
+  },
+  "experiment_id": "v2_xgboost",
+  "feature_variant": "v2"
+}

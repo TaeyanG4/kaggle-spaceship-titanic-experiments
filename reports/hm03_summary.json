@@ -1,0 +1,202 @@
+{
+  "completed_at": "2026-10-06T00:34:11.322432+09:00",
+  "item": "H-D-03",
+  "spec": {
+    "item": "H-D-03",
+    "prefix": "hm03",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "rationale": {
+      "age_flags": "IsChild/IsTeen/IsAdult are step functions of Age, redundant for trees",
+      "spend_aggregates": "TotalSpend/NoSpend are derivable from the five services; NoSpend mixes unknown with zero (D-D-009)",
+      "positional_ids": "GroupMember and CabinNum are high-cardinality positions that may overfit",
+      "family_counts": "SurnameSize is broken for missing names (D-D-010); IsAlone duplicates GroupSize",
+      "vip": "VIP is rare and weakly informative"
+    },
+    "candidates": {
+      "age_flags": [
+        "IsChild",
+        "IsTeen",
+        "IsAdult"
+      ],
+      "spend_aggregates": [
+        "TotalSpend",
+        "NoSpend"
+      ],
+      "positional_ids": [
+        "GroupMember",
+        "CabinNum"
+      ],
+      "family_counts": [
+        "SurnameSize",
+        "IsAlone"
+      ],
+      "vip": [
+        "VIP"
+      ]
+    },
+    "control_id": "hm10_innercv_logloss"
+  },
+  "control_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "control_mean_accuracy": 0.8174009739637255,
+  "control_earth_errors": {
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158
+  },
+  "screening": [
+    {
+      "candidate": "family_counts",
+      "drop": [
+        "SurnameSize",
+        "IsAlone"
+      ],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "deltas": {
+        "42": 0.0019555964569193396,
+        "123": 0.0011503508570114285,
+        "2026": -0.0024157367997239554
+      },
+      "mean_delta": 0.0002300701714022709,
+      "positive_seeds": 2,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8178994593350972,
+        "123": 0.8189347751064074,
+        "2026": 0.816058897963879
+      },
+      "earth_errors": {
+        "42": 1163,
+        "123": 1155,
+        "2026": 1181
+      }
+    },
+    {
+      "candidate": "vip",
+      "drop": [
+        "VIP"
+      ],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "deltas": {
+        "42": -0.0008052455999080221,
+        "123": 0.0017255262855171427,
+        "2026": -0.0016104911998159332
+      },
+      "mean_delta": -0.0002300701714022709,
+      "positive_seeds": 1,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8151386172782699,
+        "123": 0.8195099505349132,
+        "2026": 0.816864143563787
+      },
+      "earth_errors": {
+        "42": 1179,
+        "123": 1155,
+        "2026": 1173
+      }
+    },
+    {
+      "candidate": "age_flags",
+      "drop": [
+        "IsChild",
+        "IsTeen",
+        "IsAdult"
+      ],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "deltas": {
+        "42": -0.00103531577131033,
+        "123": -0.0027608420568272507,
+        "2026": -0.0026458069711262633
+      },
+      "mean_delta": -0.0021473215997546147,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8149085471068676,
+        "123": 0.8150235821925688,
+        "2026": 0.8158288277924767
+      },
+      "earth_errors": {
+        "42": 1192,
+        "123": 1183,
+        "2026": 1192
+      }
+    },
+    {
+      "candidate": "spend_aggregates",
+      "drop": [
+        "TotalSpend",
+        "NoSpend"
+      ],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "deltas": {
+        "42": -0.004026227999539889,
+        "123": -0.00471643851374659,
+        "2026": -0.004831473599447911
+      },
+      "mean_delta": -0.0045247133709114635,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.811917634878638,
+        "123": 0.8130679857356494,
+        "2026": 0.813643161164155
+      },
+      "earth_errors": {
+        "42": 1209,
+        "123": 1207,
+        "2026": 1202
+      }
+    },
+    {
+      "candidate": "positional_ids",
+      "drop": [
+        "GroupMember",
+        "CabinNum"
+      ],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "deltas": {
+        "42": -0.006096859542160438,
+        "123": -0.006902105142068238,
+        "2026": -0.008052455999079777
+      },
+      "mean_delta": -0.0070171402277694845,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8098470033360174,
+        "123": 0.8108823191073278,
+        "2026": 0.8104221787645232
+      },
+      "earth_errors": {
+        "42": 1237,
+        "123": 1233,
+        "2026": 1231
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

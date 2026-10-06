@@ -1,0 +1,96 @@
+{
+  "completed_at": "2026-10-06T03:26:09.851218+09:00",
+  "item": "H-A-13",
+  "spec": {
+    "item": "H-A-13",
+    "prefix": "ha13",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Fold-local confident learning: inner OOF finds training rows that strongly contradict their label; drop them (margin 0.35) or half-weight them (margin 0.25), then the champion recipe",
+    "candidates": {
+      "noise_drop35": {
+        "model": "noise_drop35"
+      },
+      "noise_half25": {
+        "model": "noise_half25"
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "control_mean_accuracy": 0.8174009739637255,
+  "control_earth_errors": {
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158
+  },
+  "screening": [
+    {
+      "candidate": "noise_half25",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "noise_half25",
+      "extras": [],
+      "deltas": {
+        "42": -0.00103531577131033,
+        "123": -0.00034510525710340634,
+        "2026": -0.0029909122282296696
+      },
+      "mean_delta": -0.001457111085547802,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8149085471068676,
+        "123": 0.8174393189922926,
+        "2026": 0.8154837225353733
+      },
+      "earth_errors": {
+        "42": 1182,
+        "123": 1161,
+        "2026": 1186
+      }
+    },
+    {
+      "candidate": "noise_drop35",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "noise_drop35",
+      "extras": [],
+      "deltas": {
+        "42": -0.0037961578281375807,
+        "123": -0.005406649027953514,
+        "2026": -0.0042562981709421965
+      },
+      "mean_delta": -0.004486368342344431,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8121477050500403,
+        "123": 0.8123777752214425,
+        "2026": 0.8142183365926607
+      },
+      "earth_errors": {
+        "42": 1201,
+        "123": 1209,
+        "2026": 1190
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

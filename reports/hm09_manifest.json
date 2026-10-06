@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-10-05T23:25:52.146845+09:00",
+  "plan_item": "H-D-09",
+  "modes": [
+    "inner",
+    "inner_refit",
+    "fixed300"
+  ],
+  "control": "hm02_base_control (stops on the scored fold)",
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing mode confirmed on 7/99",
+  "also_reported": "optimism = control accuracy minus each honest mode, per seed"
+}

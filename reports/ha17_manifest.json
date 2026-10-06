@@ -1,0 +1,29 @@
+{
+  "created_at": "2026-10-06T02:55:40.776010+09:00",
+  "spec": {
+    "item": "H-A-17",
+    "prefix": "ha17",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Viktor's public notebook model re-implemented with SGKF and fold-local SMOTE; faithful arm keeps the author's fixed drop list, plain arm has no drop list and no SMOTE",
+    "candidates": {
+      "viktor_faithful": {
+        "model": "viktor_faithful"
+      },
+      "viktor_plain": {
+        "model": "viktor_plain"
+      }
+    }
+  },
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing candidate confirmed on 7/99"
+}

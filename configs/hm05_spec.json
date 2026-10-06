@@ -1,0 +1,12 @@
+{
+  "item": "H-D-05",
+  "prefix": "hm05",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Compact-feature XGBoost with honest inner-CV logloss iteration selection vs the CatBoost champion; also produces diversity members for H-D-06",
+  "candidates": {
+    "xgb_base": {"model": "xgboost"},
+    "xgb_name": {"model": "xgboost", "variant": "v1_name"}
+  }
+}

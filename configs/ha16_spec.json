@@ -1,0 +1,9 @@
+{
+  "item": "H-A-16",
+  "prefix": "ha16",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Only learning rate changes: 0.02 with an iteration cap of 3000, iterations chosen by the champion's inner-CV Logloss rule",
+  "candidates": {"lr02": {"params": {"learning_rate": 0.02, "iterations": 3000}}}
+}

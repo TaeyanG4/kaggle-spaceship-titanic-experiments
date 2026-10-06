@@ -1,0 +1,96 @@
+{
+  "completed_at": "2026-10-06T02:56:24.087243+09:00",
+  "item": "H-A-17",
+  "spec": {
+    "item": "H-A-17",
+    "prefix": "ha17",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Viktor's public notebook model re-implemented with SGKF and fold-local SMOTE; faithful arm keeps the author's fixed drop list, plain arm has no drop list and no SMOTE",
+    "candidates": {
+      "viktor_faithful": {
+        "model": "viktor_faithful"
+      },
+      "viktor_plain": {
+        "model": "viktor_plain"
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "control_mean_accuracy": 0.8174009739637255,
+  "control_earth_errors": {
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158
+  },
+  "screening": [
+    {
+      "candidate": "viktor_plain",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "viktor_plain",
+      "extras": [],
+      "deltas": {
+        "42": -0.009547912113194612,
+        "123": -0.010123087541700215,
+        "2026": -0.013229034855630983
+      },
+      "mean_delta": -0.01096667817017527,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8063959507649833,
+        "123": 0.8076613367076958,
+        "2026": 0.805245599907972
+      },
+      "earth_errors": {
+        "42": 1250,
+        "123": 1226,
+        "2026": 1253
+      }
+    },
+    {
+      "candidate": "viktor_faithful",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "viktor_faithful",
+      "extras": [],
+      "deltas": {
+        "42": -0.012078683998619666,
+        "123": -0.012768894512826368,
+        "2026": -0.012308754170021863
+      },
+      "mean_delta": -0.012385444227155965,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8038651788795582,
+        "123": 0.8050155297365696,
+        "2026": 0.8061658805935811
+      },
+      "earth_errors": {
+        "42": 1285,
+        "123": 1256,
+        "2026": 1252
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

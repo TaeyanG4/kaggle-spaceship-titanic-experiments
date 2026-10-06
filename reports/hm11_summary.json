@@ -1,0 +1,41 @@
+{
+  "completed_at": "2026-10-05T23:54:20.275235+09:00",
+  "plan_item": "H-D-11",
+  "base": "hm10_innercv_logloss",
+  "single_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029,
+    "7": 0.8139882664212584,
+    "99": 0.8167491084780858
+  },
+  "screen_bag_accuracy": 0.8180144944207983,
+  "confirm_bag_accuracy": 0.8154837225353733,
+  "all5_bag_accuracy": 0.8205452663062234,
+  "screen": {
+    "deltas": {
+      "42": 0.002070631542620438,
+      "123": 0.0002300701714023079,
+      "2026": -0.0004601403428046158
+    },
+    "mean_delta": 0.0006135204570727101,
+    "positive_seeds": 2,
+    "passes": false
+  },
+  "screen_singles": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "confirmation": null,
+  "promoted": false,
+  "earth_errors": {
+    "all5_bag": 1149,
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158,
+    "7": 1188,
+    "99": 1169
+  },
+  "note": "Bag OOF rows are out-of-fold in every component; the 5-seed bag uses the confirmation seeds too, so all5 accuracy is descriptive only."
+}

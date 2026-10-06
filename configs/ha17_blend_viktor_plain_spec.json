@@ -1,0 +1,6 @@
+{
+  "item": "H-A-17 blend viktor_plain",
+  "prefix": "ha17_blend_viktor_plain",
+  "control": "hm10_innercv_logloss",
+  "members": ["ha17_viktor_plain"]
+}

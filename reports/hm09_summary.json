@@ -1,0 +1,72 @@
+{
+  "completed_at": "2026-10-05T23:28:16.816159+09:00",
+  "plan_item": "H-D-09",
+  "control_accuracy": {
+    "42": 0.8188197400207063,
+    "123": 0.8213505119061314,
+    "2026": 0.8157137927067756
+  },
+  "control_mean_accuracy": 0.8186280148778712,
+  "modes": [
+    {
+      "mode": "fixed300",
+      "deltas": {
+        "42": -0.00287587714252846,
+        "123": -0.00782238582767747,
+        "2026": -0.002530771885425054
+      },
+      "mean_delta": -0.004409678285210328,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8159438628781779,
+        "123": 0.8135281260784539,
+        "2026": 0.8131830208213505
+      },
+      "mean_accuracy": 0.8142183365926607
+    },
+    {
+      "mode": "inner",
+      "deltas": {
+        "42": -0.009317841941792304,
+        "123": -0.011158403313010545,
+        "2026": -0.011158403313010434
+      },
+      "mean_delta": -0.010544882855937762,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.809501898078914,
+        "123": 0.8101921085931209,
+        "2026": 0.8045553893937651
+      },
+      "mean_accuracy": 0.8080831320219334
+    },
+    {
+      "mode": "inner_refit",
+      "deltas": {
+        "42": -0.009893017370298018,
+        "123": -0.012078683998619555,
+        "2026": -0.009777982284596809
+      },
+      "mean_delta": -0.010583227884504795,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8089267226504083,
+        "123": 0.8092718279075118,
+        "2026": 0.8059358104221788
+      },
+      "mean_accuracy": 0.8080447869933662
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

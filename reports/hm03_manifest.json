@@ -1,0 +1,49 @@
+{
+  "created_at": "2026-10-05T23:54:48.406434+09:00",
+  "spec": {
+    "item": "H-D-03",
+    "prefix": "hm03",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "rationale": {
+      "age_flags": "IsChild/IsTeen/IsAdult are step functions of Age, redundant for trees",
+      "spend_aggregates": "TotalSpend/NoSpend are derivable from the five services; NoSpend mixes unknown with zero (D-D-009)",
+      "positional_ids": "GroupMember and CabinNum are high-cardinality positions that may overfit",
+      "family_counts": "SurnameSize is broken for missing names (D-D-010); IsAlone duplicates GroupSize",
+      "vip": "VIP is rare and weakly informative"
+    },
+    "candidates": {
+      "age_flags": [
+        "IsChild",
+        "IsTeen",
+        "IsAdult"
+      ],
+      "spend_aggregates": [
+        "TotalSpend",
+        "NoSpend"
+      ],
+      "positional_ids": [
+        "GroupMember",
+        "CabinNum"
+      ],
+      "family_counts": [
+        "SurnameSize",
+        "IsAlone"
+      ],
+      "vip": [
+        "VIP"
+      ]
+    },
+    "control_id": "hm10_innercv_logloss"
+  },
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing candidate confirmed on 7/99"
+}

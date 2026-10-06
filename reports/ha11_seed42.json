@@ -1,0 +1,7 @@
+{
+  "seed": 42,
+  "control": 0.8150235821925688,
+  "student": 0.8151386172782699,
+  "accepted_pseudo_rows": 1166,
+  "pseudo_label_errors": 3
+}

@@ -1,0 +1,126 @@
+{
+  "created_at": "2026-10-05T23:21:36.373022+09:00",
+  "plan_item": "H-D-08",
+  "control": {
+    "experiment_id": "hm02_base_control",
+    "feature_variant": "baseline",
+    "random_state": 42,
+    "n_splits": 5,
+    "threshold": 0.5,
+    "model": "catboost",
+    "model_params": {
+      "iterations": 800,
+      "depth": 6,
+      "learning_rate": 0.05,
+      "l2_leaf_reg": 5.0,
+      "random_strength": 0.5,
+      "early_stopping_rounds": 100,
+      "loss_function": "Logloss",
+      "eval_metric": "Accuracy"
+    }
+  },
+  "candidates": [
+    {
+      "experiment_id": "hm02_name_d8_l5",
+      "feature_variant": "v1_name",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 8,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_name_d6_l1",
+      "feature_variant": "v1_name",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 1.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_base_d8_l5",
+      "feature_variant": "baseline",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 8,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_base_d6_l1",
+      "feature_variant": "baseline",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 1.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "v1_name_fix",
+      "feature_variant": "v1_name",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    }
+  ],
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "screen: mean paired delta >= +0.002 and at least 2 of 3 seeds positive vs matched control; only the highest passing mean goes to confirmation on fresh seeds 7/99; promote only if both deltas > 0",
+  "workers": 4,
+  "threads_per_worker": 2
+}

@@ -1,0 +1,59 @@
+[project]
+name = "spaceship-titanic"
+version = "0.1.0"
+description = "Reproducible Kaggle practice project for Spaceship Titanic"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "catboost>=1.2.8",
+    "ipykernel>=6.29",
+    "jupyterlab>=4.3",
+    "joblib>=1.5",
+    "lightgbm>=4.6",
+    "matplotlib>=3.10",
+    "numpy>=2.1",
+    "optuna>=4.2",
+    "pandas>=2.2",
+    "pyarrow>=18.0",
+    "scikit-learn>=1.6",
+    "threadpoolctl>=3.6",
+    "xgboost>=3.0",
+    "torch>=2.14.1",
+    "tabpfn>=9.1.0",
+    "imbalanced-learn>=0.14.2",
+    "tabicl>=2.2.0",
+    "pytabkit>=1.7.3",
+    "xrfm>=0.4.5",
+    "causilo>=1.0.3",
+    "skorch>=1.4.0",
+    "faiss-cpu>=1.15.1",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spaceship_titanic"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.9",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --basetemp=tmp_pytest"

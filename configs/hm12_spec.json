@@ -1,0 +1,40 @@
+{
+  "item": "H-D-12+13",
+  "prefix": "hm12",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "H-D-12 re-screens v1/v2 feature variants; H-D-13 re-tests the two capacity directions; both with honest inner-CV iteration selection",
+  "candidates": {
+    "v1_name": {
+      "variant": "v1_name"
+    },
+    "v1_spend": {
+      "variant": "v1_spend"
+    },
+    "v1_rules": {
+      "variant": "v1_rules"
+    },
+    "v2_spending": {
+      "variant": "v2_spending"
+    },
+    "v2_group": {
+      "variant": "v2_group"
+    },
+    "v2": {
+      "variant": "v2"
+    },
+    "d8_l5": {
+      "params": {
+        "depth": 8,
+        "l2_leaf_reg": 5.0
+      }
+    },
+    "d6_l1": {
+      "params": {
+        "depth": 6,
+        "l2_leaf_reg": 1.0
+      }
+    }
+  }
+}

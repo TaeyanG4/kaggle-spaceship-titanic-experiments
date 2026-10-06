@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "started_at": "2026-10-06T13:13:55.050653+09:00",
+  "pid": 22432,
+  "spec": "configs\\ha29_spec.json",
+  "updated_at": "2026-10-06T13:34:04.118417+09:00",
+  "error": "module 'faiss' has no attribute 'GpuIndexFlatConfig'"
+}

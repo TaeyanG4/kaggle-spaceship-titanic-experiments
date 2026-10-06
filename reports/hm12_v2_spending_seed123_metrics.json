@@ -1,0 +1,209 @@
+{
+  "experiment_id": "hm12_v2_spending_seed123",
+  "config": {
+    "experiment_id": "hm12_v2_spending_seed123",
+    "feature_variant": "v2_spending",
+    "random_state": 123,
+    "n_splits": 5,
+    "stopping": "innercv_logloss",
+    "drop": [],
+    "early_stopping_rounds": 100,
+    "model_params": {
+      "iterations": 800,
+      "depth": 6,
+      "learning_rate": 0.05,
+      "l2_leaf_reg": 5.0,
+      "random_strength": 0.5,
+      "loss_function": "Logloss",
+      "eval_metric": "Accuracy"
+    }
+  },
+  "fingerprint": "ea6f3b235f8b451b2c803f54c31b048aacd555cf30413a3c1157dfdacfa86dc8",
+  "completed_at": "2026-10-06T00:25:04.919710+09:00",
+  "accuracy": 0.8197400207063155,
+  "log_loss": 0.3766565356841291,
+  "fold_std": 0.009671859818461725,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.828637147786084,
+      "best_iteration": 470,
+      "seconds": 137.3279999999795
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.8269120184013801,
+      "best_iteration": 529,
+      "seconds": 147.25
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.8050603795284647,
+      "best_iteration": 456,
+      "seconds": 127.53100000001723
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.8112773302646721,
+      "best_iteration": 424,
+      "seconds": 142.90599999998813
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.8268124280782508,
+      "best_iteration": 678,
+      "seconds": 160.53200000000652
+    }
+  ],
+  "feature_columns": [
+    "HomePlanet",
+    "CryoSleep",
+    "Destination",
+    "Age",
+    "VIP",
+    "RoomService",
+    "FoodCourt",
+    "ShoppingMall",
+    "Spa",
+    "VRDeck",
+    "GroupMember",
+    "CabinDeck",
+    "CabinNum",
+    "CabinSide",
+    "TotalSpend",
+    "NoSpend",
+    "SpendMissingCount",
+    "IsChild",
+    "IsTeen",
+    "IsAdult",
+    "GroupSize",
+    "SurnameSize",
+    "IsAlone",
+    "NameMissing",
+    "ObservedNoSpend",
+    "SpendUnknownZero",
+    "SpendObservedCount",
+    "AgeMissing",
+    "RoomServiceMissing",
+    "FoodCourtMissing",
+    "ShoppingMallMissing",
+    "SpaMissing",
+    "VRDeckMissing",
+    "PositiveServiceCount",
+    "LuxurySpend",
+    "FoodShoppingSpend",
+    "RoomServiceShare",
+    "FoodCourtShare",
+    "ShoppingMallShare",
+    "SpaShare",
+    "VRDeckShare",
+    "PlanetCryo",
+    "DeckSide"
+  ],
+  "threads": 2,
+  "runtime_seconds": 717.25,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/catboost_runner.py": "315a0d863af1e12eedf68be4c413e602013c906068e0b04129fc6153ae530ba7",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\hm12_v2_spending_seed123.csv",
+    "test_probability": "outputs\\probabilities\\hm12_v2_spending_seed123.csv",
+    "submission": "outputs\\submissions\\hm12_v2_spending_seed123.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1165,
+        "error_rate": 0.2531508039982616
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 155,
+        "error_rate": 0.07273580478648521
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 205,
+        "error_rate": 0.11654349061967027
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 42,
+        "error_rate": 0.208955223880597
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1003,
+        "error_rate": 0.184408898694613
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 531,
+        "error_rate": 0.17484359565360552
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 33,
+        "error_rate": 0.15207373271889402
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 932,
+        "error_rate": 0.1939646201873049
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 240,
+        "error_rate": 0.1426872770511296
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 168,
+        "error_rate": 0.16470588235294117
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 227,
+        "error_rate": 0.19139966273187184
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1375,
+        "error_rate": 0.17662170841361594
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 192,
+        "error_rate": 0.21145374449339208
+      }
+    ]
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "created_at": "2026-10-05T18:53:05.964952+09:00",
+  "validation": "5-fold SGKF seed 42, PassengerId group",
+  "train_test_group_overlap": 0,
+  "baseline_accuracy": 0.8188197400207063,
+  "baseline_log_loss": 0.3849485721843683,
+  "baseline_segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1152,
+        "error_rate": 0.2503259452411995
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 168,
+        "error_rate": 0.07883622712341623
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 212,
+        "error_rate": 0.12052302444570778
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 43,
+        "error_rate": 0.21393034825870647
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1003,
+        "error_rate": 0.184408898694613
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 541,
+        "error_rate": 0.17813631873559432
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 31,
+        "error_rate": 0.14285714285714285
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 950,
+        "error_rate": 0.19771071800208118
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 238,
+        "error_rate": 0.14149821640903687
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 174,
+        "error_rate": 0.17058823529411765
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 213,
+        "error_rate": 0.17959527824620575
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1392,
+        "error_rate": 0.1788053949903661
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 183,
+        "error_rate": 0.20154185022026433
+      }
+    ]
+  },
+  "fold_scores": [
+    0.8148361127084531,
+    0.828637147786084,
+    0.824036802760207,
+    0.8187571921749137,
+    0.807825086306099
+  ],
+  "missing_rates": {
+    "PassengerId": {
+      "train": 0.0,
+      "test": 0.0
+    },
+    "HomePlanet": {
+      "train": 0.023122052225928908,
+      "test": 0.02034136076689268
+    },
+    "CryoSleep": {
+      "train": 0.02496261359714713,
+      "test": 0.021744213233574936
+    },
+    "Cabin": {
+      "train": 0.02289198205452663,
+      "test": 0.02338087444470423
+    },
+    "Destination": {
+      "train": 0.02093638559760727,
+      "test": 0.021510404489127895
+    },
+    "Age": {
+      "train": 0.020591280340503854,
+      "test": 0.02127659574468085
+    },
+    "VIP": {
+      "train": 0.023352122397331185,
+      "test": 0.021744213233574936
+    },
+    "RoomService": {
+      "train": 0.02082135051190613,
+      "test": 0.01917231704465747
+    },
+    "FoodCourt": {
+      "train": 0.021051420683308408,
+      "test": 0.024783726911386486
+    },
+    "ShoppingMall": {
+      "train": 0.02392729782583688,
+      "test": 0.022913256955810146
+    },
+    "Spa": {
+      "train": 0.021051420683308408,
+      "test": 0.023614683189151275
+    },
+    "VRDeck": {
+      "train": 0.021626596111814105,
+      "test": 0.018704699555763385
+    },
+    "Name": {
+      "train": 0.023007017140227768,
+      "test": 0.02197802197802198
+    }
+  },
+  "categorical_total_variation": {
+    "HomePlanet": 0.013926372865210923,
+    "CryoSleep": 0.011639146151874702,
+    "Destination": 0.011280135554741461,
+    "VIP": 0.007198044129201707,
+    "CabinDeck": 0.023098894590018536,
+    "CabinSide": 0.00390874535882378,
+    "NoSpend": 0.0015678069162040897,
+    "GroupSize": 0.01911185436692633
+  },
+  "joint_total_variation": {
+    "HomePlanet_CryoSleep": 0.0204740935580863,
+    "CabinDeck_CabinSide": 0.02899357532946309
+  },
+  "numeric_quantiles": {
+    "Age": {
+      "train": [
+        13.0,
+        27.0,
+        49.0
+      ],
+      "test": [
+        13.0,
+        26.0,
+        48.0
+      ]
+    },
+    "TotalSpend": {
+      "train": [
+        0.0,
+        716.0,
+        3838.4000000000005
+      ],
+      "test": [
+        0.0,
+        714.0,
+        3572.4000000000005
+      ]
+    },
+    "CabinNum": {
+      "train": [
+        64.0,
+        427.0,
+        1405.6999999999998
+      ],
+      "test": [
+        61.0,
+        442.0,
+        1412.4
+      ]
+    }
+  },
+  "spending_semantics": {
+    "train": {
+      "zero_observed_with_missing": 406,
+      "cryo_true_positive_spend": 0,
+      "under13_positive_spend": 0,
+      "missing_name_count": 200
+    },
+    "test": {
+      "zero_observed_with_missing": 193,
+      "cryo_true_positive_spend": 0,
+      "under13_positive_spend": 0,
+      "missing_name_count": 94
+    }
+  },
+  "uncertain_045_055": 815,
+  "limits": "Marginal and two joint distributions only; public LB-gap cause remains unknown."
+}

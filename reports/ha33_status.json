@@ -1,0 +1,8 @@
+{
+  "status": "results_ready",
+  "started_at": "2026-10-06T13:12:19.690211+09:00",
+  "pid": 51140,
+  "spec": "configs\\ha33_spec.json",
+  "updated_at": "2026-10-06T13:13:24.088858+09:00",
+  "promoted": false
+}

@@ -1,0 +1,137 @@
+{
+  "completed_at": "2026-10-06T14:42:44.548825+09:00",
+  "plan_item": "H-A-43",
+  "pairs": {
+    "logloss_vs_accuracy_inner": {
+      "a": "hm10_innercv_logloss",
+      "b": "hm09_inner",
+      "seeds": {
+        "42": {
+          "earth_error_change": -26,
+          "non_earth_error_change": -24,
+          "earth_pos_rate": [
+            0.44328552803129073,
+            0.4545849630595393
+          ],
+          "changed_earth_rows": 354,
+          "changed_earth_near_half": 0.867231638418079
+        },
+        "123": {
+          "earth_error_change": -46,
+          "non_earth_error_change": -18,
+          "earth_pos_rate": [
+            0.43915688830943067,
+            0.4587136027813994
+          ],
+          "changed_earth_rows": 418,
+          "changed_earth_near_half": 0.8014354066985646
+        },
+        "2026": {
+          "earth_error_change": -83,
+          "non_earth_error_change": -40,
+          "earth_pos_rate": [
+            0.44089526292916126,
+            0.45632333767926986
+          ],
+          "changed_earth_rows": 475,
+          "changed_earth_near_half": 0.7326315789473684
+        }
+      },
+      "direction_holds_on": "0/3"
+    },
+    "logloss_vs_fixed300": {
+      "a": "hm10_innercv_logloss",
+      "b": "hm10_control",
+      "seeds": {
+        "42": {
+          "earth_error_change": 10,
+          "non_earth_error_change": -7,
+          "earth_pos_rate": [
+            0.44328552803129073,
+            0.46197305519339416
+          ],
+          "changed_earth_rows": 194,
+          "changed_earth_near_half": 0.9690721649484536
+        },
+        "123": {
+          "earth_error_change": -32,
+          "non_earth_error_change": -2,
+          "earth_pos_rate": [
+            0.43915688830943067,
+            0.4474141677531508
+          ],
+          "changed_earth_rows": 204,
+          "changed_earth_near_half": 0.9950980392156863
+        },
+        "2026": {
+          "earth_error_change": -40,
+          "non_earth_error_change": -7,
+          "earth_pos_rate": [
+            0.44089526292916126,
+            0.4530638852672751
+          ],
+          "changed_earth_rows": 230,
+          "changed_earth_near_half": 0.9608695652173913
+        },
+        "7": {
+          "earth_error_change": -14,
+          "non_earth_error_change": -7,
+          "earth_pos_rate": [
+            0.43524554541503696,
+            0.44654498044328556
+          ],
+          "changed_earth_rows": 190,
+          "changed_earth_near_half": 0.9842105263157894
+        },
+        "99": {
+          "earth_error_change": -15,
+          "non_earth_error_change": 5,
+          "earth_pos_rate": [
+            0.44198174706649285,
+            0.4548022598870056
+          ],
+          "changed_earth_rows": 155,
+          "changed_earth_near_half": 0.9741935483870968
+        }
+      },
+      "direction_holds_on": "1/5"
+    }
+  },
+  "champion": {
+    "42": {
+      "overall_error": 0.17094213735189231,
+      "earth_ratio": 1.4224412640533726,
+      "deck_g_ratio": 1.6322203796591557,
+      "cryo_zero_spend_ratio": 1.0189708268280264,
+      "non_earth_ratio": 0.49025142979721625
+    },
+    "123": {
+      "overall_error": 0.1711722075232946,
+      "earth_ratio": 1.4014874318318824,
+      "deck_g_ratio": 1.5980652304537644,
+      "cryo_zero_spend_ratio": 1.0310666652504417,
+      "non_earth_ratio": 0.5166252038588054
+    },
+    "2026": {
+      "overall_error": 0.17312780398021396,
+      "earth_ratio": 1.4107591528167012,
+      "deck_g_ratio": 1.602585623796671,
+      "cryo_zero_spend_ratio": 1.0061067432999649,
+      "non_earth_ratio": 0.5093047169247324
+    },
+    "7": {
+      "overall_error": 0.17358794432301852,
+      "earth_ratio": 1.4145303465315595,
+      "deck_g_ratio": 1.6253517063568825,
+      "cryo_zero_spend_ratio": 1.0243052714336307,
+      "non_earth_ratio": 0.5020310016507639
+    },
+    "99": {
+      "overall_error": 0.17013689175198435,
+      "earth_ratio": 1.4036298120081254,
+      "deck_g_ratio": 1.6698045134157746,
+      "cryo_zero_spend_ratio": 1.0412115796098735,
+      "non_earth_ratio": 0.5076813173633961
+    }
+  }
+}

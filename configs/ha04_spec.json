@@ -1,0 +1,12 @@
+{
+  "item": "H-A-04",
+  "prefix": "ha04",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Reverse/forward CryoSleep inference from spending (age >= 13 for zero-spend -> True); plus unanimous-group Cabin/VIP fill and deck -> HomePlanet",
+  "candidates": {
+    "cryo": {"model": "catboost_extra", "extras": ["cryo_rules"]},
+    "cryo_fills": {"model": "catboost_extra", "extras": ["cryo_rules", "group_deck_fills"]}
+  }
+}

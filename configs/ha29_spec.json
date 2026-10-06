@@ -1,0 +1,20 @@
+{
+  "item": "H-A-29",
+  "prefix": "ha29",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "ha12_tabpfn",
+  "rationale": "pytabkit RealMLP-TD / TabM-D / TabR-S-D with fit-fold encodings and an SGKF(8) early-stopping slice, as single members vs TabPFN v3.5; stacker membership gate afterwards",
+  "candidates": {
+    "realmlp": {
+      "model": "realmlp"
+    },
+    "tabm": {
+      "model": "tabm"
+    },
+    "tabr": {
+      "model": "tabr"
+    }
+  },
+  "model": "tabpfn"
+}

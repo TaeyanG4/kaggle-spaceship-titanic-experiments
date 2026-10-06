@@ -1,0 +1,13 @@
+{
+  "item": "H-A-02",
+  "prefix": "ha02",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Surname as a CatBoost categorical (fold-local ordered target statistics); arms add within-group surname repeats or SurnameGroupSize",
+  "candidates": {
+    "surname": {"model": "catboost_extra", "extras": ["surname_cat"]},
+    "surname_repeat": {"model": "catboost_extra", "extras": ["surname_cat", "surname_repeat"]},
+    "surname_groupsize": {"model": "catboost_extra", "extras": ["surname_cat", "surname_group_size"]}
+  }
+}

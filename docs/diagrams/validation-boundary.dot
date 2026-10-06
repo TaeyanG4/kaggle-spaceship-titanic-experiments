@@ -1,0 +1,25 @@
+digraph validation {
+  graph [rankdir=LR, bgcolor="white", pad="0.32", nodesep="0.30", ranksep="0.45", fontname="Arial", label="Validation boundary: what each fold is allowed to see", labelloc="t", labeljust="l", fontsize=22, fontcolor="#16324a", compound=true];
+  node [shape=box, style="rounded,filled", fillcolor="#f3f7fa", color="#bdcbd5", fontname="Arial", fontsize=14, fontcolor="#16324a", margin="0.20,0.12", penwidth=1.2];
+  edge [color="#687c89", arrowsize=0.8, penwidth=1.3, fontname="Arial", fontsize=11, fontcolor="#465c6b"];
+  data [label="train.csv (8,693 rows)\n6,217 travel groups", fillcolor="#e9eef2"];
+  split [label="StratifiedGroupKFold(5)\nby PassengerId group\n(no group crosses folds;\ntrain/test share 0 groups)"];
+  subgraph cluster_fit {
+    label="Outer fit fold (4/5)"; fontname="Arial"; fontsize=15; fontcolor="#2f8f83"; style="rounded"; color="#82b5a7";
+    enc [label="Categorical encoders\nfitted here only"];
+    es [label="SGKF(8) slice\nearly stopping / epoch choice"];
+    tune [label="Fine-tune / fit model"];
+    enc -> tune; es -> tune;
+  }
+  subgraph cluster_valid {
+    label="Outer validation fold (1/5)"; fontname="Arial"; fontsize=15; fontcolor="#c4573f"; style="rounded"; color="#d9a597";
+    score [label="Predicted once\nnever used for stopping,\nthresholds or selection", fillcolor="#fbeeea", color="#d9a597"];
+  }
+  stack [label="Stacker for fold k\nfitted on the OTHER 4 folds' OOF only"];
+  test [label="test.csv\nfeatures only, no labels", fillcolor="#e9eef2"];
+  data -> split -> enc [lhead=cluster_fit];
+  split -> score [lhead=cluster_valid];
+  tune -> score [label="predict"];
+  score -> stack [label="OOF"];
+  tune -> test [label="fold models\naveraged", style=dashed];
+}

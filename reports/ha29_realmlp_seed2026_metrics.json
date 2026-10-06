@@ -1,0 +1,150 @@
+{
+  "experiment_id": "ha29_realmlp_seed2026",
+  "config": {
+    "experiment_id": "ha29_realmlp_seed2026",
+    "model": "realmlp",
+    "random_state": 2026,
+    "n_splits": 5,
+    "feature_variant": "baseline",
+    "early_stopping": "SGKF(8) slice"
+  },
+  "fingerprint": "40336e380f3a10629bc84c5261ba5ac22d7bf2370f36d614b1adad2cb78815e0",
+  "completed_at": "2026-10-06T13:33:24.628798+09:00",
+  "accuracy": 0.7847693546531692,
+  "log_loss": 0.4374775273083387,
+  "fold_std": 0.012726443965572693,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.8072497123130035,
+      "seconds": 105.82799999997951
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.7750287686996548,
+      "seconds": 115.57800000003772
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.7905638665132336,
+      "seconds": 104.09399999998277
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.7740080506037953,
+      "seconds": 29.70299999997951
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.7770114942528735,
+      "seconds": 27.89000000001397
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 385.71899999998277,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/member_runner.py": "ab53376c24d7b93584bc8b73b0d0d8c403e0e5ddfdf3c21b02dc052127afd817",
+    "scripts/extra_features.py": "4669c63c693d3bc1672b2e35391b2b41bd7fba116426e4035aabcd7328b40334",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha29_realmlp_seed2026.csv",
+    "test_probability": "outputs\\probabilities\\ha29_realmlp_seed2026.csv",
+    "submission": "outputs\\submissions\\ha29_realmlp_seed2026.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1304,
+        "error_rate": 0.28335506301608
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 273,
+        "error_rate": 0.12810886907555138
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 243,
+        "error_rate": 0.1381466742467311
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 51,
+        "error_rate": 0.2537313432835821
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1269,
+        "error_rate": 0.23331494760066188
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 559,
+        "error_rate": 0.18406322028317418
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 43,
+        "error_rate": 0.19815668202764977
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 1080,
+        "error_rate": 0.2247658688865765
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 312,
+        "error_rate": 0.18549346016646848
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 204,
+        "error_rate": 0.2
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 275,
+        "error_rate": 0.2318718381112985
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1674,
+        "error_rate": 0.21502890173410405
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 197,
+        "error_rate": 0.21696035242290748
+      }
+    ]
+  }
+}

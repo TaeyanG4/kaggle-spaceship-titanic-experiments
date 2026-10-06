@@ -1,0 +1,14 @@
+{
+  "item": "H-A-30",
+  "prefix": "ha30",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "ha12_tabpfn",
+  "rationale": "TabPFN v3.5 with raw surname and cabin strings as fit-fold ordinal categoricals vs frozen TabPFN v3.5",
+  "candidates": {
+    "tabpfn_identity": {
+      "model": "tabpfn_identity"
+    }
+  },
+  "model": "tabpfn"
+}

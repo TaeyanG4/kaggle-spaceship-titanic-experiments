@@ -1,0 +1,6 @@
+{
+  "item": "H-A-05 stack",
+  "prefix": "ha05_stack",
+  "control": "hm10_innercv_logloss",
+  "members": ["ha05_histgb", "ha05_extratrees"]
+}

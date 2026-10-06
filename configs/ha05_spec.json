@@ -1,0 +1,13 @@
+{
+  "item": "H-A-05",
+  "prefix": "ha05",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Single-model diversity arms (no new dependency): CatBoost Lossguide growth, ExtraTrees, HistGradientBoosting; screened alone, then error correlation decides which enter a nested stack (run_blend_screen)",
+  "candidates": {
+    "cb_lossguide": {"params": {"grow_policy": "Lossguide", "max_leaves": 31, "min_data_in_leaf": 20}},
+    "extratrees": {"model": "extratrees"},
+    "histgb": {"model": "histgb"}
+  }
+}

@@ -1,0 +1,25 @@
+ref,fileName,date,description,status,publicScore,privateScore
+
+56875960,sub_stack_a1ctx.csv,2026-10-06 08:47:50.733000,frozen + A1-ctx + ftrefit; nested OOF mean 0.8290,SubmissionStatus.COMPLETE,0.82253,
+
+56875955,sub_combo7_bag3.csv,2026-10-06 08:47:46.717000,"combo7 (stack3 + A1-ne2 + A1-ctx + A2 + ftbag) with 3-seed test bagging; nested OOF mean 0.8310 (post hoc, 7/99 pending)",SubmissionStatus.COMPLETE,0.82137,
+
+56875944,sub_stack3_plus_a1ne2.csv,2026-10-06 08:47:34.030000,stack3 + A1-ne2; nested OOF mean 0.8293,SubmissionStatus.COMPLETE,0.82604,
+
+56875941,sub_a1mix_single.csv,2026-10-06 08:47:29.357000,A1 fine-tune mix single model; OOF mean 0.8295,SubmissionStatus.COMPLETE,0.82066,
+
+56875934,sub_a1mix_stack.csv,2026-10-06 08:47:24.643000,frozen + A1 mix (8est/ne2/ctx avg) + ftrefit; nested OOF mean 0.8296,SubmissionStatus.COMPLETE,0.82487,
+
+56875930,sub_avg4.csv,2026-10-06 08:47:19.773000,frozen + avg5 ft(ne2) + ftrefit + A1-ctx; nested OOF mean 0.8302,SubmissionStatus.COMPLETE,0.82440,
+
+56875929,sub_combo5.csv,2026-10-06 08:47:15.510000,stack3 + A1-ne2 + A1-ctx; nested OOF mean 0.8302,SubmissionStatus.COMPLETE,0.82417,
+
+56875926,sub_combo7.csv,2026-10-06 08:47:11.287000,"combo7 stack3 + A1-ne2 + A1-ctx + A2 + ftbag; nested OOF mean 0.8310 (post hoc, 7/99 pending)",SubmissionStatus.COMPLETE,0.82417,
+
+56869784,ha27_stack3.csv,2026-10-06 04:07:30.403000,H-A-27 nested LR stacker over TabPFN v3.5 frozen/ft/ftrefit; CV +0.0043 on 7/99,SubmissionStatus.COMPLETE,0.82020,
+
+56865289,ha12_tabpfn.csv,2026-10-06 00:20:26.017000,"ha12_tabpfn: TabPFN v3.5 (pinned), baseline features, SGKF fold-local; honest OOF mean 0.8252 (3 seeds), confirmed on seeds 7/99",SubmissionStatus.COMPLETE,0.81786,
+
+56855038,hm10_innercv_logloss.csv,2026-10-05 14:52:04.243000,"hm10_innercv_logloss: baseline CatBoost, inner-CV Logloss iteration selection (honest OOF mean 0.8174)",SubmissionStatus.COMPLETE,0.81131,
+
+56847813,baseline_catboost.csv,2026-10-05 08:52:23.350000,clean CatBoost baseline SGKF 5-fold CV 0.818820,SubmissionStatus.COMPLETE,0.80780,

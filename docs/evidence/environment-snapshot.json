@@ -1,0 +1,19 @@
+{
+  "python": "3.12.13",
+  "os": "Windows-10-10.0.19045-SP0",
+  "gpu": "NVIDIA GeForce RTX 4070 Ti SUPER, 16376 MiB",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1",
+    "catboost": "1.2.10",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "torch": "2.14.1+cu126",
+    "tabpfn": "9.1.0",
+    "tabicl": "2.2.0",
+    "pytabkit": "1.7.3",
+    "matplotlib": "3.11.2"
+  },
+  "note": "Main environment only; TabDPT/TabSTAR ran in a separate venv and AutoGluon in another (see docs/05-reproduction.md)."
+}

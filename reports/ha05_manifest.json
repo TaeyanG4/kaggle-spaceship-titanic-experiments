@@ -1,0 +1,36 @@
+{
+  "created_at": "2026-10-06T02:00:02.723696+09:00",
+  "spec": {
+    "item": "H-A-05",
+    "prefix": "ha05",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Single-model diversity arms (no new dependency): CatBoost Lossguide growth, ExtraTrees, HistGradientBoosting; screened alone, then error correlation decides which enter a nested stack (run_blend_screen)",
+    "candidates": {
+      "cb_lossguide": {
+        "params": {
+          "grow_policy": "Lossguide",
+          "max_leaves": 31,
+          "min_data_in_leaf": 20
+        }
+      },
+      "extratrees": {
+        "model": "extratrees"
+      },
+      "histgb": {
+        "model": "histgb"
+      }
+    }
+  },
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing candidate confirmed on 7/99"
+}

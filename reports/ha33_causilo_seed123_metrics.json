@@ -1,0 +1,150 @@
+{
+  "experiment_id": "ha33_causilo_seed123",
+  "config": {
+    "experiment_id": "ha33_causilo_seed123",
+    "model": "causilo",
+    "random_state": 123,
+    "n_splits": 5,
+    "feature_variant": "baseline",
+    "early_stopping": "none"
+  },
+  "fingerprint": "d21d29c153755837963ca7db431152ee36fd79173953dbcb3b73e3024f578104",
+  "completed_at": "2026-10-06T13:13:01.695477+09:00",
+  "accuracy": 0.8197400207063155,
+  "log_loss": 0.3718783813871121,
+  "fold_std": 0.008855579191785855,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.8263369752731455,
+      "seconds": 3.1719999999622814
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.8154111558366878,
+      "seconds": 2.5160000000032596
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.8050603795284647,
+      "seconds": 2.7179999999934807
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.8216340621403913,
+      "seconds": 4.39100000000326
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.830264672036824,
+      "seconds": 2.719000000040978
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 16.85899999999674,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/member_runner.py": "ab53376c24d7b93584bc8b73b0d0d8c403e0e5ddfdf3c21b02dc052127afd817",
+    "scripts/extra_features.py": "4669c63c693d3bc1672b2e35391b2b41bd7fba116426e4035aabcd7328b40334",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha33_causilo_seed123.csv",
+    "test_probability": "outputs\\probabilities\\ha33_causilo_seed123.csv",
+    "submission": "outputs\\submissions\\ha33_causilo_seed123.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1178,
+        "error_rate": 0.2559756627553238
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 144,
+        "error_rate": 0.0675739089629282
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 202,
+        "error_rate": 0.11483797612279704
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 43,
+        "error_rate": 0.21393034825870647
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 999,
+        "error_rate": 0.1836734693877551
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 537,
+        "error_rate": 0.17681922950279882
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 31,
+        "error_rate": 0.14285714285714285
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 942,
+        "error_rate": 0.19604578563995836
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 235,
+        "error_rate": 0.13971462544589774
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 170,
+        "error_rate": 0.16666666666666666
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 220,
+        "error_rate": 0.18549747048903878
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1381,
+        "error_rate": 0.17739242132305716
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 186,
+        "error_rate": 0.20484581497797358
+      }
+    ]
+  }
+}

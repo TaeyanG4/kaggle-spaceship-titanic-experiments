@@ -1,0 +1,18 @@
+{
+  "random_state": 42,
+  "n_splits": 5,
+  "threshold": 0.5,
+  "model": "catboost",
+  "model_params": {
+    "iterations": 800,
+    "depth": 6,
+    "learning_rate": 0.05,
+    "l2_leaf_reg": 5.0,
+    "random_strength": 0.5,
+    "early_stopping_rounds": 100,
+    "loss_function": "Logloss",
+    "eval_metric": "Accuracy"
+  },
+  "experiment_id": "v1_spend",
+  "feature_variant": "v1_spend"
+}

@@ -1,0 +1,9 @@
+{
+  "item": "H-A-12",
+  "prefix": "ha12",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "TabPFN as a single member on baseline features (fold-local encoders); nested blend with the champion is screened afterwards with run_blend_screen.py",
+  "candidates": {"tabpfn": {"model": "tabpfn"}}
+}

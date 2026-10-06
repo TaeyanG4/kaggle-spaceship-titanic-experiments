@@ -1,0 +1,244 @@
+{
+  "created_at": "2026-10-05T22:18:59.323973+09:00",
+  "plan_item": "H-D-02",
+  "control": {
+    "experiment_id": "hm02_base_control",
+    "feature_variant": "baseline",
+    "random_state": 42,
+    "n_splits": 5,
+    "threshold": 0.5,
+    "model": "catboost",
+    "model_params": {
+      "iterations": 800,
+      "depth": 6,
+      "learning_rate": 0.05,
+      "l2_leaf_reg": 5.0,
+      "random_strength": 0.5,
+      "early_stopping_rounds": 100,
+      "loss_function": "Logloss",
+      "eval_metric": "Accuracy"
+    }
+  },
+  "runs": [
+    {
+      "experiment_id": "hm02_base_d4_l3",
+      "feature_variant": "baseline",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 4,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 3.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_base_d4_l10",
+      "feature_variant": "baseline",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 4,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 10.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_base_d6_l1",
+      "feature_variant": "baseline",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 1.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_base_d6_l10",
+      "feature_variant": "baseline",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 10.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_base_d8_l5",
+      "feature_variant": "baseline",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 8,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_base_d6_l5_lr03",
+      "feature_variant": "baseline",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 1500,
+        "depth": 6,
+        "learning_rate": 0.03,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_name_d4_l3",
+      "feature_variant": "v1_name",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 4,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 3.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_name_d4_l10",
+      "feature_variant": "v1_name",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 4,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 10.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_name_d6_l1",
+      "feature_variant": "v1_name",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 1.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_name_d6_l10",
+      "feature_variant": "v1_name",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 10.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_name_d8_l5",
+      "feature_variant": "v1_name",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 800,
+        "depth": 8,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    },
+    {
+      "experiment_id": "hm02_name_d6_l5_lr03",
+      "feature_variant": "v1_name",
+      "random_state": 42,
+      "n_splits": 5,
+      "threshold": 0.5,
+      "model": "catboost",
+      "model_params": {
+        "iterations": 1500,
+        "depth": 6,
+        "learning_rate": 0.03,
+        "l2_leaf_reg": 5.0,
+        "random_strength": 0.5,
+        "early_stopping_rounds": 100,
+        "loss_function": "Logloss",
+        "eval_metric": "Accuracy"
+      }
+    }
+  ],
+  "name_control_reference": "v1_name_fix (existing, identical params)",
+  "selection_rule": "candidate = highest primary accuracy among grid runs (ties: lower log loss); screen at >= +0.002 vs champion baseline-001 OOF; then matched control vs candidate on seeds [123, 2026]; promote only if both seed deltas are positive",
+  "threads_per_worker": 2,
+  "workers": 2
+}

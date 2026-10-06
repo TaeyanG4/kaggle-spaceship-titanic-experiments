@@ -1,0 +1,14 @@
+{
+  "item": "H-A-29",
+  "prefix": "ha29b",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "ha12_tabpfn",
+  "rationale": "TabR-S-D on GPU with an exact torch flat-L2 index in place of faiss-gpu (first H-A-29 run crashed on faiss-cpu)",
+  "candidates": {
+    "tabr": {
+      "model": "tabr_gpu"
+    }
+  },
+  "model": "tabpfn"
+}

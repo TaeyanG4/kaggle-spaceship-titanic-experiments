@@ -1,0 +1,26 @@
+{
+  "status": "results_ready",
+  "started_at": "2026-10-05T22:18:59.284831+09:00",
+  "pid": 42508,
+  "threads_per_worker": 2,
+  "workers": 2,
+  "priority": "BelowNormal",
+  "completed": [
+    "hm02_base_control",
+    "hm02_base_d4_l3",
+    "hm02_base_d4_l10",
+    "hm02_base_d6_l1",
+    "hm02_base_d6_l10",
+    "hm02_base_d8_l5",
+    "hm02_base_d6_l5_lr03",
+    "hm02_name_d4_l3",
+    "hm02_name_d4_l10",
+    "hm02_name_d6_l1",
+    "hm02_name_d6_l10",
+    "hm02_name_d8_l5",
+    "hm02_name_d6_l5_lr03"
+  ],
+  "updated_at": "2026-10-05T22:26:33.757619+09:00",
+  "stage": "confirmation",
+  "promoted": false
+}

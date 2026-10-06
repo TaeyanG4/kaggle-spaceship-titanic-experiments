@@ -1,0 +1,9 @@
+{
+  "item": "H-A-09",
+  "prefix": "ha09",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Change only CatBoost boosting_type to Ordered; features, depth, L2, LR, folds and inner-CV iteration selection fixed",
+  "candidates": {"ordered": {"params": {"boosting_type": "Ordered"}}}
+}

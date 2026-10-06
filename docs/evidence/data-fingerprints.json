@@ -1,0 +1,17 @@
+{
+  "train.csv": {
+    "sha256": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "rows": 8693,
+    "columns": 14
+  },
+  "test.csv": {
+    "sha256": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "rows": 4277,
+    "columns": 13
+  },
+  "sample_submission.csv": {
+    "sha256": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed",
+    "rows": 4277,
+    "columns": 2
+  }
+}

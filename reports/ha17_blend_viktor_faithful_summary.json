@@ -1,0 +1,69 @@
+{
+  "completed_at": "2026-10-06T02:57:40.173821+09:00",
+  "item": "H-A-17 blend viktor_faithful",
+  "spec": {
+    "item": "H-A-17 blend viktor_faithful",
+    "prefix": "ha17_blend_viktor_faithful",
+    "control": "hm10_innercv_logloss",
+    "members": [
+      "ha17_viktor_faithful"
+    ]
+  },
+  "per_seed": {
+    "42": {
+      "control": 0.8159438628781779,
+      "equal_blend": 0.815253652363971,
+      "nested_weight": 0.8166340733923847,
+      "nested_threshold": 0.8162889681352813
+    },
+    "123": {
+      "control": 0.817784424249396,
+      "equal_blend": 0.8137581962498562,
+      "nested_weight": 0.8188197400207063,
+      "nested_threshold": 0.8200851259634189
+    },
+    "2026": {
+      "control": 0.8184746347636029,
+      "equal_blend": 0.8141033015069596,
+      "nested_weight": 0.8174393189922926,
+      "nested_threshold": 0.8184746347636029
+    }
+  },
+  "screening": [
+    {
+      "candidate": "nested_threshold",
+      "deltas": {
+        "42": 0.00034510525710340634,
+        "123": 0.002300701714022857,
+        "2026": 0.0
+      },
+      "mean_delta": 0.0008819356570420878,
+      "positive_seeds": 2,
+      "passes": false
+    },
+    {
+      "candidate": "nested_weight",
+      "deltas": {
+        "42": 0.0006902105142068127,
+        "123": 0.00103531577131033,
+        "2026": -0.00103531577131033
+      },
+      "mean_delta": 0.0002300701714022709,
+      "positive_seeds": 2,
+      "passes": false
+    },
+    {
+      "candidate": "equal_blend",
+      "deltas": {
+        "42": -0.0006902105142069237,
+        "123": -0.004026227999539778,
+        "2026": -0.004371333256643295
+      },
+      "mean_delta": -0.0030292572567966656,
+      "positive_seeds": 0,
+      "passes": false
+    }
+  ],
+  "confirmation": null,
+  "promoted": false
+}

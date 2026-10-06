@@ -1,0 +1,179 @@
+{
+  "created_at": "2026-10-06T02:16:10.449612+09:00",
+  "plan_item": "H-A-08",
+  "seeds": [
+    42,
+    123,
+    2026,
+    7,
+    99
+  ],
+  "rows": 8693,
+  "persistent_rows": 1374,
+  "split_specific_rows": 712,
+  "persistent_share_of_rows_with_any_error": 0.6586768935762224,
+  "overall_persistent_rate": 0.15805820775336477,
+  "mean_error_count_per_seed": 1594.4,
+  "persistent_mean_prob_distance_from_0.5": 0.18599218004836615,
+  "split_specific_mean_prob_distance_from_0.5": 0.036772701940921006,
+  "persistent_mean_seed_std": 0.04073299405403703,
+  "split_specific_mean_seed_std": 0.06037191628284563,
+  "persistent_confident_wrong_rows": 307,
+  "elevated_segments": [
+    {
+      "segment": "Destination",
+      "value": "PSO J318.5-22",
+      "rows": 796,
+      "persistent_rate": 0.25,
+      "lift": 1.5816957787481807,
+      "split_specific_rate": 0.09547738693467336,
+      "elevated": true
+    },
+    {
+      "segment": "CabinDeck",
+      "value": "G",
+      "rows": 2559,
+      "persistent_rate": 0.2485345838218054,
+      "lift": 1.5724244084155419,
+      "split_specific_rate": 0.11840562719812427,
+      "elevated": true
+    }
+  ],
+  "top_segments": [
+    {
+      "segment": "Destination",
+      "value": "PSO J318.5-22",
+      "rows": 796,
+      "persistent_rate": 0.25,
+      "lift": 1.5816957787481807,
+      "split_specific_rate": 0.09547738693467336,
+      "elevated": true
+    },
+    {
+      "segment": "CabinDeck",
+      "value": "G",
+      "rows": 2559,
+      "persistent_rate": 0.2485345838218054,
+      "lift": 1.5724244084155419,
+      "split_specific_rate": 0.11840562719812427,
+      "elevated": true
+    },
+    {
+      "segment": "AgeBand",
+      "value": "(-1.0, 12.0]",
+      "rows": 806,
+      "persistent_rate": 0.22332506203473945,
+      "lift": 1.4129292316360917,
+      "split_specific_rate": 0.13895781637717122,
+      "elevated": false
+    },
+    {
+      "segment": "HomePlanet",
+      "value": "Earth",
+      "rows": 4602,
+      "persistent_rate": 0.22012168622338113,
+      "lift": 1.3926621676418138,
+      "split_specific_rate": 0.11473272490221642,
+      "elevated": false
+    },
+    {
+      "segment": "HomePlanet",
+      "value": "missing",
+      "rows": 201,
+      "persistent_rate": 0.20398009950248755,
+      "lift": 1.2905378493268735,
+      "split_specific_rate": 0.03482587064676617,
+      "elevated": false
+    },
+    {
+      "segment": "CabinNumBand",
+      "value": "(1200.0, 2000.0]",
+      "rows": 1474,
+      "persistent_rate": 0.189280868385346,
+      "lift": 1.1975390020915668,
+      "split_specific_rate": 0.07666214382632293,
+      "elevated": false
+    },
+    {
+      "segment": "CabinNumBand",
+      "value": "(300.0, 600.0]",
+      "rows": 1484,
+      "persistent_rate": 0.17991913746630728,
+      "lift": 1.1383093609858874,
+      "split_specific_rate": 0.11185983827493262,
+      "elevated": false
+    },
+    {
+      "segment": "SpendMissingCount",
+      "value": "1",
+      "rows": 873,
+      "persistent_rate": 0.1775486827033219,
+      "lift": 1.1233120078165773,
+      "split_specific_rate": 0.10652920962199312,
+      "elevated": false
+    },
+    {
+      "segment": "CabinNumBand",
+      "value": "(600.0, 900.0]",
+      "rows": 976,
+      "persistent_rate": 0.17725409836065573,
+      "lift": 1.1214482365714558,
+      "split_specific_rate": 0.07684426229508197,
+      "elevated": false
+    },
+    {
+      "segment": "GroupSize",
+      "value": "1",
+      "rows": 4805,
+      "persistent_rate": 0.172528616024974,
+      "lift": 1.0915511347198683,
+      "split_specific_rate": 0.08449531737773153,
+      "elevated": false
+    },
+    {
+      "segment": "AgeBand",
+      "value": "(17.0, 25.0]",
+      "rows": 2351,
+      "persistent_rate": 0.169715014887282,
+      "lift": 1.0737500905495942,
+      "split_specific_rate": 0.08889834113143344,
+      "elevated": false
+    },
+    {
+      "segment": "CabinSide",
+      "value": "P",
+      "rows": 4206,
+      "persistent_rate": 0.16785544460294816,
+      "lift": 1.0619849926735287,
+      "split_specific_rate": 0.08392772230147408,
+      "elevated": false
+    },
+    {
+      "segment": "NoSpend",
+      "value": "True",
+      "rows": 3653,
+      "persistent_rate": 0.16753353408157678,
+      "lift": 1.0599483346223777,
+      "split_specific_rate": 0.0851355050643307,
+      "elevated": false
+    },
+    {
+      "segment": "CabinDeck",
+      "value": "A",
+      "rows": 256,
+      "persistent_rate": 0.1640625,
+      "lift": 1.0379878548034935,
+      "split_specific_rate": 0.0390625,
+      "elevated": false
+    },
+    {
+      "segment": "CryoSleep",
+      "value": "False",
+      "rows": 5439,
+      "persistent_rate": 0.16105901820187535,
+      "lift": 1.0189854768769304,
+      "split_specific_rate": 0.08714837286265857,
+      "elevated": false
+    }
+  ]
+}

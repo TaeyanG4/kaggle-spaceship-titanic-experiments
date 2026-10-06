@@ -1,0 +1,73 @@
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\Taeyang\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\concurrent\futures\process.py", line 264, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\scripts\run_feature_screen.py", line 77, in run_job
+    return run_tabr(experiment, seed, threads)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\scripts\tabr_runner.py", line 40, in run_tabr
+    return run_member(name, seed, "tabr", threads)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\scripts\member_runner.py", line 177, in run_member
+    est.fit(fa, y[tr_idx], X_val=fe, y_val=y[es_idx], cat_col_names=categorical)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytabkit\models\sklearn\sklearn_base.py", line 434, in fit
+    self.cv_alg_interface_.fit(ds=ds, idxs_list=idxs_list, interface_resources=interface_resources,
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytabkit\models\alg_interfaces\sub_split_interfaces.py", line 81, in fit
+    hyper_results = self.sub_split_interfaces[i].fit(ds, sub_split_idxs, interface_resources, logger,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytabkit\models\alg_interfaces\tabr_interface.py", line 327, in fit
+    self.trainer.fit(self.model)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\trainer.py", line 1079, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\trainer.py", line 1123, in _run_stage
+    self.fit_loop.run()
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\loops\fit_loop.py", line 218, in run
+    self.on_advance_end()
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\loops\fit_loop.py", line 484, in on_advance_end
+    call._call_callback_hooks(trainer, "on_train_epoch_end", monitoring_callbacks=True)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\trainer\call.py", line 228, in _call_callback_hooks
+    fn(trainer, trainer.lightning_module, *args, **kwargs)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\callbacks\model_checkpoint.py", line 493, in on_train_epoch_end
+    self._save_topk_checkpoint(trainer, monitor_candidates)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\callbacks\model_checkpoint.py", line 589, in _save_topk_checkpoint
+    self._save_monitor_checkpoint(trainer, monitor_candidates)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\callbacks\model_checkpoint.py", line 932, in _save_monitor_checkpoint
+    self._update_best_and_save(current, trainer, monitor_candidates)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\callbacks\model_checkpoint.py", line 987, in _update_best_and_save
+    self._remove_checkpoint(trainer, del_filepath)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\callbacks\model_checkpoint.py", line 1030, in _remove_checkpoint
+    trainer.strategy.remove_checkpoint(filepath)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\pytorch_lightning\strategies\strategy.py", line 501, in remove_checkpoint
+    self.checkpoint_io.remove_checkpoint(filepath)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\lightning_fabric\plugins\io\torch_io.py", line 103, in remove_checkpoint
+    fs.rm(path, recursive=True)
+  File "H:\kaggle\practice\Spaceship Titanic\.venv\Lib\site-packages\fsspec\implementations\local.py", line 205, in rm
+    os.remove(p)
+PermissionError: [WinError 32] 다른 프로세스가 파일을 사용 중이기 때문에 프로세스가 액세스 할 수 없습니다: 'H:/kaggle/practice/Spaceship Titanic/checkpoints/epoch=13-step=672-v1.ckpt'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\kaggle\practice\Spaceship Titanic\scripts\run_feature_screen.py", line 151, in main
+    results = run_all(names, SCREEN_SEEDS)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\kaggle\practice\Spaceship Titanic\scripts\run_feature_screen.py", line 144, in run_all
+    return {key: f.result() for key, f in futures.items()}
+                 ^^^^^^^^^^
+  File "C:\Users\Taeyang\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Taeyang\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+PermissionError: [Errno 13] 다른 프로세스가 파일을 사용 중이기 때문에 프로세스가 액세스 할 수 없습니다: 'H:/kaggle/practice/Spaceship Titanic/checkpoints/epoch=13-step=672-v1.ckpt'

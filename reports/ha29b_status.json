@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "started_at": "2026-10-06T13:34:16.723122+09:00",
+  "pid": 42968,
+  "spec": "configs\\ha29b_spec.json",
+  "updated_at": "2026-10-06T13:42:14.836250+09:00",
+  "error": "[Errno 13] 다른 프로세스가 파일을 사용 중이기 때문에 프로세스가 액세스 할 수 없습니다: 'H:/kaggle/practice/Spaceship Titanic/checkpoints/epoch=13-step=672-v1.ckpt'"
+}

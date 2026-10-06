@@ -1,0 +1,42 @@
+{
+  "ha27_stack3": {
+    "members": [
+      "ha12_tabpfn",
+      "ha23_ft",
+      "ha24_ftrefit"
+    ],
+    "coef": [
+      -0.7384,
+      0.4587,
+      1.2921
+    ],
+    "intercept": -0.0084,
+    "nested_oof_accuracy": {
+      "42": 0.829058,
+      "123": 0.828828,
+      "2026": 0.826872
+    },
+    "fit": "LogisticRegression(C=1) on all seed-42 OOF logits"
+  },
+  "sub_stack3_plus_a1ne2": {
+    "members": [
+      "ha12_tabpfn",
+      "ha23_ft",
+      "ha24_ftrefit",
+      "ha39_a1_ne2"
+    ],
+    "coef": [
+      -0.1399,
+      -0.5055,
+      0.7441,
+      0.9009
+    ],
+    "intercept": -0.0181,
+    "nested_oof_accuracy": {
+      "42": 0.831128,
+      "123": 0.829518,
+      "2026": 0.827332
+    },
+    "fit": "LogisticRegression(C=1) on all seed-42 OOF logits"
+  }
+}

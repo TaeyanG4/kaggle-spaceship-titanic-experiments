@@ -1,0 +1,138 @@
+{
+  "completed_at": "2026-10-06T09:37:25.791051+09:00",
+  "item": "H-A-20",
+  "spec": {
+    "item": "H-A-20",
+    "prefix": "ha20",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "model": "tabpfn",
+    "control_id": "ha12_tabpfn",
+    "rationale": "TabPFN v3.5 on other feature sets vs the TabPFN v3.5 baseline-feature champion: v1_spend, v1_rules, and raw-minimal (baseline minus engineered aggregates/flags/family counts)",
+    "candidates": {
+      "v1_spend": {
+        "model": "tabpfn_variant",
+        "variant": "v1_spend"
+      },
+      "v1_rules": {
+        "model": "tabpfn_variant",
+        "variant": "v1_rules"
+      },
+      "raw_minimal": {
+        "model": "tabpfn_variant",
+        "variant": "baseline",
+        "drop": [
+          "RAW_MINIMAL"
+        ]
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8261819855055792,
+    "123": 0.8250316346485678,
+    "2026": 0.824341424134361
+  },
+  "control_mean_accuracy": 0.825185014762836,
+  "control_earth_errors": {
+    "42": 1133,
+    "123": 1134,
+    "2026": 1139
+  },
+  "screening": [
+    {
+      "candidate": "v1_rules",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "v1_rules",
+      "model": "tabpfn_variant",
+      "extras": [],
+      "version": "v3.5",
+      "deltas": {
+        "42": -0.0006902105142068127,
+        "123": -0.0006902105142068127,
+        "2026": -0.0005751754285057142
+      },
+      "mean_delta": -0.0006518654856397799,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8254917749913724,
+        "123": 0.824341424134361,
+        "2026": 0.8237662487058552
+      },
+      "earth_errors": {
+        "42": 1139,
+        "123": 1142,
+        "2026": 1141
+      }
+    },
+    {
+      "candidate": "v1_spend",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "v1_spend",
+      "model": "tabpfn_variant",
+      "extras": [],
+      "version": "v3.5",
+      "deltas": {
+        "42": -0.0008052455999080221,
+        "123": -0.0017255262855170317,
+        "2026": -0.0017255262855170317
+      },
+      "mean_delta": -0.0014187660569806952,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8253767399056712,
+        "123": 0.8233061083630507,
+        "2026": 0.8226158978488439
+      },
+      "earth_errors": {
+        "42": 1145,
+        "123": 1149,
+        "2026": 1149
+      }
+    },
+    {
+      "candidate": "raw_minimal",
+      "drop": [
+        "RAW_MINIMAL"
+      ],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "tabpfn_variant",
+      "extras": [],
+      "version": "v3.5",
+      "deltas": {
+        "42": -0.003911192913838679,
+        "123": -0.004601403428045492,
+        "2026": -0.005866789370758019
+      },
+      "mean_delta": -0.00479312857088073,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8222707925917405,
+        "123": 0.8204302312205223,
+        "2026": 0.8184746347636029
+      },
+      "earth_errors": {
+        "42": 1173,
+        "123": 1176,
+        "2026": 1189
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

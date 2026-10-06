@@ -1,0 +1,17 @@
+{
+  "metric": "accuracy",
+  "random_state": 42,
+  "n_splits": 5,
+  "validation": "StratifiedGroupKFold by PassengerId group",
+  "model": "CatBoostClassifier",
+  "model_params": {
+    "iterations": 800,
+    "depth": 6,
+    "learning_rate": 0.05,
+    "l2_leaf_reg": 5.0,
+    "random_strength": 0.5,
+    "early_stopping_rounds": 100
+  },
+  "threshold": 0.5,
+  "notes": "PassengerId groups have zero overlap between official train and test. GroupSize and SurnameSize use target-free combined train+test counts."
+}

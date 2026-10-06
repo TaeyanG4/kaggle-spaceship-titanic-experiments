@@ -1,0 +1,9 @@
+{
+  "status": "results_ready",
+  "started_at": "2026-10-05T23:21:36.338454+09:00",
+  "pid": 43456,
+  "threads_per_worker": 2,
+  "workers": 4,
+  "updated_at": "2026-10-05T23:23:47.892320+09:00",
+  "promoted": false
+}

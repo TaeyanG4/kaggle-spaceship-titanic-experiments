@@ -1,0 +1,6 @@
+{
+  "item": "H-D-06",
+  "prefix": "hm06",
+  "control": "hm10_innercv_logloss",
+  "members": ["hm05_xgb_base"]
+}

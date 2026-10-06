@@ -1,0 +1,70 @@
+{
+  "completed_at": "2026-10-06T09:49:45.811574+09:00",
+  "item": "H-A-22",
+  "spec": {
+    "item": "H-A-22",
+    "prefix": "ha22",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "model": "tabpfn",
+    "control_id": "ha12_tabpfn",
+    "rationale": "TabPFN v3.5 with an explicit internal ensemble of 32 (default auto) vs the champion",
+    "candidates": {
+      "ne32": {
+        "model": "tabpfn",
+        "n_estimators": 32
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8261819855055792,
+    "123": 0.8250316346485678,
+    "2026": 0.824341424134361
+  },
+  "control_mean_accuracy": 0.825185014762836,
+  "control_earth_errors": {
+    "42": 1133,
+    "123": 1134,
+    "2026": 1139
+  },
+  "screening": [
+    {
+      "candidate": "ne32",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "tabpfn",
+      "extras": [],
+      "version": "v3.5",
+      "n_estimators": 32,
+      "deltas": {
+        "42": 0.0,
+        "123": 0.0,
+        "2026": 0.0005751754285057142
+      },
+      "mean_delta": 0.0001917251428352381,
+      "positive_seeds": 1,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8261819855055792,
+        "123": 0.8250316346485678,
+        "2026": 0.8249165995628667
+      },
+      "earth_errors": {
+        "42": 1139,
+        "123": 1137,
+        "2026": 1130
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

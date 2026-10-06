@@ -1,0 +1,37 @@
+{
+  "completed_at": "2026-10-06T13:07:06.817305+09:00",
+  "plan_item": "H-A-27",
+  "members": [
+    "ha12_tabpfn",
+    "ha23_ft",
+    "ha24_ftrefit"
+  ],
+  "control_accuracy": {
+    "7": 0.8230760381916484,
+    "99": 0.8245714943057633
+  },
+  "stacker_accuracy": {
+    "7": 0.8264120556769815,
+    "99": 0.8298631082480157
+  },
+  "confirmation": {
+    "deltas": {
+      "7": 0.003336017485333076,
+      "99": 0.0052916139422524155
+    },
+    "mean_delta": 0.004313815713792746,
+    "passes": true
+  },
+  "promoted": true,
+  "submission": {
+    "path": "outputs\\submissions\\ha27_stack3.csv",
+    "sha256": "03b62c4c5c75ed12bdd20fa1e1e90ad878789f184cb7b1c0e80a9f2ce87d7e5f",
+    "positive_rate": 0.5174187514613047,
+    "stacker_coef": [
+      -0.7384481842727599,
+      0.4586748259239454,
+      1.2920867930543514
+    ],
+    "stacker_intercept": -0.008448219122317194
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "completed_at": "2026-10-06T09:27:08.607573+09:00",
+  "item": "H-A-18 TabICL",
+  "spec": {
+    "item": "H-A-18 TabICL",
+    "prefix": "ha18b",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "model": "tabpfn",
+    "control_id": "ha12_tabpfn",
+    "rationale": "TabICL (open-weight in-context foundation model, different pretraining from TabPFN) as a single member vs the TabPFN v3.5 champion; nested blend afterwards",
+    "candidates": {
+      "tabicl": {
+        "model": "tabicl"
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8261819855055792,
+    "123": 0.8250316346485678,
+    "2026": 0.824341424134361
+  },
+  "control_mean_accuracy": 0.825185014762836,
+  "control_earth_errors": {
+    "42": 1133,
+    "123": 1134,
+    "2026": 1139
+  },
+  "screening": [
+    {
+      "candidate": "tabicl",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "tabicl",
+      "extras": [],
+      "version": "v3.5",
+      "deltas": {
+        "42": -0.022546876797423177,
+        "123": -0.013689175198435488,
+        "2026": -0.018635683883584497
+      },
+      "mean_delta": -0.018290578626481053,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.803635108708156,
+        "123": 0.8113424594501323,
+        "2026": 0.8057057402507765
+      },
+      "earth_errors": {
+        "42": 1310,
+        "123": 1242,
+        "2026": 1272
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

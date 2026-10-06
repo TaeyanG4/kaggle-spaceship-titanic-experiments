@@ -1,0 +1,803 @@
+{
+  "competition": "spaceship-titanic",
+  "research_date": "2026-10-05",
+  "search_lists": {
+    "score_sorted_count": 100,
+    "vote_sorted_count": 30,
+    "unique_count_not_asserted": true
+  },
+  "audited_source_count": 18,
+  "selected_reference_count": 6,
+  "scope": "Static targeted manual input, target, validation and final-inference path review; downloaded code never executed. Method references require rebuilt project validation.",
+  "raw_data_modified": false,
+  "training_started": false,
+  "kaggle_submission_performed": false,
+  "account_modified": false,
+  "local_champion_unchanged": "baseline-001",
+  "entries": [
+    {
+      "ref": "abdmental01/spaceship-advance-feature-e",
+      "url": "https://www.kaggle.com/code/abdmental01/spaceship-advance-feature-e",
+      "title": "SpaceShip | Advance Feature.E ",
+      "decision": "exclude_submission_reuse",
+      "audit_reason": "Final OR blend reads existing submission CSVs; separately fitted train/test TF-IDF/SVD.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/abdmental01/spaceship-advance-feature-e.ipynb",
+      "source_sha256": "cded40db6922083c042eaded68b31db8a627870aec5f88583eab58e01a9d15e2",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/abdmental01/kernel-metadata.json",
+      "metadata_sha256": "b5e89ea58e69a762c615cd2eccae21615aceed5a7db8f6bd1822323da7c11c6a",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/abdmental01/source_code.txt",
+      "code_sha256": "fadd93f6cef72e50b77646217c005481bce674da9d32b592059e926887a28df4",
+      "code_lines": 282,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [
+        "viktortaran/space-titanic",
+        "ravi20076/spaceshiptitanic-models-v2",
+        "arunklenin/space-titanic-eda-advanced-feature-engineering"
+      ],
+      "evidence_anchors": [
+        {
+          "needle": "sub1=pd.read_csv",
+          "lines": [
+            268
+          ]
+        }
+      ],
+      "observed_license": null
+    },
+    {
+      "ref": "arunklenin/space-titanic-eda-advanced-feature-engineering",
+      "url": "https://www.kaggle.com/code/arunklenin/space-titanic-eda-advanced-feature-engineering",
+      "title": "🛸 Space Titanic| EDA|Advanced Feature Engineering",
+      "decision": "exclude_submission_reuse",
+      "audit_reason": "Final OR blend reads three existing submission CSVs.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/arunklenin/space-titanic-eda-advanced-feature-engineering.ipynb",
+      "source_sha256": "2e7711e1a49a9b3771ba6a9572d10943c83545c00e6d773a7690e4d9c2bb52a6",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/arunklenin/kernel-metadata.json",
+      "metadata_sha256": "e8337de434a2d0e10291a3124e853473648bd34e9bb1af82f04e83252340f9c2",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/arunklenin/source_code.txt",
+      "code_sha256": "e2295816bd0c0250a3cb8abf51fa81c8fff2d7916f0a98b2379131a4bb0df444",
+      "code_lines": 2076,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [
+        "jimliu/0-81669-misaelcribeiro-solution-modularity-fe",
+        "viktortaran/space-titanic"
+      ],
+      "evidence_anchors": [
+        {
+          "needle": "sub1=pd.read_csv",
+          "lines": [
+            2061
+          ]
+        }
+      ],
+      "observed_license": null,
+      "score_evidence": {
+        "best_score": 0.82066,
+        "best_version": 73,
+        "displayed_public_score": 0.81903,
+        "displayed_version": 61,
+        "total_versions": 87,
+        "method": "Web search result excerpt of Kaggle page",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    },
+    {
+      "ref": "bsthere/spaceship-titanic-0-82137-solution",
+      "url": "https://www.kaggle.com/code/bsthere/spaceship-titanic-0-82137-solution",
+      "title": "🚀 Spaceship Titanic | 0.82137 Solution",
+      "decision": "exclude_prediction_provenance",
+      "audit_reason": "Embedded test-length prediction override replaces model output; provenance unknown.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/bsthere/spaceship-titanic-0-82137-solution.ipynb",
+      "source_sha256": "8c4461b4a42e283c05da074300aed8f9eeafba5ba9413dcf0ebeecb256600578",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/bsthere/kernel-metadata.json",
+      "metadata_sha256": "f5392ae0240a65a741518c1993b18fbe9ceaeec8e8c6291b23582019d538be5e",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/bsthere/source_code.txt",
+      "code_sha256": "1f31e061f7384c14e079dfdd9fa39ef4f2e853f6ec0108a3df679baa3a673402",
+      "code_lines": 677,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "use_best_public_override = True",
+          "lines": [
+            80
+          ]
+        },
+        {
+          "needle": "def apply_best_public_override",
+          "lines": [
+            549
+          ]
+        }
+      ],
+      "observed_license": null,
+      "score_evidence": {
+        "best_score": 0.82137,
+        "best_version": 2,
+        "displayed_public_score": 0.82137,
+        "displayed_version": 2,
+        "total_versions": 2,
+        "method": "Web search result excerpt of Kaggle page",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    },
+    {
+      "ref": "cv13j0/spaceship-titanic-nn-model-feature-eng",
+      "url": "https://www.kaggle.com/code/cv13j0/spaceship-titanic-nn-model-feature-eng",
+      "title": "🌠 Spaceship Titanic NN Model + Feature Eng.",
+      "decision": "hold_validation_isolation",
+      "audit_reason": "Supervised KNN features prepared before outer NN CV; separate inner KNN OOF does not establish outer-fold isolation. TransportedPercentage is excluded from final features.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/cv13j0/spaceship-titanic-nn-model-feature-eng.ipynb",
+      "source_sha256": "71b3835d474c9015f00e305daf812e79918c192a5b06e2379fc74a234988e81e",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/cv13j0/kernel-metadata.json",
+      "metadata_sha256": "9906888522cdea102c5c28a0951d8fe8ef96cf59ef8d345773a500ff1c16730d",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/cv13j0/source_code.txt",
+      "code_sha256": "12b1cef0c48f97107838e26f94e121459080af32673b8c5728af37c9a32b446f",
+      "code_lines": 940,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "KNN_trn_features = knn_kfold_extract",
+          "lines": [
+            546
+          ]
+        },
+        {
+          "needle": "'KNN_K1_01',",
+          "lines": [
+            554,
+            640
+          ]
+        }
+      ],
+      "observed_license": null
+    },
+    {
+      "ref": "dmitryshekhov/catboost-increase-threshold-score-0-81",
+      "url": "https://www.kaggle.com/code/dmitryshekhov/catboost-increase-threshold-score-0-81",
+      "title": "CatBoost | Increase Threshold | Score > 0.81",
+      "decision": "method_reference_with_validation_limits",
+      "audit_reason": "Pre-fit preprocessing; early stopping and threshold selection/evaluation share one random holdout; ROC criterion differs from accuracy.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/dmitryshekhov/catboost-increase-threshold-score-0-81.ipynb",
+      "source_sha256": "2238af7a2b300e6ea00c4dfa0fe515c8cf44a1104cf3660899dae5a9ec412773",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/dmitryshekhov/kernel-metadata.json",
+      "metadata_sha256": "1d838e70aecf92d540c42d06b58d8a37cdf99bdcb3f66ed9024bbfaaa18621ab",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/dmitryshekhov/source_code.txt",
+      "code_sha256": "92accf47301964121b6ebf4b7273b6f167cd48d6ecc99751499c809b7519d043",
+      "code_lines": 562,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "cbc = CatBoostClassifier",
+          "lines": [
+            388
+          ]
+        },
+        {
+          "needle": "custom_threshold =",
+          "lines": [
+            444
+          ]
+        }
+      ],
+      "observed_license": "Apache 2.0",
+      "score_evidence": {
+        "best_score": 0.81318,
+        "best_version": 41,
+        "displayed_public_score": 0.81318,
+        "displayed_version": 41,
+        "total_versions": 41,
+        "method": "Rendered Kaggle page text via in-app browser",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    },
+    {
+      "ref": "guanlintao/0-814-optuna-xgb-space-titanic",
+      "url": "https://www.kaggle.com/code/guanlintao/0-814-optuna-xgb-space-titanic",
+      "title": "🚀✨ 0.814 🔧『Optuna XGB』| Space Titanic",
+      "decision": "method_reference_with_validation_limits",
+      "audit_reason": "Pre-fit imputation/OHE; final KMeansSMOTE model lacks independent CV; Optuna example commented out.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/guanlintao/0-814-optuna-xgb-space-titanic.ipynb",
+      "source_sha256": "11c4e2dddec54627424912594a51bd567f94a78030a48a4a88ef88cbf76102f2",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/guanlintao/kernel-metadata.json",
+      "metadata_sha256": "c1d4acbe8f8d03709d2265c75df20eebec1cd590e52c3a89ef04f437059a248a",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/guanlintao/source_code.txt",
+      "code_sha256": "2fd27251f2298b389fdc8cf444d566e686030911d51f44a99a1cb82a4d8fa52b",
+      "code_lines": 348,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "num_imp = SimpleImputer",
+          "lines": [
+            248
+          ]
+        },
+        {
+          "needle": "sm = KMeansSMOTE",
+          "lines": [
+            324
+          ]
+        }
+      ],
+      "observed_license": "Apache 2.0",
+      "score_evidence": {
+        "best_score": 0.81646,
+        "best_version": 2,
+        "displayed_public_score": null,
+        "displayed_version": 9,
+        "total_versions": 9,
+        "method": "Rendered Kaggle page text via in-app browser",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    },
+    {
+      "ref": "gyogyocat/baseline-gbm",
+      "url": "https://www.kaggle.com/code/gyogyocat/baseline-gbm",
+      "title": "Baseline_GBM",
+      "decision": "exclude_submission_reuse",
+      "audit_reason": "Final inference reads external blend1/submission.csv after R LightGBM training.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/gyogyocat/baseline-gbm.irnb",
+      "source_sha256": "6ddda815934fcb16788d1715c3ca27fa8057f5c6c863366e7412f96554455b22",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/gyogyocat/kernel-metadata.json",
+      "metadata_sha256": "27e69ffbd498021db33487699a6a88c17db370b8d1d85f6706d22638965baf8a",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/gyogyocat/source_code.txt",
+      "code_sha256": "a07db578bf1789c8ce0b5e4fef20bea29896417130cef2d8a1f153df914c8604",
+      "code_lines": 399,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "t1 <- read.csv",
+          "lines": [
+            374
+          ]
+        }
+      ],
+      "observed_license": null,
+      "score_evidence": {
+        "best_score": 0.81903,
+        "best_version": 20,
+        "displayed_public_score": null,
+        "displayed_version": 21,
+        "total_versions": 21,
+        "method": "Rendered Kaggle page text via in-app browser",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    },
+    {
+      "ref": "hseyinkalkan/spaceshiptitanic-xgbclassifier-optuna",
+      "url": "https://www.kaggle.com/code/hseyinkalkan/spaceshiptitanic-xgbclassifier-optuna",
+      "title": "SpaceshipTitanic : XGBClassifier+OPTUNA",
+      "decision": "exclude_validation_leakage",
+      "audit_reason": "Permutation importance feature selection uses validation labels after model fit on all X,y; subsequent CV is not independent.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/hseyinkalkan/spaceshiptitanic-xgbclassifier-optuna.ipynb",
+      "source_sha256": "90dd4190dffec3a3279f442415e0d94246e51ab7fbcc0332481bc65dc35cea57",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/hseyinkalkan/kernel-metadata.json",
+      "metadata_sha256": "3c8f377e1d7ff4e788c37b16472437527598e9ecd6d37fe3e62f9fdf7a872db8",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/hseyinkalkan/source_code.txt",
+      "code_sha256": "4f07e929d9b2efed6e4a5950666a31559938263bf7ab0f97ec22a6576e6c3dbf",
+      "code_lines": 299,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "model.fit(X, y)",
+          "lines": [
+            215,
+            292
+          ]
+        },
+        {
+          "needle": "permutation_importance(model",
+          "lines": [
+            218
+          ]
+        }
+      ],
+      "observed_license": null,
+      "score_evidence": {
+        "best_score": 0.81809,
+        "best_version": 20,
+        "displayed_public_score": null,
+        "displayed_version": 37,
+        "total_versions": 37,
+        "method": "Rendered Kaggle page text via in-app browser",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    },
+    {
+      "ref": "jbomitchell/exponentially-weighted-ensemble-spaceship-titanic",
+      "url": "https://www.kaggle.com/code/jbomitchell/exponentially-weighted-ensemble-spaceship-titanic",
+      "title": "Exponentially weighted ensemble: Spaceship Titanic",
+      "decision": "exclude_submission_reuse",
+      "audit_reason": "Final prediction ensemble uses externally supplied submission CSVs.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/jbomitchell/exponentially-weighted-ensemble-spaceship-titanic.ipynb",
+      "source_sha256": "18524d56ab91835062a1c4319ce9f32f8311dc8993751792dec07954560fa937",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/jbomitchell/kernel-metadata.json",
+      "metadata_sha256": "195d3cd29db5b162220cf5dff47da897152124f415ac5354b4e0ba01f7128537",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/jbomitchell/source_code.txt",
+      "code_sha256": "e24cfac3d28d66c8ecc3b3d4646542d47a0616086c3f2b0493ad594b2d1923c5",
+      "code_lines": 130,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [
+        "jbomitchell/spaceship-titanic-models"
+      ],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "sub1 = pd.read_csv",
+          "lines": [
+            27
+          ]
+        }
+      ],
+      "observed_license": null
+    },
+    {
+      "ref": "jimliu/0-81669-misaelcribeiro-solution-modularity-fe",
+      "url": "https://www.kaggle.com/code/jimliu/0-81669-misaelcribeiro-solution-modularity-fe",
+      "title": "🏆(0.81669) misaelcribeiro solution+Modularity FE",
+      "decision": "hold_unverified_provenance",
+      "audit_reason": "Remote Headjack feature transformation training data and target independence not verifiable from source.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/jimliu/0-81669-misaelcribeiro-solution-modularity-fe.ipynb",
+      "source_sha256": "6f1e86c1d297a1d9a5d60d6bad952b72920dfae913465266c54e9bd9048b915a",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/jimliu/kernel-metadata.json",
+      "metadata_sha256": "4c4c0f764fd5321ed1a05122a0c0f3139fa65fc50e0335a7d6eb56a75f4b2429",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/jimliu/source_code.txt",
+      "code_sha256": "97e3d1d4a01e1815b86944366c76ffe17ba5191e307c20988786d51d95083eda",
+      "code_lines": 172,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "hj_hub.knowledge_transform",
+          "lines": [
+            141,
+            145
+          ]
+        }
+      ],
+      "observed_license": null
+    },
+    {
+      "ref": "junaid512/spaceship-titanic",
+      "url": "https://www.kaggle.com/code/junaid512/spaceship-titanic",
+      "title": "Spaceship Titanic",
+      "decision": "exclude_validation_leakage",
+      "audit_reason": "Global LOO group target features before row-wise CV; in-sample stacker evaluation and global threshold tuning.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/junaid512/spaceship-titanic.ipynb",
+      "source_sha256": "96f7836e0f3869384b5d27abb50549d4043c96ff91aad5ba54782f0f938e8faf",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/junaid512/kernel-metadata.json",
+      "metadata_sha256": "a6cd2dfbca2d804fd5af374fcab85f31c8c22dfd6091c4b6c767eaa08d09610c",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/junaid512/source_code.txt",
+      "code_sha256": "d454ed8b0babbd5ac22385ed2d5ae9784b1c1e26bb61dda083bdfa3b7e465563",
+      "code_lines": 1294,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "def compute_group_label_propagation",
+          "lines": [
+            274
+          ]
+        },
+        {
+          "needle": "compute_group_label_propagation(train_feat",
+          "lines": [
+            333
+          ]
+        },
+        {
+          "needle": "meta.fit(oof_mat",
+          "lines": [
+            728,
+            934
+          ]
+        }
+      ],
+      "observed_license": null
+    },
+    {
+      "ref": "misaelcribeiro/81-models-backward-feature-selection",
+      "url": "https://www.kaggle.com/code/misaelcribeiro/81-models-backward-feature-selection",
+      "title": "81% - Models + Backward Feature Selection",
+      "decision": "method_reference_with_validation_limits",
+      "audit_reason": "Pre-fit train imputation and separately fit test imputation; selected subset lacks independent outer evaluation.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/misaelcribeiro/81-models-backward-feature-selection.ipynb",
+      "source_sha256": "fa050fa9b28d9eb7b94916cf083f2419849eaaa66c4ff8ab8e25b2463fa81e34",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/misaelcribeiro/kernel-metadata.json",
+      "metadata_sha256": "cd81a65e7547dd63fc71e57c2703e6ee0b265aff57d204fd8f6b932b41662e2d",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/misaelcribeiro/source_code.txt",
+      "code_sha256": "d0c67eafe66918cbf9e09f149c4c1bc8ef1fbc9b438289bb65742a7625fc5370",
+      "code_lines": 177,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "ct = ColumnTransformer",
+          "lines": [
+            106
+          ]
+        },
+        {
+          "needle": "sf = SequentialFeatureSelector",
+          "lines": [
+            158
+          ]
+        }
+      ],
+      "observed_license": "Apache 2.0",
+      "score_evidence": {
+        "best_score": 0.81271,
+        "best_version": 8,
+        "displayed_public_score": null,
+        "displayed_version": 9,
+        "total_versions": 9,
+        "method": "Rendered Kaggle page text via in-app browser",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    },
+    {
+      "ref": "r2303254/inf2008-p5-2-improvedbaselinev2",
+      "url": "https://www.kaggle.com/code/r2303254/inf2008-p5-2-improvedbaselinev2",
+      "title": "INF2008_P5_2_ImprovedBaselineV2",
+      "decision": "exclude_submission_reuse",
+      "audit_reason": "Final inference reads existing submission CSVs and derived parquet.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/r2303254/inf2008-p5-2-improvedbaselinev2.ipynb",
+      "source_sha256": "d1b5e93a8349d9108eec13881a5f20490209f6ce886ae408f6119024306c62be",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/r2303254/kernel-metadata.json",
+      "metadata_sha256": "bab6f08a14064d181552a7e82e10c7c2b2da2784840037f2455cf020842f6560",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/r2303254/source_code.txt",
+      "code_sha256": "cf574ca18f3ccc591d2573c7bb6540722c6e0d5cea3311d2865a1132e88ba3f1",
+      "code_lines": 2003,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [
+        "ravi20076/spacetitanicfe"
+      ],
+      "kernel_sources": [
+        "viktortaran/space-titanic",
+        "ravi20076/packageinstallation",
+        "arunklenin/space-titanic-eda-advanced-feature-engineering"
+      ],
+      "evidence_anchors": [
+        {
+          "needle": "sub1 = pd.read_csv",
+          "lines": [
+            1987
+          ]
+        }
+      ],
+      "observed_license": null
+    },
+    {
+      "ref": "ravi20076/spaceshiptitanic-models-v2",
+      "url": "https://www.kaggle.com/code/ravi20076/spaceshiptitanic-models-v2",
+      "title": "SpaceshipTitanic|Models|V2",
+      "decision": "exclude_submission_reuse",
+      "audit_reason": "Derived parquet provenance unresolved and final OR blend reads two submission CSVs.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/ravi_models/spaceshiptitanic-models-v2.ipynb",
+      "source_sha256": "b06e8c6ce25beb7a14a538aa39fb05eeefeaf0231d89289470910c607e9b8909",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/ravi_models/kernel-metadata.json",
+      "metadata_sha256": "733358686725332c7e9035e73af32716a4311825c259cfab3323945fc0f0a059",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/ravi_models/source_code.txt",
+      "code_sha256": "1a6b27586ffbf7037ea4072a16c1886acb2bc5dc7e19a3ce7f23ae99ce5f3c82",
+      "code_lines": 1023,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [
+        "ravi20076/spacetitanicfe"
+      ],
+      "kernel_sources": [
+        "viktortaran/space-titanic",
+        "ravi20076/packageinstallation",
+        "arunklenin/space-titanic-eda-advanced-feature-engineering"
+      ],
+      "evidence_anchors": [
+        {
+          "needle": "sub1 = pd.read_csv",
+          "lines": [
+            1007
+          ]
+        }
+      ],
+      "observed_license": null
+    },
+    {
+      "ref": "samuelcortinhas/spaceship-titanic-a-complete-guide",
+      "url": "https://www.kaggle.com/code/samuelcortinhas/spaceship-titanic-a-complete-guide",
+      "title": "🚀 Spaceship Titanic: A complete guide 🏆",
+      "decision": "method_reference_with_validation_limits",
+      "audit_reason": "Pre-fit preprocessing and row-wise CV; final test threshold assumes positive rate 0.519 without verified independent provenance.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/samuelcortinhas/spaceship-titanic-a-complete-guide.ipynb",
+      "source_sha256": "277378154a1d1b0a9c22c67936f497f124d1d425f6bc21862a0a662dec0de9a5",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/samuelcortinhas/kernel-metadata.json",
+      "metadata_sha256": "4089933aca1d8fbfc784ac1af5545e1738076fc09339022db5d8d20eb5fe736b",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/samuelcortinhas/source_code.txt",
+      "code_sha256": "f19610061fa4605999b81c4b36db495ad4974f5761cdc9a7ffc03f4e471b5856",
+      "code_lines": 1013,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "best_classifiers =",
+          "lines": [
+            905
+          ]
+        },
+        {
+          "needle": "target_prop=0.519",
+          "lines": [
+            979
+          ]
+        }
+      ],
+      "observed_license": "Apache 2.0",
+      "score_evidence": {
+        "best_score": 0.80874,
+        "best_version": 47,
+        "displayed_public_score": 0.80874,
+        "displayed_version": 47,
+        "total_versions": 47,
+        "method": "Rendered Kaggle page text via in-app browser",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    },
+    {
+      "ref": "twinpilgrim/spaceshiptitanic-xgboost-score-81-5",
+      "url": "https://www.kaggle.com/code/twinpilgrim/spaceshiptitanic-xgboost-score-81-5",
+      "title": "SpaceshipTitanic-XGBoost-Score-81.5",
+      "decision": "method_reference_with_validation_limits",
+      "audit_reason": "No CV in downloaded source; target-free joint train/test imputation/OHE must be rebuilt fold-locally for project CV.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/twinpilgrim/spaceshiptitanic-xgboost-score-81-5.ipynb",
+      "source_sha256": "4e5d1bbffeebfdc634ca6090639523a698b3963e05e8cea6319eb2924a69f790",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/twinpilgrim/kernel-metadata.json",
+      "metadata_sha256": "dc41d82815fda71cc79ec28ac0eeaeaff279a1a484ad9ac484f60da25e70d19c",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/twinpilgrim/source_code.txt",
+      "code_sha256": "e742e72a81af8a028211385642f55a20f0ab6b754c0a51979f99cc88156fbe16",
+      "code_lines": 97,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "num_imp = SimpleImputer",
+          "lines": [
+            41
+          ]
+        },
+        {
+          "needle": "pred_xgb_best =",
+          "lines": [
+            92
+          ]
+        }
+      ],
+      "observed_license": "Apache 2.0",
+      "score_evidence": {
+        "best_score": 0.81599,
+        "best_version": 2,
+        "displayed_public_score": null,
+        "displayed_version": 3,
+        "total_versions": 8,
+        "method": "Rendered Kaggle page text via in-app browser",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    },
+    {
+      "ref": "umanglodaya/spaceship-titanic-xgboost",
+      "url": "https://www.kaggle.com/code/umanglodaya/spaceship-titanic-xgboost",
+      "title": "Spaceship Titanic | XGBoost",
+      "decision": "redundant_reference",
+      "audit_reason": "Direct-training XGBoost closely duplicates Viktor lineage; no score inferred.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/umanglodaya/spaceship-titanic-xgboost.ipynb",
+      "source_sha256": "f1cc326d9db5e6995492a5b95ac2ed5e2cab07c9a693cefef5d2b91279f85a3a",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/umanglodaya/kernel-metadata.json",
+      "metadata_sha256": "8de704898c96eb71ed3afff05ab48ce4181a419aef7c2e955bc1a26513b35b2f",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/umanglodaya/source_code.txt",
+      "code_sha256": "893a6205f478da2723fb292aabe318a214ee8eb3d3ef31d10289431c02328e2e",
+      "code_lines": 505,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [],
+      "observed_license": null
+    },
+    {
+      "ref": "viktortaran/space-titanic",
+      "url": "https://www.kaggle.com/code/viktortaran/space-titanic",
+      "title": "Space Titanic 🚀 機械学習",
+      "decision": "method_reference_with_validation_limits",
+      "audit_reason": "Pre-fit imputation/OHE and repeated CV feature selection; SMOTE-before-CV only if currently disabled Optuna branches enabled.",
+      "strict_original_validation_certified": false,
+      "download_date": "2026-10-05",
+      "download_method": "Kaggle CLI kernels pull --metadata (latest source)",
+      "audited_source_version": null,
+      "best_score_version_source_equivalence_verified": false,
+      "source_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/viktortaran/space-titanic.ipynb",
+      "source_sha256": "9c1afb54af5fd8cfdde5a742f85b041d0569bbe464c2c3232c929ff3b58ac311",
+      "metadata_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/viktortaran/kernel-metadata.json",
+      "metadata_sha256": "09bcd5d0344514927f603f87b9e041a2a4a84a502410d7949ec5cf1f07d491cb",
+      "code_snapshot": ".kaggle-research/spaceship-titanic/kernel-archives/viktortaran/source_code.txt",
+      "code_sha256": "a711aa51cb521f92ccb430d737f26b4b033dcc8bca531a031b409232269d18d7",
+      "code_lines": 509,
+      "competition_sources": [
+        "spaceship-titanic"
+      ],
+      "dataset_sources": [],
+      "kernel_sources": [],
+      "evidence_anchors": [
+        {
+          "needle": "num_imp = SimpleImputer",
+          "lines": [
+            255
+          ]
+        },
+        {
+          "needle": "smote = SMOTE",
+          "lines": [
+            352
+          ]
+        },
+        {
+          "needle": "LGBM_study =",
+          "lines": [
+            365
+          ]
+        }
+      ],
+      "observed_license": "Apache 2.0",
+      "score_evidence": {
+        "best_score": 0.81833,
+        "best_version": 242,
+        "displayed_public_score": 0.81739,
+        "displayed_version": 340,
+        "total_versions": 389,
+        "method": "Rendered Kaggle page text via in-app browser",
+        "observed_date": "2026-10-05",
+        "locally_reproduced": false
+      }
+    }
+  ]
+}

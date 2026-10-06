@@ -1,0 +1,70 @@
+{
+  "completed_at": "2026-10-06T02:16:27.704560+09:00",
+  "item": "H-A-10",
+  "spec": {
+    "item": "H-A-10",
+    "prefix": "ha10",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Change only one_hot_max_size to 10 so all low-cardinality categoricals are one-hot instead of CTR",
+    "candidates": {
+      "onehot10": {
+        "params": {
+          "one_hot_max_size": 10
+        }
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "control_mean_accuracy": 0.8174009739637255,
+  "control_earth_errors": {
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158
+  },
+  "screening": [
+    {
+      "candidate": "onehot10",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {
+        "one_hot_max_size": 10
+      },
+      "variant": "baseline",
+      "model": "catboost",
+      "extras": [],
+      "deltas": {
+        "42": -0.0011503508570114285,
+        "123": 0.0029909122282296696,
+        "2026": -0.0016104911998159332
+      },
+      "mean_delta": 7.669005713410264e-05,
+      "positive_seeds": 1,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8147935120211665,
+        "123": 0.8207753364776257,
+        "2026": 0.816864143563787
+      },
+      "earth_errors": {
+        "42": 1188,
+        "123": 1150,
+        "2026": 1182
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

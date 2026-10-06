@@ -1,0 +1,74 @@
+{
+  "baseline_catboost.csv": {
+    "description": "CatBoost baseline (optimistic stopping) - first submission",
+    "sha256": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4",
+    "rows": 4277,
+    "positive_rate": 0.522796
+  },
+  "hm10_innercv_logloss.csv": {
+    "description": "CatBoost with honest inner-CV Logloss iteration choice (promoted)",
+    "sha256": "750f5c45bd6f46ae1c81624a0dc72d9fc40ee87c7007709d02bad8bb3a989186",
+    "rows": 4277,
+    "positive_rate": 0.510404
+  },
+  "ha12_tabpfn.csv": {
+    "description": "TabPFN v3.5 frozen (promoted)",
+    "sha256": "6d518c349731fbfb4bd593f62c088199eae56280babc0a1ec038240570e1b8d2",
+    "rows": 4277,
+    "positive_rate": 0.514145
+  },
+  "ha27_stack3.csv": {
+    "description": "Nested LR stack of three TabPFN v3.5 variants (promoted, official champion)",
+    "sha256": "03b62c4c5c75ed12bdd20fa1e1e90ad878789f184cb7b1c0e80a9f2ce87d7e5f",
+    "rows": 4277,
+    "positive_rate": 0.517419
+  },
+  "sub_stack3_plus_a1ne2.csv": {
+    "description": "Champion stack + 100-epoch fine-tune with 2 inference estimators",
+    "sha256": "3a577bffb2a079d13a9fe11edda2ee3164bfa94786defc36d2f26d729dc0326d",
+    "rows": 4277,
+    "positive_rate": 0.514379
+  },
+  "sub_a1mix_stack.csv": {
+    "description": "Frozen + averaged 100-epoch fine-tune variants + fine-tune-refit",
+    "sha256": "1883eedbf88b2d0d2ed6e0a967fb5e63e88697029d34b87a9552acec80c5ad08",
+    "rows": 4277,
+    "positive_rate": 0.516951
+  },
+  "sub_avg4.csv": {
+    "description": "Frozen + 5-run fine-tune average + fine-tune-refit + full-context fine-tune",
+    "sha256": "226d20af8086ebc49c9ea213ed773611ffeeec80944b3efd336101cbf15e29cd",
+    "rows": 4277,
+    "positive_rate": 0.51321
+  },
+  "sub_combo7.csv": {
+    "description": "Champion stack + four small-gain fine-tuning members (post hoc)",
+    "sha256": "79670f64e00e23612501344df235b46f2a0adcf3cc87bc3d4e5231545724d61a",
+    "rows": 4277,
+    "positive_rate": 0.513912
+  },
+  "sub_combo5.csv": {
+    "description": "Champion stack + two 100-epoch fine-tune variants",
+    "sha256": "10ba52b44b63fa5a29825586ef439f66d6ecf00f7b5f656c22ea8bd0f1cdeea9",
+    "rows": 4277,
+    "positive_rate": 0.514847
+  },
+  "sub_stack_a1ctx.csv": {
+    "description": "Frozen + full-context 100-epoch fine-tune + fine-tune-refit",
+    "sha256": "2db25e5850f9df12ec68b64556c88fc48a1b28e2b9658657c034da9d9639bf8b",
+    "rows": 4277,
+    "positive_rate": 0.515081
+  },
+  "sub_combo7_bag3.csv": {
+    "description": "sub_combo7 with test predictions bagged over three fold seeds",
+    "sha256": "693e24b7e08ae3f298249c4c004485ac1d0f697e3aa6a3cb8874fcdbe4dd8efd",
+    "rows": 4277,
+    "positive_rate": 0.512041
+  },
+  "sub_a1mix_single.csv": {
+    "description": "Averaged 100-epoch fine-tune variants, single member",
+    "sha256": "461c17fc1c0adb39a45c0910765bea623e0ef3383e584de879bcfa47dda21430",
+    "rows": 4277,
+    "positive_rate": 0.520692
+  }
+}

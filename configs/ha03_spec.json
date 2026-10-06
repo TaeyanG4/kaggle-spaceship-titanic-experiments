@@ -1,0 +1,14 @@
+{
+  "item": "H-A-03",
+  "prefix": "ha03",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Location from boarding order (GroupId), CabinNum imputed from GroupId by per-deck linear fit (deck from row or groupmates), cabin occupancy, CabinNum parity; all target-free train+test",
+  "candidates": {
+    "group_id": {"model": "catboost_extra", "extras": ["group_id"]},
+    "group_id_fill": {"model": "catboost_extra", "extras": ["group_id", "cabinnum_fill"]},
+    "cabin_size": {"model": "catboost_extra", "extras": ["cabin_size"]},
+    "cabin_parity": {"model": "catboost_extra", "extras": ["group_id", "cabin_parity"]}
+  }
+}

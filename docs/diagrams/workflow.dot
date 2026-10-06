@@ -1,0 +1,25 @@
+digraph workflow {
+  graph [rankdir=TB, bgcolor="white", pad="0.32", nodesep="0.36", ranksep="0.40", fontname="Arial", label="How the research was run", labelloc="t", labeljust="l", fontsize=24, fontcolor="#16324a", splines=polyline];
+  node [shape=box, style="rounded,filled", fillcolor="#f3f7fa", color="#bdcbd5", fontname="Arial", fontsize=15, fontcolor="#16324a", margin="0.24,0.14", penwidth=1.2];
+  edge [color="#687c89", arrowsize=0.8, penwidth=1.3, fontname="Arial", fontsize=12, fontcolor="#465c6b"];
+  human [label="Human direction\nGoal, rules, approvals"];
+  hosts [label="Agent hosts in parallel slots\nCodex · Claude Code · ChatGPT", fillcolor="#e4f3ef", color="#82b5a7"];
+  plan [label="plan.md\nScored hypothesis queue\n(Impact, Information, Cost ...)"];
+  run [label="Run one experiment\nFrozen SGKF folds, matched control,\nseeds 42 / 123 / 2026"];
+  gate [shape=diamond, label="Screen passed?\nmean ≥ +0.002\n≥ 2/3 seeds", fillcolor="#fff5e7", color="#d2b587", margin="0.10,0.06"];
+  confirm [shape=diamond, label="Fresh seeds 7 / 99\nboth positive?", fillcolor="#fff5e7", color="#d2b587", margin="0.10,0.06"];
+  promote [label="Promote champion\nand submit once", fillcolor="#e4f3ef", color="#82b5a7"];
+  disc [label="discoveries.md\nOne finding per experiment,\nnegative results included"];
+  review [label="Cross-host review\nanother platform checks it once"];
+  handoff [label="handoff.md\nLog, resumable state, scores"];
+  human -> hosts;
+  hosts -> plan -> run -> gate;
+  gate -> confirm [label="yes"];
+  gate -> disc [label="no"];
+  confirm -> promote [label="yes"];
+  confirm -> disc [label="no"];
+  promote -> disc;
+  disc -> review;
+  disc -> handoff;
+  handoff -> plan [label="follow-up hypotheses", style=dashed, constraint=false];
+}

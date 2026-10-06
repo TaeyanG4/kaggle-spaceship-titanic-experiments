@@ -1,0 +1,70 @@
+{
+  "completed_at": "2026-10-06T02:28:05.924698+09:00",
+  "item": "H-A-09",
+  "spec": {
+    "item": "H-A-09",
+    "prefix": "ha09",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Change only CatBoost boosting_type to Ordered; features, depth, L2, LR, folds and inner-CV iteration selection fixed",
+    "candidates": {
+      "ordered": {
+        "params": {
+          "boosting_type": "Ordered"
+        }
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "control_mean_accuracy": 0.8174009739637255,
+  "control_earth_errors": {
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158
+  },
+  "screening": [
+    {
+      "candidate": "ordered",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {
+        "boosting_type": "Ordered"
+      },
+      "variant": "baseline",
+      "model": "catboost",
+      "extras": [],
+      "deltas": {
+        "42": -0.003566087656735384,
+        "123": 0.0013804210284137364,
+        "2026": -0.0011503508570114285
+      },
+      "mean_delta": -0.0011120058284443586,
+      "positive_seeds": 1,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8123777752214425,
+        "123": 0.8191648452778098,
+        "2026": 0.8173242839065915
+      },
+      "earth_errors": {
+        "42": 1202,
+        "123": 1147,
+        "2026": 1182
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

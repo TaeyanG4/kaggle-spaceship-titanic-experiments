@@ -1,0 +1,54 @@
+{
+  "completed_at": "2026-10-06T14:43:30.335956+09:00",
+  "plan_item": "H-A-44",
+  "seeds": {
+    "42": {
+      "auc": 0.4864574629327879,
+      "permutation_auc": 0.5064449232936212,
+      "train_test_likeness_p50_p99": [
+        0.33216254552486335,
+        0.4517648136575619
+      ],
+      "top_features": {
+        "CabinNum": 16.269,
+        "GroupSize": 8.934,
+        "SurnameSize": 8.702,
+        "CabinDeck": 6.663,
+        "Age": 6.278
+      }
+    },
+    "123": {
+      "auc": 0.4831601087478279,
+      "permutation_auc": 0.5203757081041983,
+      "train_test_likeness_p50_p99": [
+        0.3285284808680438,
+        0.44007496831558635
+      ],
+      "top_features": {
+        "CabinNum": 14.951,
+        "SurnameSize": 9.298,
+        "GroupSize": 8.395,
+        "Age": 7.362,
+        "CabinDeck": 6.5
+      }
+    },
+    "2026": {
+      "auc": 0.49526266313189515,
+      "permutation_auc": 0.5107304486924655,
+      "train_test_likeness_p50_p99": [
+        0.33348831072086743,
+        0.4420171221522307
+      ],
+      "top_features": {
+        "CabinNum": 15.922,
+        "SurnameSize": 9.063,
+        "GroupSize": 8.682,
+        "Age": 6.643,
+        "CabinDeck": 6.369
+      }
+    }
+  },
+  "mean_auc": 0.48829341160417034,
+  "mean_permutation_auc": 0.5125170266967617,
+  "no_exploitable_shift": false
+}

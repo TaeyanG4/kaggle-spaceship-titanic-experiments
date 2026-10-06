@@ -1,0 +1,74 @@
+{
+  "completed_at": "2026-10-06T09:20:11.380575+09:00",
+  "item": "H-A-12",
+  "spec": {
+    "item": "H-A-12",
+    "prefix": "ha12",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "TabPFN as a single member on baseline features (fold-local encoders); nested blend with the champion is screened afterwards with run_blend_screen.py",
+    "candidates": {
+      "tabpfn": {
+        "model": "tabpfn"
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "control_mean_accuracy": 0.8174009739637255,
+  "control_earth_errors": {
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158
+  },
+  "screening": [
+    {
+      "candidate": "tabpfn",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "tabpfn",
+      "extras": [],
+      "deltas": {
+        "42": 0.010238122627401314,
+        "123": 0.007247210399171755,
+        "2026": 0.005866789370758019
+      },
+      "mean_delta": 0.007784040799110363,
+      "positive_seeds": 3,
+      "passes": true,
+      "accuracy": {
+        "42": 0.8261819855055792,
+        "123": 0.8250316346485678,
+        "2026": 0.824341424134361
+      },
+      "earth_errors": {
+        "42": 1133,
+        "123": 1134,
+        "2026": 1139
+      }
+    }
+  ],
+  "confirmation": {
+    "candidate": "tabpfn",
+    "deltas": {
+      "7": 0.009087771770389996,
+      "99": 0.00782238582767747
+    },
+    "mean_delta": 0.008455078799033733,
+    "passes": true
+  },
+  "promoted": true,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

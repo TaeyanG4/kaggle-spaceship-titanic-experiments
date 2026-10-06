@@ -1,0 +1,27 @@
+{
+  "created_at": "2026-10-06T13:34:16.963726+09:00",
+  "spec": {
+    "item": "H-A-29",
+    "prefix": "ha29b",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "ha12_tabpfn",
+    "rationale": "TabR-S-D on GPU with an exact torch flat-L2 index in place of faiss-gpu (first H-A-29 run crashed on faiss-cpu)",
+    "candidates": {
+      "tabr": {
+        "model": "tabr_gpu"
+      }
+    },
+    "model": "tabpfn"
+  },
+  "screen_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "confirm_seeds": [
+    7,
+    99
+  ],
+  "rule": "agents.md multi-seed screen; best passing candidate confirmed on 7/99"
+}

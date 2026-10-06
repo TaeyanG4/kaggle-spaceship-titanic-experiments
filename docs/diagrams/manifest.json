@@ -1,0 +1,41 @@
+{
+  "renderer": "@viz-js/viz 16.1.0",
+  "diagrams": {
+    "final-pipeline": {
+      "source_sha256": "84ff298318261d91ce69861679bf393e6e7e5aacf827e4b956ee75f66ee501e7",
+      "svg_sha256": "59d98764fc1a5909a3bec0313e8f42ed6d490f5127c061b8807a2afca5f26943",
+      "png_sha256": "36cfe86d7b3c0d6d91ed1b4ea8b4b2682d7612a821a0b1b7018836dcbdc80150",
+      "png_size": [
+        1800,
+        696
+      ]
+    },
+    "promotion-gate": {
+      "source_sha256": "1a39c6849b63c87ebfdc6e280b21e3db72a073c9ee0541055390ae472822db06",
+      "svg_sha256": "479dca6995420c2e2b2e192f50130aa550af90fb43add3dd2bed88b08173bcab",
+      "png_sha256": "6feb3316bf98b01c59183dfd9a6e817c1c9b7985de29be4e67c22fea37a22b32",
+      "png_size": [
+        1800,
+        268
+      ]
+    },
+    "validation-boundary": {
+      "source_sha256": "5920ddd34015bf28fb3ade3513382d032b1d64020fa68a8f0368f54937734625",
+      "svg_sha256": "88002f783dc07233af194eeeac3e02c3029db3b127ff83802263bccc041f8e8c",
+      "png_sha256": "8ab4b0aca07849f67b3dd7e2d50a664e0eb0c931b68fd118620761ed978f01f7",
+      "png_size": [
+        1800,
+        410
+      ]
+    },
+    "workflow": {
+      "source_sha256": "0512478661d89bc463d9dfb9b661bdb19781565061c4fe4266b8ad33e0b987c6",
+      "svg_sha256": "d288285579942297561c74287be056b99202084855bcd7cf33cd39a1e78bc9af",
+      "png_sha256": "ba1b37c05ae0d7ab0d02495dac3ad7508d1993db3ca00b0645a5177c3c961229",
+      "png_size": [
+        1182,
+        1800
+      ]
+    }
+  }
+}

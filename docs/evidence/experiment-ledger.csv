@@ -1,0 +1,45 @@
+stage,experiment,label_ko,label_en,control,mean_delta,positive_seeds,outcome,discovery
+1-catboost,v1_name_fix,이름 결측 처리,Missing-name fix,CatBoost baseline config,0.000077,1/3,rejected,D-D-025
+1-catboost,hm02_name_d6_l1,CatBoost 깊이/L2 조정,CatBoost depth/L2 grid,CatBoost baseline config,0.001764,2/3,rejected,D-D-025
+1-catboost,innercv_logloss,정직한 반복 수 선택 (inner-CV Logloss),Honest iteration choice (inner-CV Logloss),fixed 300 iterations,0.003183,2/3,promoted,D-D-027
+1-catboost,seed_bag,분할 시드 배깅,Seed bagging across splits,CatBoost champion,0.000614,2/3,rejected,D-D-029
+1-catboost,xgboost,XGBoost,XGBoost,CatBoost champion,-0.005752,0/3,rejected,D-D-032
+1-catboost,nested_threshold,중첩 임계값 조정,Nested threshold,CatBoost champion,0.000882,2/3,rejected,D-D-033
+1-catboost,knn_features,fold 내부 KNN 거리 피처,In-fold KNN distance features,CatBoost champion,-0.008628,0/3,rejected,D-D-035
+1-catboost,group_postproc,그룹 일관성 후처리,Group-consistency post-processing,CatBoost champion,-0.002033,0/3,rejected,D-A-004
+1-catboost,surname_cat,성씨 범주 피처,Surname as categorical,CatBoost champion,-0.001572,0/3,rejected,D-A-006
+1-catboost,group_id,그룹 번호 위치 피처,Group-order location feature,CatBoost champion,-0.000767,0/3,rejected,D-A-007
+1-catboost,cryo_rules,CryoSleep 규칙 채우기,CryoSleep rule fills,CatBoost champion,-0.001764,0/3,rejected,D-A-008
+1-catboost,histgb,HistGradientBoosting,HistGradientBoosting,CatBoost champion,-0.002991,0/3,rejected,D-A-009
+1-catboost,extratrees,ExtraTrees,ExtraTrees,CatBoost champion,-0.011619,0/3,rejected,D-A-009
+1-catboost,onehot,원-핫 인코딩,One-hot encoding,CatBoost champion,0.000077,1/3,rejected,D-A-011
+1-catboost,pseudo_label,중첩 pseudo-labelling,Nested pseudo-labelling,teacher-only control,-0.000460,1/3,rejected,D-A-012
+1-catboost,ordered,Ordered boosting,Ordered boosting,CatBoost champion,-0.001112,1/3,rejected,D-A-013
+1-catboost,viktor_faithful,공개 노트북(Viktor) 재구현,Public notebook (Viktor) re-implementation,CatBoost champion,-0.012385,0/3,rejected,D-A-014
+1-catboost,noise_drop,라벨 노이즈 제거,Label-noise row dropping,CatBoost champion,-0.004486,0/3,rejected,D-A-015
+1-catboost,lr002,학습률 0.02,Learning rate 0.02,CatBoost champion,-0.000920,1/3,rejected,D-A-016
+2-tabpfn,tabpfn_v35,TabPFN v3.5,TabPFN v3.5,CatBoost champion,0.007784,3/3,promoted,D-A-017
+2-tabpfn,blend_catboost,TabPFN + CatBoost 블렌드,TabPFN + CatBoost blend,TabPFN v3.5,-0.001956,0/3,rejected,D-A-018
+2-tabpfn,tabpfn_v25,TabPFN v2.5,TabPFN v2.5,TabPFN v3.5,-0.007477,0/3,rejected,D-A-019
+2-tabpfn,tabicl,TabICL,TabICL,TabPFN v3.5,-0.018291,0/3,rejected,D-A-019
+2-tabpfn,raw_minimal,최소 피처셋,Raw-minimal feature set,TabPFN v3.5,-0.004793,0/3,rejected,D-A-020
+2-tabpfn,full_context,fold 전체 context,Full-fold context,TabPFN v3.5,0.001419,3/3,inconclusive,D-A-021
+2-tabpfn,ne32,내부 앙상블 32,32-member internal ensemble,TabPFN v3.5,0.000192,1/3,rejected,D-A-022
+2-tabpfn,finetune,fold 내부 파인튜닝,Fold-local fine-tuning,TabPFN v3.5,0.001994,3/3,inconclusive,D-A-023
+2-tabpfn,finetune_refit,파인튜닝 후 refit,Fine-tune then refit,TabPFN v3.5,0.000767,3/3,rejected,D-A-024
+2-tabpfn,equal_blend,frozen+파인튜닝 동일 가중 블렌드,Frozen + fine-tuned equal blend,TabPFN v3.5,0.001917,3/3,inconclusive,D-A-025
+2-tabpfn,nested_stack,중첩 LR 스태커 (TabPFN 3종),Nested LR stacker (3 TabPFN variants),TabPFN v3.5,0.003068,3/3,promoted,D-A-027
+3-stack,identity_strings,성씨·객실 원문 문자열,Raw surname/cabin strings,TabPFN stack,-0.000422,0/3,rejected,D-A-028
+3-stack,causilo,Causilo,Causilo,TabPFN stack,-0.000537,0/3,rejected,D-A-030
+3-stack,tabdpt,TabDPT,TabDPT,TabPFN stack,0.000077,2/3,rejected,D-A-031
+3-stack,realmlp,RealMLP,RealMLP,TabPFN stack,-0.000115,1/3,rejected,D-A-032
+3-stack,tabm,TabM,TabM,TabPFN stack,0.000153,1/3,rejected,D-A-032
+3-stack,tabr,TabR,TabR,TabPFN stack,-0.000383,1/3,rejected,D-A-032
+3-stack,tabstar,TabSTAR,TabSTAR,TabPFN stack,-0.000422,0/3,rejected,D-A-033
+3-stack,cat_residual,CatBoost 잔차 메타모델,CatBoost residual meta-model,TabPFN stack,-0.002416,0/3,rejected,D-A-035
+3-stack,lr_segments,세그먼트 상호작용 LR,Segment-interaction LR,TabPFN stack,-0.000422,0/3,rejected,D-A-035
+3-stack,ffm,Field-aware FM,Field-aware FM,TabPFN stack,-0.000383,1/3,rejected,D-A-036
+3-stack,ft_seed_bag,파인튜닝 시드 배깅,Fine-tune seed bagging,TabPFN stack,-0.000230,1/3,rejected,D-A-039
+3-stack,a1_ne2,100에폭 파인튜닝 + 추론 estimator 2개,100-epoch fine-tune + 2 inference estimators,TabPFN stack,0.001074,3/3,inconclusive,D-A-042
+3-stack,a1_ctx,100에폭 파인튜닝 + fold 전체 context,100-epoch fine-tune + full-fold context,TabPFN stack,0.000844,2/3,rejected,D-A-042
+3-stack,combo7,작은 개선 4개 조합 (사후 선택),Four small gains combined (post hoc),TabPFN stack,0.002761,3/3,post-hoc,D-A-043

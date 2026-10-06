@@ -1,0 +1,150 @@
+{
+  "experiment_id": "ha29_realmlp_seed123",
+  "config": {
+    "experiment_id": "ha29_realmlp_seed123",
+    "model": "realmlp",
+    "random_state": 123,
+    "n_splits": 5,
+    "feature_variant": "baseline",
+    "early_stopping": "SGKF(8) slice"
+  },
+  "fingerprint": "baef32b42ff3e1aacb1be8dd48e91a67856eaec1d160f79ec911544895b62bbc",
+  "completed_at": "2026-10-06T13:24:29.613029+09:00",
+  "accuracy": 0.7852294949959737,
+  "log_loss": 0.4553412425299009,
+  "fold_std": 0.006547601853909962,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.7786083956296722,
+      "seconds": 31.610000000044238
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.7889591719378953,
+      "seconds": 78.21899999998277
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.7809085681426107,
+      "seconds": 100.82799999997951
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.7813578826237054,
+      "seconds": 97.59299999999348
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.7963176064441887,
+      "seconds": 111.39100000000326
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 420.6720000000205,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/member_runner.py": "ab53376c24d7b93584bc8b73b0d0d8c403e0e5ddfdf3c21b02dc052127afd817",
+    "scripts/extra_features.py": "4669c63c693d3bc1672b2e35391b2b41bd7fba116426e4035aabcd7328b40334",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha29_realmlp_seed123.csv",
+    "test_probability": "outputs\\probabilities\\ha29_realmlp_seed123.csv",
+    "submission": "outputs\\submissions\\ha29_realmlp_seed123.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1295,
+        "error_rate": 0.2813993915688831
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 282,
+        "error_rate": 0.1323322383857344
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 244,
+        "error_rate": 0.13871517907902217
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 46,
+        "error_rate": 0.22885572139303484
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1269,
+        "error_rate": 0.23331494760066188
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 553,
+        "error_rate": 0.1820875864339809
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 45,
+        "error_rate": 0.2073732718894009
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 1100,
+        "error_rate": 0.22892819979188345
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 298,
+        "error_rate": 0.17717003567181927
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 204,
+        "error_rate": 0.2
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 265,
+        "error_rate": 0.22344013490725126
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1653,
+        "error_rate": 0.21233140655105973
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 214,
+        "error_rate": 0.2356828193832599
+      }
+    ]
+  }
+}

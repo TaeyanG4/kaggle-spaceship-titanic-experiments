@@ -1,0 +1,14 @@
+{
+  "item": "H-A-31",
+  "prefix": "ha31",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "ha12_tabpfn",
+  "rationale": "xRFM (recursive feature machine trees) on fit-fold one-hot/standardised features with an SGKF(8) tuning slice vs TabPFN v3.5",
+  "candidates": {
+    "xrfm": {
+      "model": "xrfm"
+    }
+  },
+  "model": "tabpfn"
+}

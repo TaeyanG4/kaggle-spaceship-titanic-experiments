@@ -1,0 +1,6 @@
+{
+  "item": "H-A-18 blend v3.5+TabICL",
+  "prefix": "ha18b_blend",
+  "control": "ha12_tabpfn",
+  "members": ["ha18b_tabicl"]
+}

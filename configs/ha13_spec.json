@@ -1,0 +1,12 @@
+{
+  "item": "H-A-13",
+  "prefix": "ha13",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Fold-local confident learning: inner OOF finds training rows that strongly contradict their label; drop them (margin 0.35) or half-weight them (margin 0.25), then the champion recipe",
+  "candidates": {
+    "noise_drop35": {"model": "noise_drop35"},
+    "noise_half25": {"model": "noise_half25"}
+  }
+}

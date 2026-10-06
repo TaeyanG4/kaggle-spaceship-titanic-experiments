@@ -1,0 +1,9 @@
+{
+  "item": "H-A-10",
+  "prefix": "ha10",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Change only one_hot_max_size to 10 so all low-cardinality categoricals are one-hot instead of CTR",
+  "candidates": {"onehot10": {"params": {"one_hot_max_size": 10}}}
+}

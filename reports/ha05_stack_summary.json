@@ -1,0 +1,70 @@
+{
+  "completed_at": "2026-10-06T02:10:04.399489+09:00",
+  "item": "H-A-05 stack",
+  "spec": {
+    "item": "H-A-05 stack",
+    "prefix": "ha05_stack",
+    "control": "hm10_innercv_logloss",
+    "members": [
+      "ha05_histgb",
+      "ha05_extratrees"
+    ]
+  },
+  "per_seed": {
+    "42": {
+      "control": 0.8159438628781779,
+      "equal_blend": 0.8175543540779938,
+      "nested_weight": 0.817784424249396,
+      "nested_threshold": 0.8162889681352813
+    },
+    "123": {
+      "control": 0.817784424249396,
+      "equal_blend": 0.818589669849304,
+      "nested_weight": 0.8167491084780858,
+      "nested_threshold": 0.8200851259634189
+    },
+    "2026": {
+      "control": 0.8184746347636029,
+      "equal_blend": 0.8167491084780858,
+      "nested_weight": 0.8154837225353733,
+      "nested_threshold": 0.8184746347636029
+    }
+  },
+  "screening": [
+    {
+      "candidate": "nested_threshold",
+      "deltas": {
+        "42": 0.00034510525710340634,
+        "123": 0.002300701714022857,
+        "2026": 0.0
+      },
+      "mean_delta": 0.0008819356570420878,
+      "positive_seeds": 2,
+      "passes": false
+    },
+    {
+      "candidate": "equal_blend",
+      "deltas": {
+        "42": 0.0016104911998159332,
+        "123": 0.0008052455999080221,
+        "2026": -0.0017255262855171427
+      },
+      "mean_delta": 0.0002300701714022709,
+      "positive_seeds": 2,
+      "passes": false
+    },
+    {
+      "candidate": "nested_weight",
+      "deltas": {
+        "42": 0.0018405613712181301,
+        "123": -0.001035315771310219,
+        "2026": -0.0029909122282296696
+      },
+      "mean_delta": -0.0007285555427739195,
+      "positive_seeds": 1,
+      "passes": false
+    }
+  ],
+  "confirmation": null,
+  "promoted": false
+}

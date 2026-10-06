@@ -1,0 +1,6 @@
+{
+  "item": "H-A-25",
+  "prefix": "ha25",
+  "control": "ha12_tabpfn",
+  "members": ["ha23_ft", "ha24_ftrefit"]
+}

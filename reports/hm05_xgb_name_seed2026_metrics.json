@@ -1,0 +1,193 @@
+{
+  "experiment_id": "hm05_xgb_name_seed2026",
+  "config": {
+    "experiment_id": "hm05_xgb_name_seed2026",
+    "model": "xgboost",
+    "feature_variant": "v1_name",
+    "random_state": 2026,
+    "n_splits": 5,
+    "stopping": "innercv_logloss",
+    "drop": [],
+    "early_stopping_rounds": 100,
+    "model_params": {
+      "n_estimators": 1500,
+      "learning_rate": 0.04,
+      "max_depth": 4,
+      "min_child_weight": 5,
+      "reg_lambda": 5.0,
+      "subsample": 0.85,
+      "colsample_bytree": 0.9,
+      "tree_method": "hist",
+      "eval_metric": "logloss"
+    }
+  },
+  "fingerprint": "b7f5c21e4891130e6055bf2fdd936e1949f5e9cea17077971c6bff57552a61a0",
+  "completed_at": "2026-10-06T00:38:01.742062+09:00",
+  "accuracy": 0.8092718279075118,
+  "log_loss": 0.38821840730064,
+  "fold_std": 0.00821302147509022,
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.8176064441887226,
+      "best_iteration": 522,
+      "seconds": 5.35899999999674
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.8084004602991944,
+      "best_iteration": 503,
+      "seconds": 5.922000000020489
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.7968929804372842,
+      "best_iteration": 507,
+      "seconds": 27.530999999988126
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.8188614146060954,
+      "best_iteration": 464,
+      "seconds": 5.219000000011874
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.8045977011494253,
+      "best_iteration": 477,
+      "seconds": 6.062999999994645
+    }
+  ],
+  "feature_columns": [
+    "HomePlanet",
+    "CryoSleep",
+    "Destination",
+    "Age",
+    "VIP",
+    "RoomService",
+    "FoodCourt",
+    "ShoppingMall",
+    "Spa",
+    "VRDeck",
+    "GroupMember",
+    "CabinDeck",
+    "CabinNum",
+    "CabinSide",
+    "TotalSpend",
+    "NoSpend",
+    "SpendMissingCount",
+    "IsChild",
+    "IsTeen",
+    "IsAdult",
+    "GroupSize",
+    "SurnameSize",
+    "IsAlone",
+    "NameMissing"
+  ],
+  "threads": 2,
+  "runtime_seconds": 51.405999999988126,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/xgb_runner.py": "dd03f268ac7c2921d2824f0cd00d8b520d57bf830582a8647a4706f1ae88c875",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\hm05_xgb_name_seed2026.csv",
+    "test_probability": "outputs\\probabilities\\hm05_xgb_name_seed2026.csv",
+    "submission": "outputs\\submissions\\hm05_xgb_name_seed2026.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1224,
+        "error_rate": 0.26597131681877445
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 176,
+        "error_rate": 0.08259033317691225
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 215,
+        "error_rate": 0.12222853894258101
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 43,
+        "error_rate": 0.21393034825870647
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1063,
+        "error_rate": 0.19544033829748114
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 555,
+        "error_rate": 0.18274613105037865
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 40,
+        "error_rate": 0.18433179723502305
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 987,
+        "error_rate": 0.20541103017689907
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 255,
+        "error_rate": 0.1516052318668252
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 175,
+        "error_rate": 0.1715686274509804
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 241,
+        "error_rate": 0.20320404721753793
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1459,
+        "error_rate": 0.1874116891457932
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 199,
+        "error_rate": 0.21916299559471367
+      }
+    ]
+  }
+}

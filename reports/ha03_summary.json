@@ -1,0 +1,180 @@
+{
+  "completed_at": "2026-10-06T01:59:50.619415+09:00",
+  "item": "H-A-03",
+  "spec": {
+    "item": "H-A-03",
+    "prefix": "ha03",
+    "stopping": "innercv_logloss",
+    "variant": "baseline",
+    "control_id": "hm10_innercv_logloss",
+    "rationale": "Location from boarding order (GroupId), CabinNum imputed from GroupId by per-deck linear fit (deck from row or groupmates), cabin occupancy, CabinNum parity; all target-free train+test",
+    "candidates": {
+      "group_id": {
+        "model": "catboost_extra",
+        "extras": [
+          "group_id"
+        ]
+      },
+      "group_id_fill": {
+        "model": "catboost_extra",
+        "extras": [
+          "group_id",
+          "cabinnum_fill"
+        ]
+      },
+      "cabin_size": {
+        "model": "catboost_extra",
+        "extras": [
+          "cabin_size"
+        ]
+      },
+      "cabin_parity": {
+        "model": "catboost_extra",
+        "extras": [
+          "group_id",
+          "cabin_parity"
+        ]
+      }
+    }
+  },
+  "control_accuracy": {
+    "42": 0.8159438628781779,
+    "123": 0.817784424249396,
+    "2026": 0.8184746347636029
+  },
+  "control_mean_accuracy": 0.8174009739637255,
+  "control_earth_errors": {
+    "42": 1185,
+    "123": 1162,
+    "2026": 1158
+  },
+  "screening": [
+    {
+      "candidate": "group_id",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "catboost_extra",
+      "extras": [
+        "group_id"
+      ],
+      "deltas": {
+        "42": -0.00011503508570120946,
+        "123": -0.0011503508570113175,
+        "2026": -0.00103531577131033
+      },
+      "mean_delta": -0.0007669005713409524,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8158288277924767,
+        "123": 0.8166340733923847,
+        "2026": 0.8174393189922926
+      },
+      "earth_errors": {
+        "42": 1178,
+        "123": 1169,
+        "2026": 1172
+      }
+    },
+    {
+      "candidate": "cabin_size",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "catboost_extra",
+      "extras": [
+        "cabin_size"
+      ],
+      "deltas": {
+        "42": 0.0008052455999079111,
+        "123": 0.0009202806856091206,
+        "2026": -0.0042562981709421965
+      },
+      "mean_delta": -0.000843590628475055,
+      "positive_seeds": 2,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8167491084780858,
+        "123": 0.8187047049350051,
+        "2026": 0.8142183365926607
+      },
+      "earth_errors": {
+        "42": 1171,
+        "123": 1159,
+        "2026": 1196
+      }
+    },
+    {
+      "candidate": "group_id_fill",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "catboost_extra",
+      "extras": [
+        "group_id",
+        "cabinnum_fill"
+      ],
+      "deltas": {
+        "42": -0.0014954561141148348,
+        "123": -0.001035315771310219,
+        "2026": -0.0017255262855171427
+      },
+      "mean_delta": -0.001418766056980732,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.814448406764063,
+        "123": 0.8167491084780858,
+        "2026": 0.8167491084780858
+      },
+      "earth_errors": {
+        "42": 1190,
+        "123": 1179,
+        "2026": 1184
+      }
+    },
+    {
+      "candidate": "cabin_parity",
+      "drop": [],
+      "stopping": "innercv_logloss",
+      "params": {},
+      "variant": "baseline",
+      "model": "catboost_extra",
+      "extras": [
+        "group_id",
+        "cabin_parity"
+      ],
+      "deltas": {
+        "42": -0.00011503508570120946,
+        "123": -0.0019555964569193396,
+        "2026": -0.0034510525710341744
+      },
+      "mean_delta": -0.0018405613712182411,
+      "positive_seeds": 0,
+      "passes": false,
+      "accuracy": {
+        "42": 0.8158288277924767,
+        "123": 0.8158288277924767,
+        "2026": 0.8150235821925688
+      },
+      "earth_errors": {
+        "42": 1180,
+        "123": 1175,
+        "2026": 1181
+      }
+    }
+  ],
+  "confirmation": null,
+  "promoted": false,
+  "protected_hashes": {
+    "data/raw/train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "data/raw/test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "outputs/oof/baseline_catboost_oof.csv": "c9b4fccb32fcd21e64db445813fd5ad2d023716eaffdde3ca862fedfdde04fa7",
+    "outputs/submissions/baseline_catboost.csv": "2b8451c2e7d305772579de5b0e5b0a2fead8b7dfa286fbf51306fffc16c885f4"
+  },
+  "remote_actions": "none"
+}

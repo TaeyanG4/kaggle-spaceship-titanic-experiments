@@ -1,0 +1,31 @@
+## Reverse CryoSleep rule
+CryoSleep missing: train 217, test 93
+  and complete all-zero spend: train 87, test 36
+  P(CryoSleep | observed, complete zero spend, all ages) = 0.8591 (n=4735)
+  P(CryoSleep | observed, complete zero spend, age >= 13) = 0.9640 (n=3615)
+## Group fills
+Cabin missing: train 199, test 100
+  fillable from a unanimous group: train 87, test 31
+  multi-member rows in a unanimous group: 0.667
+Destination missing: train 182, test 92
+  fillable from a unanimous group: train 54, test 29
+  multi-member rows in a unanimous group: 0.429
+VIP missing: train 203, test 93
+  fillable from a unanimous group: train 86, test 36
+  multi-member rows in a unanimous group: 0.926
+HomePlanet missing: train 201, test 87
+  fillable from a unanimous group: train 90, test 41
+  multi-member rows in a unanimous group: 1.000
+## Location
+deck A: n=354 corr(GroupId, CabinNum)=0.980 linear-fit MAE=5.5
+deck B: n=1141 corr(GroupId, CabinNum)=0.988 linear-fit MAE=13.1
+deck C: n=1102 corr(GroupId, CabinNum)=0.989 linear-fit MAE=11.4
+deck D: n=720 corr(GroupId, CabinNum)=0.998 linear-fit MAE=4.5
+deck E: n=1323 corr(GroupId, CabinNum)=0.999 linear-fit MAE=7.8
+deck F: n=4239 corr(GroupId, CabinNum)=0.997 linear-fit MAE=34.6
+deck G: n=3781 corr(GroupId, CabinNum)=1.000 linear-fit MAE=5.4
+cabin occupancy (non-missing rows): {1.0: 8141, 2.0: 2066, 3.0: 1095, 4.0: 596, 5.0: 350, 6.0: 288, 7.0: 119, 8.0: 16}
+cabins shared by >1 PassengerId group: 0 of 9825
+## Surname
+test rows with a surname seen in train: 0.899
+named train rows whose surname spans >1 train group: 0.904

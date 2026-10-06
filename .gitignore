@@ -1,0 +1,58 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets / local config
+.env
+.env.*
+!.env.example
+
+# Kaggle data and generated artifacts
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+models/*
+!models/.gitkeep
+outputs/oof/*
+!outputs/oof/.gitkeep
+outputs/submissions/*
+!outputs/submissions/.gitkeep
+outputs/probabilities/*
+reports/figures/*
+!reports/figures/.gitkeep
+
+# Logs / temporary files
+*.log
+tmp/
+tmp_pytest/
+temp/
+
+# Third-party notebook sources and local Kaggle skill state
+.kaggle-research/
+.kaggle-skill/
+
+.venv-side/
+.venv-autogluon/
+
+# scratch checkpoints written by Lightning/TabSTAR
+checkpoints/
+.tabstar_checkpoint/
+
+# notebook run outputs
+kaggle_notebook/submission*.csv
+submission*.csv
+!submissions/*.csv
+node_modules/

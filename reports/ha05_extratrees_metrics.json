@@ -1,0 +1,160 @@
+{
+  "experiment_id": "ha05_extratrees",
+  "config": {
+    "experiment_id": "ha05_extratrees",
+    "model": "extratrees",
+    "feature_variant": "baseline",
+    "random_state": 42,
+    "n_splits": 5,
+    "params": {
+      "n_estimators": 600,
+      "min_samples_leaf": 3,
+      "max_features": 0.5,
+      "n_jobs": 1
+    },
+    "stopping": "none"
+  },
+  "fingerprint": "813ba4ba7b8a0eba8f7c6c324b25ec002babcebeeeeec7e75cac16d880853ab5",
+  "completed_at": "2026-10-06T02:00:18.410706+09:00",
+  "accuracy": 0.8058207753364777,
+  "log_loss": 0.40073729485907345,
+  "fold_std": 0.007426717870468242,
+  "folds": [
+    {
+      "fold": 1,
+      "best_iteration": null,
+      "accuracy": 0.8039102932719954,
+      "seconds": 2.375
+    },
+    {
+      "fold": 2,
+      "best_iteration": null,
+      "accuracy": 0.8200115008625647,
+      "seconds": 2.5460000000020955
+    },
+    {
+      "fold": 3,
+      "best_iteration": null,
+      "accuracy": 0.8033352501437608,
+      "seconds": 2.375
+    },
+    {
+      "fold": 4,
+      "best_iteration": null,
+      "accuracy": 0.7980437284234753,
+      "seconds": 2.4219999999913853
+    },
+    {
+      "fold": 5,
+      "best_iteration": null,
+      "accuracy": 0.8037974683544303,
+      "seconds": 2.2820000000065193
+    }
+  ],
+  "threads": 2,
+  "runtime_seconds": 13.10999999998603,
+  "raw_hashes": {
+    "train.csv": "17336d553f49ebdf6ecb266d2b5d3746e5dd308445f7c7864141c4f28d2a88d0",
+    "test.csv": "3c02b0703423d27d51a657a111b15a37b8d03b3c1de325e3a1e6b26f6572fc88",
+    "sample_submission.csv": "c77c0a5ed1f3d2728d6add6079266a543d12755aebaf00f230ff1966b364ebed"
+  },
+  "code_hashes": {
+    "scripts/sklearn_runner.py": "b0a5d3a78383f8c3da578588da019c109ed7ee1f55bca926a382ecb91f7d91b4",
+    "src/spaceship_titanic/experiments.py": "9f7ee7bbc30017fe0038df49f576d7b132917459c9a41fa1d3fdd77bbcad06e2",
+    "src/spaceship_titanic/versioned_features.py": "af791b0e0def32e759bae8441ad53dd7a602a7f253ee82d2b724632db33b86e4",
+    "src/spaceship_titanic/features.py": "87ba5d88e20ba76a5dc5604f89d877d67ddc658cf87dc311522601b8b852e077"
+  },
+  "artifacts": {
+    "oof": "outputs\\oof\\ha05_extratrees.csv",
+    "test_probability": "outputs\\probabilities\\ha05_extratrees.csv",
+    "submission": "outputs\\submissions\\ha05_extratrees.csv"
+  },
+  "segments": {
+    "HomePlanet": [
+      {
+        "segment": "Earth",
+        "rows": 4602,
+        "errors": 1259,
+        "error_rate": 0.27357670578009563
+      },
+      {
+        "segment": "Europa",
+        "rows": 2131,
+        "errors": 166,
+        "error_rate": 0.07789770061004224
+      },
+      {
+        "segment": "Mars",
+        "rows": 1759,
+        "errors": 219,
+        "error_rate": 0.1245025582717453
+      },
+      {
+        "segment": "missing",
+        "rows": 201,
+        "errors": 44,
+        "error_rate": 0.21890547263681592
+      }
+    ],
+    "CryoSleep": [
+      {
+        "segment": "False",
+        "rows": 5439,
+        "errors": 1090,
+        "error_rate": 0.20040448611877185
+      },
+      {
+        "segment": "True",
+        "rows": 3037,
+        "errors": 560,
+        "error_rate": 0.18439249259137305
+      },
+      {
+        "segment": "missing",
+        "rows": 217,
+        "errors": 38,
+        "error_rate": 0.17511520737327188
+      }
+    ],
+    "GroupSize": [
+      {
+        "segment": "1",
+        "rows": 4805,
+        "errors": 996,
+        "error_rate": 0.2072840790842872
+      },
+      {
+        "segment": "2",
+        "rows": 1682,
+        "errors": 283,
+        "error_rate": 0.16825208085612367
+      },
+      {
+        "segment": "3",
+        "rows": 1020,
+        "errors": 183,
+        "error_rate": 0.17941176470588235
+      },
+      {
+        "segment": "4",
+        "rows": 1186,
+        "errors": 226,
+        "error_rate": 0.1905564924114671
+      }
+    ],
+    "SpendMissing": [
+      {
+        "segment": "False",
+        "rows": 7785,
+        "errors": 1488,
+        "error_rate": 0.19113680154142582
+      },
+      {
+        "segment": "True",
+        "rows": 908,
+        "errors": 200,
+        "error_rate": 0.22026431718061673
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "created_at": "2026-10-06T10:51:20.840464+09:00",
+  "plan_item": "H-A-26",
+  "seeds": [
+    11,
+    13,
+    17,
+    19,
+    23
+  ],
+  "members": [
+    "ha12_tabpfn",
+    "ha23_ft",
+    "ha24_ftrefit"
+  ],
+  "blend": "equal average",
+  "rule": "mean paired delta >= +0.002 and >= 4/5 positive vs frozen",
+  "approval": "a pass is reported to the user before promotion or submission"
+}

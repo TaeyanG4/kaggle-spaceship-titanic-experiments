@@ -1,0 +1,14 @@
+{
+  "item": "H-A-20",
+  "prefix": "ha20",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "model": "tabpfn",
+  "control_id": "ha12_tabpfn",
+  "rationale": "TabPFN v3.5 on other feature sets vs the TabPFN v3.5 baseline-feature champion: v1_spend, v1_rules, and raw-minimal (baseline minus engineered aggregates/flags/family counts)",
+  "candidates": {
+    "v1_spend": {"model": "tabpfn_variant", "variant": "v1_spend"},
+    "v1_rules": {"model": "tabpfn_variant", "variant": "v1_rules"},
+    "raw_minimal": {"model": "tabpfn_variant", "variant": "baseline", "drop": ["RAW_MINIMAL"]}
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "item": "H-A-17",
+  "prefix": "ha17",
+  "stopping": "innercv_logloss",
+  "variant": "baseline",
+  "control_id": "hm10_innercv_logloss",
+  "rationale": "Viktor's public notebook model re-implemented with SGKF and fold-local SMOTE; faithful arm keeps the author's fixed drop list, plain arm has no drop list and no SMOTE",
+  "candidates": {
+    "viktor_faithful": {"model": "viktor_faithful"},
+    "viktor_plain": {"model": "viktor_plain"}
+  }
+}
