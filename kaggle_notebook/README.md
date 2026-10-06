@@ -19,7 +19,18 @@ Outputs: `submission.csv` (4-member stack, public 0.82604) and `submission_stack
 
 - **Replay mode:** every member and stack accuracy equals the recorded value (e.g. nested stack3 0.829058, stack4 0.831128), and both output files are **hash-identical** to the submitted files.
 - **Feature and fold parity:** `tests/test_notebook_parity.py` executes the notebook's setup, feature and fold cells and checks they equal `src/spaceship_titanic/` (identical frames, folds and early-stopping slices).
-- **Train mode:** smoke-tested end to end (`NB_FAST=1`). TabPFN fine-tuning is not bit-for-bit deterministic across GPUs, so a full retrain can change a few rows.
+- **Train mode (full retrain, RTX 4070 Ti SUPER, about 40 min):** the frozen member is identical (0.826182); the fine-tuned members land within ±0.0012 of the recorded values because GPU fine-tuning is not bit-for-bit deterministic.
+
+  | | retrain | recorded |
+  |---|---|---|
+  | frozen | 0.826182 | 0.826182 |
+  | ft | 0.826297 | 0.827332 |
+  | ftrefit | 0.828138 | 0.826987 |
+  | ft_long_ne2 | 0.830208 | 0.829748 |
+  | stack3 (nested) | 0.829403 | 0.829058 |
+  | stack4 (nested) | 0.830898 | 0.831128 |
+
+  The retrained `submission.csv` differs from the submitted 0.82604 file in 43 of 4,277 rows, and `submission_stack3.csv` from the 0.82020 file in 28 rows. Replay mode is the exact reproduction; train mode shows the recipe reproduces at the same level.
 
 ## Build and publish
 
