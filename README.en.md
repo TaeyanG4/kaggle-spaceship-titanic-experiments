@@ -4,7 +4,7 @@ Spaceship Titanic — predict whether a passenger was transported to another dim
 
 ![Spaceship Titanic Experiments](docs/assets/hero.svg)
 
-Kaggle Notebook: [Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack](https://www.kaggle.com/code/taeyangg4/spaceship-titanic-leak-free-tabpfn-fine-tuning-stack) (to be published)
+Kaggle Notebook: [Leak-free 2026 TabPFN Stack | Top Public 0.82604](https://www.kaggle.com/code/taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604) (to be published)
 
 [한국어](README.md) / [Experiment journey (KO)](docs/02-experiment-journey.md) / [Validation and integrity (KO)](docs/03-validation-and-integrity.md) / [Reproduction (KO)](docs/05-reproduction.md) / [Skills used](docs/skills/README.md)
 

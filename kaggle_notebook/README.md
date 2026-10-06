@@ -2,8 +2,8 @@
 
 Self-contained notebook that rebuilds the submitted stacks from the official competition files.
 
-- Kaggle ID: `taeyangg4/spaceship-titanic-leak-free-tabpfn-fine-tuning-stack` (to be published)
-- Title: `Spaceship Titanic Leak-free TabPFN Fine-tuning Stack`
+- Kaggle ID: `taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604` (to be published)
+- Title: `Leak-free 2026 TabPFN Stack | Top Public 0.82604`
 - Sources: competition `spaceship-titanic`, dataset `taeyangg4/spaceship-titanic-tabpfn-member-predictions` (files in [`kaggle_dataset/`](../kaggle_dataset/README.md))
 
 ## Two modes

@@ -1,9 +1,14 @@
 """Build the Kaggle companion notebook (`spaceship_titanic_tabpfn_stack.ipynb`).
 
-The notebook is self-contained: it re-implements the project's baseline features, frozen SGKF
-folds and the four TabPFN v3.5 members, then fits the nested logistic-regression stacker. It runs
-on Kaggle with GPU + internet and a `TABPFN_TOKEN` Kaggle secret, or locally with the official
-CSVs in `data/raw/` and `TABPFN_TOKEN` in the environment. `NB_FAST=1` runs a short smoke test.
+Flow: overview and integrity -> setup -> exploratory data analysis -> preprocessing and feature
+engineering (with the validation design) -> modeling (four TabPFN v3.5 members + nested stacker)
+-> evaluation -> submission -> research notes.
+
+The notebook is self-contained. By default it runs in *replay* mode (CPU, no internet, no token):
+it loads the four members' saved OOF/test probabilities from the attached dataset and reproduces
+the submitted files exactly. With a `TABPFN_TOKEN` Kaggle secret (GPU + internet) it retrains the
+members from scratch. Locally it reads `data/raw/` and `kaggle_dataset/`; `REPLAY=1` forces replay
+and `NB_FAST=1` makes the train mode a short smoke test.
 Run: `uv run python kaggle_notebook/build_notebook.py`.
 """
 
@@ -16,76 +21,128 @@ import nbformat as nbf
 HERE = Path(__file__).resolve().parent
 REPO = "https://github.com/TaeyanG4/kaggle-spaceship-titanic-experiments"
 RAW = "https://raw.githubusercontent.com/TaeyanG4/kaggle-spaceship-titanic-experiments/main"
+DATASET = "https://www.kaggle.com/datasets/taeyangg4/spaceship-titanic-tabpfn-member-predictions"
 
 cells: list = []
+LEDGER = HERE.parent / "docs/evidence/experiment-ledger.csv"
+
+
+def cheat_sheet() -> str:
+    """Markdown table of every logged idea, built from the committed experiment ledger."""
+    import csv
+
+    stage_names = {"1-catboost": "CatBoost era", "2-tabpfn": "TabPFN era", "3-stack": "stack era"}
+    verdicts = {"promoted": "**promoted**", "rejected": "no", "inconclusive": "consistent, below bar",
+                "post-hoc": "post hoc, unconfirmed"}
+    lines = ["| Stage | Idea | Compared with | Mean Δ accuracy | Seeds better | Verdict |",
+             "|---|---|---|---:|---|---|"]
+    with open(LEDGER, encoding="utf-8") as handle:
+        rows = sorted(csv.DictReader(handle), key=lambda r: (r["stage"], -float(r["mean_delta"])))
+    for r in rows:
+        lines.append(f"| {stage_names[r['stage']]} | {r['label_en']} | {r['control']} | "
+                     f"{float(r['mean_delta']) * 100:+.2f} pp | {r['positive_seeds']} | "
+                     f"{verdicts[r['outcome']]} |")
+    return "\n".join(lines)
 
 
 def md(text: str) -> None:
-    cells.append(nbf.v4.new_markdown_cell(text.strip("\n")))
+    cells.append(nbf.v4.new_markdown_cell(text.strip("\n").replace("{RAW}", RAW)
+                                          .replace("{REPO}", REPO).replace("{DATASET}", DATASET)
+                                          .replace("{CHEAT}", cheat_sheet())))
 
 
 def code(text: str) -> None:
     cells.append(nbf.v4.new_code_cell(text.strip("\n")))
 
 
-md(f"""
-# Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack
+# ---------------------------------------------------------------- 0. overview and integrity
+md("""
+# Leak-free 2026 TabPFN Stack | Top Public 0.82604
 
-**Public LB 0.82604** (best of one CV-ranked batch) · **0.82020** (official, CV-promoted champion)
+### 2026 tabular foundation model × integrity-first, honest validation — rank 8 with only 12 submissions
 
-**Rank 8 on the leaderboard (2026-10-06) with only 12 submissions in total** — the CV-promoted models reached 0.81786 on the **3rd** and 0.82020 on the **4th** submission; the remaining 8 were one CV-ranked batch at the end.
+> **TL;DR**
+> * **0.82604** on the leaderboard (computed on all of the test data) — higher than every score
+>   shown in the score-sorted public notebook list when it was surveyed (2026-10-05: top entry
+>   0.82137, which overwrites predictions with embedded bits; best clean-looking one 0.81833).
+> * **No leaks, no probing.** Group-aware CV, fold-local preprocessing, nested stacking, and a
+>   two-stage promotion rule. The CV-promoted champion scored 0.82020 on only the **4th**
+>   submission; **12 submissions in total**.
+> * **2026 recipe.** A tabular foundation model (TabPFN v3.5), **fine-tuned inside each fold**,
+>   stacked by a nested logistic regression.
+> * **Reproducible to the byte.** Runs in seconds on CPU (no token, no internet) and writes a
+>   `submission.csv` identical to the submitted file; one switch retrains everything on GPU.
+> * **44 ideas tested, 3 promoted.** The cheat sheet in section 7 tells you what *not* to try.
 
-This notebook rebuilds, from the official competition files only, the final model of a
-70+ experiment research log: a **nested logistic-regression stack of four TabPFN v3.5 variants**
-(frozen, fine-tuned, fine-tune-then-refit, and a longer fine-tune). Full write-up, every failed
-idea and all evidence: **[GitHub · kaggle-spaceship-titanic-experiments]({REPO})**.
+![leaderboard position]({RAW}/docs/assets/leaderboard-position.png)
 
-![score progression]({RAW}/docs/assets/score-progression.png)
-
-| | Honest OOF accuracy (SGKF seeds 42 / 123 / 2026) | Public LB |
+| | Honest OOF accuracy (SGKF seeds 42 / 123 / 2026) | Leaderboard |
 |---|---|---|
 | CatBoost, honest early stopping | 0.8159 / 0.8178 / 0.8185 | 0.81131 |
 | Frozen TabPFN v3.5 | 0.8262 / 0.8250 / 0.8243 | 0.81786 |
-| **Stack of 3 TabPFN variants** (official champion) | 0.8291 / 0.8288 / 0.8269 | **0.82020** |
+| **Stack of 3 TabPFN variants** (official, CV-promoted champion) | 0.8291 / 0.8288 / 0.8269 | **0.82020** |
 | **+ 100-epoch fine-tune member** (this notebook's `submission.csv`) | 0.8311 / 0.8295 / 0.8273 | **0.82604** |
+
+**Why this notebook is different**
+
+| Usual top notebooks | This notebook |
+|---|---|
+| GBDT + hand-made rules, tuned on one split | Tabular foundation model, fine-tuned per fold; every idea tested on 3 + 2 split seeds |
+| CV scores that are often optimistic (early stopping or target statistics on the scored fold) | Every number is out-of-fold and nested; the optimism was measured (+0.004) and removed |
+| Many submissions | 12 submissions; leaderboard used once per promoted model |
+| One person's run | Built by a team of AI coding agents (Codex, Claude Code, ChatGPT) under a shared research protocol, 78 recorded findings, cross-checked across platforms |
+
+The full research log, every failed idea and all evidence: **[GitHub · kaggle-spaceship-titanic-experiments]({REPO})**.
+
+**Contents**
+
+0. Integrity: how the score was earned
+1. Setup and data loading
+2. Exploratory data analysis
+3. Preprocessing and feature engineering (incl. the validation design)
+4. Modeling: four TabPFN v3.5 members and a nested stacker
+5. Evaluation
+6. Submission and reproducibility check
+7. Research notes: the cheat sheet of what did not work
 """)
 
 md("""
-## How the score was earned — and what was *not* used
+## 0. Integrity: how the score was earned — and what was *not* used
 
-Every number above comes from a pipeline that only ever sees **`train.csv` labels inside the
-training part of a fold**. Concretely:
+Every number in this notebook comes from a pipeline that only ever sees **`train.csv` labels
+inside the training part of a fold**.
 
 | Risk | What this project did |
 |---|---|
 | Leaked / recovered test labels | **Never used.** No external answer files, no public submission CSVs, no "best public" override bits (several high-scoring public notebooks do this; they were audited and excluded). |
-| Leaderboard probing | **None.** No submission was used to infer labels or to choose features, hyperparameters or rows. Only **12 submissions** were made: the first baseline plus three CV-promoted champions (0.82020 was the **4th** submission), then 8 CV-ranked candidates submitted **once, in a single batch**. |
-| Validation leakage | Folds are **StratifiedGroupKFold by travel group** (`PassengerId` prefix); no group is split, and train/test share **0** groups. Encoders, early-stopping slices and epoch choices live **inside** the training fold. The scored fold is predicted once. |
-| Optimistic CV | Early stopping on the scored fold was found to inflate accuracy by ~0.004 and was **removed**. The stacker for fold *k* is fitted on the **other four** folds' OOF only. |
-| Overfitting to one split | Every idea had to beat a matched control on **3 split seeds** (mean ≥ +0.002, ≥ 2/3 positive) and then on **2 fresh seeds** (7, 99) never used for selection. ~70 ideas were rejected this way. |
-| External data | **None**, apart from the pretrained TabPFN weights (trained on synthetic data, no Spaceship Titanic labels). |
+| Leaderboard probing | **None.** Only **12 submissions**: the first baseline plus three CV-promoted champions (0.82020 was the **4th** submission), then 8 CV-ranked candidates submitted **once, in a single batch**. No submission was used to infer labels or to choose features, hyperparameters or rows. |
+| Validation leakage | **StratifiedGroupKFold by travel group**; no group is split, train/test share **0** groups. Encoders, early-stopping slices and epoch choices live **inside** the training fold. |
+| Optimistic CV | Early stopping on the scored fold inflated accuracy by ~0.004; it was found and **removed**. The stacker for fold *k* is fitted on the **other four** folds' OOF only. |
+| Overfitting to one split | Every idea had to beat a matched control on **3 split seeds** (mean ≥ +0.002, ≥ 2/3 positive) and then on **2 fresh seeds** (7, 99). Only 3 of 44 logged ideas were promoted. |
+| External data | **None**, apart from the pretrained TabPFN weights (synthetic-data pretraining, no Spaceship Titanic labels). |
 
-One transductive step is used and stated openly: `GroupSize` and `SurnameSize` count passengers
-over the **combined train + test feature rows** (no labels). Adversarial validation shows train and
-test are indistinguishable (AUC 0.483–0.495 vs 0.506–0.520 for permuted labels).
+One transductive step is used and documented: `GroupSize` and `SurnameSize` count passengers
+over the **combined train + test feature rows** (no labels). Adversarial validation shows train
+and test are indistinguishable (AUC 0.483–0.495 vs 0.506–0.520 for permuted labels).
 
-![validation boundary]({RAW}/docs/assets/validation-boundary.png)
-""".replace("{RAW}", RAW))
+![promotion rule]({RAW}/docs/assets/promotion-gate.png)
+""")
 
+# ---------------------------------------------------------------- 1. setup
 md("""
-## Setup — two modes
+## 1. Setup and data loading
 
 | Mode | When | Needs | Time |
 |---|---|---|---|
-| **replay** (default) | no `TABPFN_TOKEN` secret | CPU only, the attached dataset [spaceship-titanic-tabpfn-member-predictions](https://www.kaggle.com/datasets/taeyangg4/spaceship-titanic-tabpfn-member-predictions) | seconds |
+| **replay** (default) | no `TABPFN_TOKEN` secret | CPU only, the attached dataset [spaceship-titanic-tabpfn-member-predictions]({DATASET}) | seconds |
 | **train** | `TABPFN_TOKEN` secret present | GPU (T4/P100), Internet on, a free Prior Labs token | ~1.5–2.5 h on a T4 |
 
-**Replay** loads the saved out-of-fold and test probabilities of the four TabPFN members (no labels),
-re-checks that their folds match the folds rebuilt below, recomputes the honest nested accuracy from
-`train.csv`, refits the stacker and writes `submission.csv`. It reproduces the submitted files
-**exactly** (checked by hash at the end). **Train** rebuilds the four members from scratch; TabPFN v3.5
-weights need a Prior Labs token added as a Kaggle Secret named `TABPFN_TOKEN` (read into the
-environment, never printed). Set `NB_FAST=1` for a 5-minute smoke test of the train mode.
+**Replay** loads the saved out-of-fold and test probabilities of the four TabPFN members (no
+labels), checks that their folds equal the folds rebuilt in section 3, recomputes the honest
+nested accuracy from `train.csv`, refits the stacker and writes `submission.csv`. It reproduces
+the submitted files **exactly** (checked by hash in section 6). **Train** rebuilds the four members
+from scratch; TabPFN v3.5 weights need a Prior Labs token added as a Kaggle Secret named
+`TABPFN_TOKEN` (read into the environment, never printed).
 """)
 
 code("""
@@ -95,14 +152,18 @@ import time
 import warnings
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix, log_loss
 from sklearn.model_selection import StratifiedGroupKFold
 from sklearn.preprocessing import OrdinalEncoder
 
 warnings.filterwarnings("ignore")
+NAVY, TEAL, SAND, RED, GREY = "#16324a", "#2f8f83", "#d2b587", "#c4573f", "#9aa7b0"
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False, "figure.dpi": 110,
+                     "axes.titleweight": "bold", "axes.titlesize": 11})
 os.environ.setdefault("TABPFN_NO_BROWSER", "1")
 os.environ.setdefault("TQDM_DISABLE", "1")  # silence per-epoch progress bars
 if "TABPFN_TOKEN" not in os.environ:
@@ -117,6 +178,7 @@ print("mode:", MODE)
 FAST = os.environ.get("NB_FAST") == "1"   # smoke test: 1 fold, few epochs
 SEED = 42                                 # outer split seed used for the submission
 N_FOLDS = 5
+SPEND = ["RoomService", "FoodCourt", "ShoppingMall", "Spa", "VRDeck"]
 FOLDS_TO_RUN = [1] if FAST and MODE == "train" else list(range(1, N_FOLDS + 1))
 FT_BASE = {"epochs": 2 if FAST else 30, "learning_rate": 1e-5, "early_stopping_patience": 8,
            "time_limit": 600, "eval_metric": "log_loss"}
@@ -136,16 +198,126 @@ print(train.shape, test.shape, "| train/test shared groups:",
       len(set(groups) & set(test.PassengerId.str.split("_").str[0])))
 """)
 
+# ---------------------------------------------------------------- 2. EDA
 md("""
-## Features (23 columns, target-free)
+## 2. Exploratory data analysis
 
-The same baseline feature set used by every experiment in the project. Nothing here reads
-`Transported`. Feature-set changes (spend semantics, CryoSleep rules, peer statistics, surname or
-cabin identity, location proxies) were all tested and **did not help** TabPFN, so the simple set stays.
+### 2.1 Columns, missing values and the target
 """)
 
 code("""
-SPEND = ["RoomService", "FoodCourt", "ShoppingMall", "Spa", "VRDeck"]
+both = pd.concat([train.drop(columns="Transported"), test], keys=["train", "test"])
+overview = pd.DataFrame({"dtype": train.drop(columns="Transported").dtypes.astype(str),
+                         "missing % (train)": train.drop(columns="Transported").isna().mean() * 100,
+                         "missing % (test)": test.isna().mean() * 100,
+                         "unique": both.nunique()}).round(2)
+
+fig, axes = plt.subplots(1, 2, figsize=(15, 3.6), gridspec_kw={"width_ratios": [3, 1]})
+miss = overview[["missing % (train)", "missing % (test)"]].drop(index=["PassengerId"])
+x = np.arange(len(miss))
+axes[0].bar(x - 0.2, miss.iloc[:, 0], 0.4, color=TEAL, label="train")
+axes[0].bar(x + 0.2, miss.iloc[:, 1], 0.4, color=SAND, edgecolor=NAVY, label="test")
+axes[0].set_xticks(x, miss.index, rotation=30)
+axes[0].set_ylabel("% missing")
+axes[0].set_title("Missing values per column (about 2% each, similar in train and test)")
+axes[0].legend(frameon=False)
+counts = train.Transported.value_counts()
+axes[1].bar(counts.index.astype(str), counts.values, color=[TEAL, SAND], edgecolor=NAVY)
+axes[1].set_title("Target balance (train)")
+for i, v in enumerate(counts.values):
+    axes[1].text(i, v / 2, f"{v}\\n{v / counts.sum():.1%}", ha="center", color=NAVY)
+plt.tight_layout()
+plt.show()
+overview
+""")
+
+md("""
+### 2.2 Who was transported?
+""")
+
+code("""
+fig, axes = plt.subplots(1, 4, figsize=(17, 3.6))
+target = pd.Series(y, index=train.index)
+for ax, col in zip(axes[:3], ["HomePlanet", "CryoSleep", "Cabin deck"]):
+    key = train.Cabin.str[0].fillna("?") if col == "Cabin deck" else train[col].astype(str)
+    rate = target.groupby(key).mean().sort_values()
+    ax.barh(rate.index, rate.values, color=TEAL)
+    ax.axvline(y.mean(), color=RED, ls="--", lw=1)
+    ax.set_xlim(0, 1)
+    ax.set_title(f"P(Transported) by {col}")
+sizes = groups.value_counts().value_counts().sort_index()
+axes[3].bar(sizes.index, sizes.values, color=SAND, edgecolor=NAVY)
+axes[3].set_title("Travel groups by size (train)")
+axes[3].set_xlabel("passengers in the group")
+shared = len(set(groups) & set(test.PassengerId.str[:4]))
+axes[3].text(0.98, 0.95, f"groups shared with test: {shared}", transform=axes[3].transAxes,
+             ha="right", va="top", color=RED, fontweight="bold")
+plt.tight_layout()
+plt.show()
+
+total = train[SPEND].sum(axis=1, min_count=1)
+fig, axes = plt.subplots(1, 3, figsize=(17, 3.6))
+bins = np.arange(0, 81, 4)
+for flag, color in [(True, TEAL), (False, SAND)]:
+    axes[0].hist(train.Age[train.Transported == flag], bins=bins, alpha=0.6, color=color,
+                 label=f"Transported={flag}")
+    axes[1].hist(np.log1p(total[train.Transported == flag].dropna()), bins=30, alpha=0.6,
+                 color=color, label=f"Transported={flag}")
+axes[0].set_title("Age")
+axes[1].set_title("log(1 + total spend)")
+for ax in axes[:2]:
+    ax.legend(frameon=False)
+spend_state = np.where(total.isna(), "unknown", np.where(total > 0, "spent", "spent nothing"))
+cryo = train.CryoSleep.map({True: "CryoSleep", False: "awake"}).fillna("CryoSleep unknown")
+table = target.groupby([cryo, spend_state]).mean().unstack()
+table.plot.barh(ax=axes[2], color=[TEAL, SAND, GREY], edgecolor=NAVY)
+axes[2].set_title("P(Transported) by CryoSleep and spending")
+axes[2].set_xlim(0, 1)
+axes[2].legend(frameon=False, fontsize=8)
+plt.tight_layout()
+plt.show()
+print("CryoSleep passengers with positive known spending:",
+      int((train.CryoSleep.eq(True) & (total > 0)).sum()))
+""")
+
+md("""
+**What the data says**
+
+* The target is balanced (50.4% transported), so accuracy is a sensible metric.
+* Every column is about 2% missing, in train and test alike — no column needs to be dropped.
+* `CryoSleep` is the strongest single signal (about 82% transported), and sleepers never spend.
+  Passengers who spent nothing are far more likely to be transported.
+* Europa passengers and decks B/C are transported more often; Earth passengers and deck E/T less.
+* Children are transported more often than adults.
+* `PassengerId` encodes **travel groups**; most groups are single travellers, and **no group is
+  shared between train and test**. That fact decides the validation design in section 3.2.
+
+These patterns were all tried as hand-made rules or extra features during the research
+(CryoSleep fills, spend semantics, group and cabin location features). Under group-aware
+validation none of them beat the simple feature set below, because a strong model already
+learns them from the raw columns.
+""")
+
+# ---------------------------------------------------------------- 3. preprocessing
+md("""
+## 3. Preprocessing and feature engineering
+
+### 3.1 Features (23 columns, target-free)
+
+| Step | Output |
+|---|---|
+| Split `PassengerId` (`gggg_pp`) | `GroupMember`; the group id itself is **not** a feature |
+| Split `Cabin` (`deck/num/side`) | `CabinDeck`, `CabinNum`, `CabinSide` |
+| Spending | `TotalSpend`, `NoSpend`, `SpendMissingCount` (raw five columns kept) |
+| Age | `IsChild` (<13), `IsTeen` (13–17), `IsAdult` (≥18) |
+| Group and family size | `GroupSize`, `SurnameSize`, `IsAlone` — counted over train + test **feature** rows |
+| Missing values | categoricals → `"__MISSING__"`; numerics stay `NaN` (TabPFN handles them natively) |
+| Encoding | ordinal codes, fitted **inside each training fold** (section 3.2) |
+
+Nothing here reads `Transported`. Richer feature sets were tested and did not help TabPFN.
+""")
+
+code("""
 CATEGORICAL = ["HomePlanet", "CryoSleep", "Destination", "VIP", "CabinDeck", "CabinSide"]
 
 
@@ -190,14 +362,20 @@ def build_features(train, test):
 
 X, X_test = build_features(train, test)
 CAT_IDX = [X.columns.get_loc(c) for c in CATEGORICAL]
-print(X.shape, list(X.columns))
+pd.DataFrame({"kind": ["categorical" if c in CATEGORICAL else "numeric" for c in X.columns],
+              "missing %": (X.isna().mean() * 100).round(2).values,
+              "example": X.iloc[0].astype(str).values}, index=X.columns)
 """)
 
 md("""
-## Folds and the fold-local encoder
+### 3.2 Validation design: group-aware folds and fold-local preprocessing
 
 `StratifiedGroupKFold(5, shuffle=True, random_state=42)` on travel groups — identical to the
-frozen folds of the project. Each fold fits its own ordinal encoder on its training rows.
+frozen folds used throughout the project. Inside each training fold, a second group-split
+(1/8 of the fold) is held out for early stopping and epoch choice, and the ordinal encoder is
+fitted on the training fold only. The scored fold is only ever predicted.
+
+![validation boundary]({RAW}/docs/assets/validation-boundary.png)
 """)
 
 code("""
@@ -223,11 +401,25 @@ def fold_parts(fold):
     return fit_idx, valid_idx, fit_idx[a], fit_idx[b], enc
 
 
-print(pd.Series(folds).value_counts().sort_index().to_dict())
+assert (groups.groupby(folds).nunique().sum() == groups.nunique()), "a group crosses folds"
+pd.DataFrame({"rows": pd.Series(folds).value_counts().sort_index(),
+              "groups": groups.groupby(folds).nunique(),
+              "P(Transported)": pd.Series(y).groupby(folds).mean().round(4)}).rename_axis("fold")
 """)
 
+# ---------------------------------------------------------------- 4. modeling
 md("""
-## The four TabPFN v3.5 members
+## 4. Modeling
+
+### 4.1 Why TabPFN?
+
+TabPFN v3.5 is a *tabular foundation model*: a transformer pretrained on millions of synthetic
+tables that predicts a new table **in context** — the training fold is passed as context, no
+gradient boosting rounds to tune. On this small table (8.7k rows) it beat every tuned GBDT in the
+project by about +0.008 accuracy on every split seed. Fine-tuning its weights inside each fold
+then added a small but consistent gain.
+
+### 4.2 The four members
 
 | Member | What it does |
 |---|---|
@@ -237,6 +429,8 @@ md("""
 | `ft_long_ne2` | ≤100 epochs, patience 20; predicted with **2 estimators**, the same count used while fine-tuning. |
 
 Each member writes out-of-fold probabilities for `train` and a fold-averaged probability for `test`.
+
+![final pipeline]({RAW}/docs/assets/final-pipeline.png)
 """)
 
 code("""
@@ -256,24 +450,27 @@ def train_members():
     from tabpfn.constants import ModelVersion
     from tabpfn.finetuning import FinetunedTabPFNClassifier
 
-
     class EpochTracker:  # records the slice log loss after every fine-tuning epoch
         def __init__(self):
             self.val_loss = []
-        def setup(self, config): pass
-        def log_step(self, metrics, step): pass
+
+        def setup(self, config):
+            pass
+
+        def log_step(self, metrics, step):
+            pass
+
         def log_epoch(self, metrics, step):
             if "val/log_loss" in metrics:
                 self.val_loss.append((int(step), float(metrics["val/log_loss"])))
-        def finish(self): pass
 
+        def finish(self):
+            pass
 
     def finetuner(seed, **kwargs):
-        return FinetunedTabPFNClassifier(device="cuda", random_state=seed,
-                                         model_version=ModelVersion.V3_5,
-                                         extra_classifier_kwargs={"categorical_features_indices": CAT_IDX},
-                                         **kwargs)
-
+        return FinetunedTabPFNClassifier(
+            device="cuda", random_state=seed, model_version=ModelVersion.V3_5,
+            extra_classifier_kwargs={"categorical_features_indices": CAT_IDX}, **kwargs)
 
     started = time.time()
     for fold in FOLDS_TO_RUN:
@@ -342,11 +539,11 @@ if MODE == "replay":
 """)
 
 md("""
-## Nested stacker
+### 4.3 Nested stacker
 
 A logistic regression on the members' **logits**. For the honest score, the stacker that predicts
-fold *k* is fitted on the other folds' OOF rows only; for the submission, one stacker is fitted on
-all OOF rows and applied to the fold-averaged test probabilities.
+fold *k* is fitted on the other folds' OOF rows only (nested). For the submission, one stacker is
+fitted on all OOF rows and applied to the fold-averaged test probabilities.
 """)
 
 code("""
@@ -356,34 +553,150 @@ def logit(p):
 
 
 rows = np.flatnonzero(np.isin(folds, FOLDS_TO_RUN))
-report = {m: accuracy_score(y[rows], oof[m][rows] >= 0.5) for m in oof}
+STACK3 = ["frozen", "ft", "ftrefit"]
+STACK4 = STACK3 + ["ft_long_ne2"]
 
 
-def nested_stack(members):
+def nested_pred(members):
+    # OOF stack probabilities: fold k is predicted by a stacker fitted on the other folds
     Z = np.column_stack([logit(oof[m]) for m in members])
-    pred = np.zeros(len(y))
+    pred = np.full(len(y), np.nan)
     for k in FOLDS_TO_RUN:
         fit = np.isin(folds, FOLDS_TO_RUN) & (folds != k)
         hold = folds == k
         if fit.sum() == 0:  # FAST mode has a single fold: no honest stack score
-            return float("nan")
-        pred[hold] = LogisticRegression(C=1.0, max_iter=1000).fit(Z[fit], y[fit]).predict_proba(Z[hold])[:, 1]
-    return accuracy_score(y[rows], pred[rows] >= 0.5)
+            return None
+        stacker = LogisticRegression(C=1.0, max_iter=1000).fit(Z[fit], y[fit])
+        pred[hold] = stacker.predict_proba(Z[hold])[:, 1]
+    return pred
 
 
-STACK3 = ["frozen", "ft", "ftrefit"]
-STACK4 = STACK3 + ["ft_long_ne2"]
-report["stack3 (nested)"] = nested_stack(STACK3)
-report["stack4 (nested)"] = nested_stack(STACK4)
+def nested_stack(members):
+    pred = nested_pred(members)
+    return float("nan") if pred is None else accuracy_score(y[rows], pred[rows] >= 0.5)
+
+
+stack_scores = {"stack3 (nested)": nested_stack(STACK3), "stack4 (nested)": nested_stack(STACK4)}
+stack_scores
+""")
+
+# ---------------------------------------------------------------- 5. evaluation
+md("""
+## 5. Evaluation
+
+### 5.1 Honest OOF accuracy vs the values recorded in the project
+
+In replay mode these must match exactly. In train mode, small differences are expected: GPU
+kernels make TabPFN fine-tuning non-deterministic across machines (recorded values: RTX 4070 Ti
+SUPER, `tabpfn 9.1.0`, `torch 2.14.1+cu126`).
+""")
+
+code("""
+report = {m: accuracy_score(y[rows], oof[m][rows] >= 0.5) for m in MEMBERS} | stack_scores
 recorded = {"frozen": 0.826182, "ft": 0.827332, "ftrefit": 0.826987, "ft_long_ne2": 0.829748,
             "stack3 (nested)": 0.829058, "stack4 (nested)": 0.831128}
 pd.DataFrame({"this run (OOF acc.)": report, "recorded in the project (seed 42)": recorded}).round(6)
 """)
 
 md("""
-Small differences from the recorded numbers are expected: GPU kernels and library builds make
-TabPFN fine-tuning non-deterministic across machines. The recorded values come from an RTX 4070 Ti
-SUPER with `tabpfn 9.1.0`, `torch 2.14.1+cu126`.
+### 5.2 Member diagnostics
+
+Fine-tuning moves accuracy only a little but clearly improves log loss, and the four members are
+highly correlated: they make most of their mistakes on the same passengers. This is why other
+model families never helped the stack — the useful signal is the *direction* from frozen to
+fine-tuned.
+""")
+
+code("""
+diag = pd.DataFrame({"OOF accuracy": [accuracy_score(y[rows], oof[m][rows] >= 0.5) for m in MEMBERS],
+                     "OOF log loss": [log_loss(y[rows], oof[m][rows]) for m in MEMBERS]},
+                    index=MEMBERS)
+corr = np.corrcoef([logit(oof[m][rows]) for m in MEMBERS])
+fig, axes = plt.subplots(1, 3, figsize=(17, 3.8))
+axes[0].bar(MEMBERS, diag["OOF accuracy"], color=TEAL)
+axes[0].set_ylim(diag["OOF accuracy"].min() - 0.004, diag["OOF accuracy"].max() + 0.002)
+axes[0].set_title("OOF accuracy (higher is better)")
+axes[1].bar(MEMBERS, diag["OOF log loss"], color=SAND, edgecolor=NAVY)
+axes[1].set_ylim(diag["OOF log loss"].min() - 0.005, diag["OOF log loss"].max() + 0.003)
+axes[1].set_title("OOF log loss (lower is better)")
+axes[2].imshow(corr, cmap="Blues", vmin=0.9, vmax=1)
+axes[2].set_xticks(range(len(MEMBERS)), MEMBERS, rotation=20)
+axes[2].set_yticks(range(len(MEMBERS)), MEMBERS)
+for i in range(len(MEMBERS)):
+    for j in range(len(MEMBERS)):
+        axes[2].text(j, i, f"{corr[i, j]:.3f}", ha="center", va="center", fontsize=9,
+                     color="white" if corr[i, j] > 0.97 else NAVY)
+axes[2].set_title("Correlation of member logits")
+for ax in axes[:2]:
+    ax.tick_params(axis="x", rotation=20)
+plt.tight_layout()
+plt.show()
+diag.round(6)
+""")
+
+md("""
+### 5.3 Where the remaining errors are
+
+Left: the stacker's weights — negative on the frozen and short fine-tune logits, positive on the
+longer fine-tunes, i.e. it extrapolates along the fine-tuning direction. Middle: the honest
+(nested) confusion matrix. Right: how far from 0.5 the predictions are. Most wrong predictions sit
+near 0.5, but there is a long tail of **confident** errors; across seeds and models these are the
+same rows, which is why more features or more models stopped helping. Below: error rate by
+segment relative to the average — Earth passengers and Cabin deck G stay hard on every seed.
+""")
+
+code("""
+p4 = nested_pred(STACK4)
+if p4 is not None:
+    stacker4 = LogisticRegression(C=1.0, max_iter=1000).fit(
+        np.column_stack([logit(oof[m][rows]) for m in STACK4]), y[rows])
+    wrong = (p4 >= 0.5) != y
+    fig, axes = plt.subplots(1, 3, figsize=(17, 4))
+    w = stacker4.coef_[0]
+    axes[0].bar(STACK4, w, color=[RED if v < 0 else TEAL for v in w])
+    axes[0].axhline(0, color=NAVY, lw=0.8)
+    axes[0].tick_params(axis="x", rotation=20)
+    axes[0].set_title("Stacker weights on member logits")
+    cm = confusion_matrix(y, p4 >= 0.5)
+    axes[1].imshow(cm, cmap="Blues")
+    for i in range(2):
+        for j in range(2):
+            axes[1].text(j, i, f"{cm[i, j]}\\n{cm[i, j] / cm.sum():.1%}", ha="center", va="center",
+                         color="white" if cm[i, j] > cm.max() / 2 else NAVY, fontsize=11)
+    axes[1].set_xticks([0, 1], ["pred False", "pred True"])
+    axes[1].set_yticks([0, 1], ["actual False", "actual True"])
+    axes[1].set_title(f"Nested OOF confusion matrix (acc. {1 - wrong.mean():.4f})")
+    margin = np.abs(p4 - 0.5)
+    bins = np.linspace(0, 0.5, 21)
+    axes[2].hist(margin[~wrong], bins=bins, color=TEAL, alpha=0.7, label="correct", density=True)
+    axes[2].hist(margin[wrong], bins=bins, color=RED, alpha=0.7, label="wrong", density=True)
+    axes[2].set_xlabel("|P(Transported) - 0.5|  (confidence)")
+    axes[2].set_title("Confidence of correct vs wrong predictions")
+    axes[2].legend(frameon=False)
+    plt.tight_layout()
+    plt.show()
+    print(f"wrong predictions: {wrong.sum()} | with confidence > 0.3: {(margin[wrong] > 0.3).mean():.0%}"
+          f" | correct predictions with confidence > 0.3: {(margin[~wrong] > 0.3).mean():.0%}")
+
+    segments = {"Earth": train.HomePlanet.eq("Earth"), "Europa": train.HomePlanet.eq("Europa"),
+                "Mars": train.HomePlanet.eq("Mars"), "Cabin deck G": train.Cabin.str[0].eq("G"),
+                "CryoSleep": train.CryoSleep.eq(True), "Travelling alone": X.IsAlone.eq(1)}
+    ratio = pd.Series({k: wrong[v.to_numpy()].mean() / wrong.mean() for k, v in segments.items()})
+    fig, ax = plt.subplots(figsize=(8, 3.2))
+    ax.barh(ratio.index, ratio.values, color=[RED if r > 1 else TEAL for r in ratio])
+    ax.axvline(1, color=NAVY, ls="--", lw=1)
+    ax.set_xlabel("error rate / average error rate")
+    ax.set_title("Error rate by segment (stack of four, nested OOF)")
+    plt.tight_layout()
+    plt.show()
+""")
+
+# ---------------------------------------------------------------- 6. submission
+md("""
+## 6. Submission and reproducibility check
+
+One stacker per variant is fitted on all OOF rows and applied to the fold-averaged test
+probabilities.
 """)
 
 code("""
@@ -405,11 +718,10 @@ print("rows that differ:", int((sub3.Transported != sub4.Transported).sum()))
 """)
 
 md("""
-## Is this the file that was actually submitted?
-
-The submitted CSVs are kept in the GitHub repository with their hashes. Line endings are normalised
-before hashing so the check works on any OS. In replay mode both hashes must match; in train mode
-small GPU-level differences can change a few rows.
+**Is this the file that was actually submitted?** The submitted CSVs are kept in the GitHub
+repository with their hashes. Line endings are normalised before hashing so the check works on any
+OS. In replay mode both hashes must match; in train mode small GPU-level differences can change a
+few rows.
 """)
 
 code("""
@@ -426,34 +738,67 @@ for path, (label, expected) in SUBMITTED.items():
     print(f"{path}: {'identical to' if digest == expected else 'differs from'} {label}")
 """)
 
-md(f"""
-## What did not work (so you can skip it)
+md("""
+**Getting the score**
+
+| File | Stack | Public score when it was submitted |
+|---|---|---|
+| `submission.csv` | frozen + ft + ftrefit + ft_long_ne2 | **0.82604** |
+| `submission_stack3.csv` | frozen + ft + ftrefit (CV-promoted champion) | **0.82020** |
+
+Use **Submit to Competition** on the notebook's output (`submission.csv`) to attach the score to
+this notebook. The leaderboard of this competition is computed on all of the test data, so the
+score is the full test accuracy.
+""")
+
+# ---------------------------------------------------------------- 7. research notes
+md("""
+## 7. Research notes: the cheat sheet of what did not work
+
+The research ran as a scored hypothesis queue shared by several AI coding agents (Codex, Claude
+Code, ChatGPT) under the [research-orchestrator-skill](https://github.com/TaeyanG4/research-orchestrator-skill)
+protocol: every experiment produced one recorded finding (failures included), and findings were
+cross-checked by a different agent platform. Only models that passed the promotion rule were
+submitted.
+
+![score progression]({RAW}/docs/assets/score-progression.png)
+
+![submission history]({RAW}/docs/assets/submission-history.png)
 
 Every idea below was run against a matched control on three split seeds; bars left of the red
 line never reached the promotion bar. Feature engineering, other GBDTs, deep tabular nets, other
-foundation models (TabPFN v2.5, TabICL, TabDPT, Causilo, TabSTAR), pseudo-labelling,
-group post-processing, non-linear meta-models and threshold tuning all failed to beat the plain
-TabPFN stack. The remaining errors are **persistent and confident** across seeds and models,
-concentrated in Earth passengers (1.4× the average error rate) and Cabin deck G (1.6×).
+foundation models (TabPFN v2.5, TabICL, TabDPT, Causilo, TabSTAR), pseudo-labelling, group
+post-processing, non-linear meta-models and threshold tuning all failed to beat the plain TabPFN
+stack.
 
 ![experiment landscape]({RAW}/docs/assets/experiment-landscape.png)
 
+**Cheat sheet — every logged idea** (mean paired accuracy change vs the matched control over three
+split seeds; the promotion bar is +0.20 pp with at least 2 of 3 seeds better, then 2 fresh seeds):
+
+{CHEAT}
+
 **Takeaways**
 
-1. Honest validation first: removing early stopping on the scored fold cost 0.004 CV — and the
-   public LB rose, because the new CV was the one that transferred.
-2. On this small table, a tabular foundation model beat every tuned GBDT by ~0.008.
-3. The only lever after that was **fine-tuning** the foundation model, and the stacker's gain comes
-   entirely from fine-tuned members (frozen variants and other model families added nothing).
+1. **Fix the validation first.** Removing early stopping on the scored fold cost 0.004 CV — and the
+   leaderboard rose, because the new CV was the one that transferred.
+2. **Small table, foundation model.** TabPFN v3.5 beat every tuned GBDT by about 0.008.
+3. **Same model, different versions.** After that, the only lever was fine-tuning; the stacker's
+   gain comes entirely from fine-tuned members, not from model diversity.
+4. **Leaderboard last, and once.** Deciding with CV and submitting rarely is what made rank 8 with
+   12 submissions possible.
 
-Full experiment journey, integrity notes and reproduction steps: **[{REPO}]({REPO})**
+Full experiment journey (Korean and English), integrity notes and reproduction steps:
+**[{REPO}]({REPO})**
+
+*If this saved you from a leaky trick or a few dozen experiments, an upvote helps others find a
+leak-free baseline. Questions and challenges to any claim here are welcome in the comments.*
 """)
 
 nb = nbf.v4.new_notebook()
 nb.cells = cells
 nb.metadata = {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
-               "language_info": {"name": "python"},
-               "accelerator": "GPU"}
+               "language_info": {"name": "python"}}
 out = HERE / "spaceship_titanic_tabpfn_stack.ipynb"
 nbf.write(nb, out)
 print("wrote", out.name, len(cells), "cells")

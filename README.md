@@ -4,7 +4,7 @@ Spaceship Titanic - 승객이 다른 차원으로 이동(`Transported`)했는지
 
 ![Spaceship Titanic Experiments](docs/assets/hero.svg)
 
-Kaggle Notebook: [Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack](https://www.kaggle.com/code/taeyangg4/spaceship-titanic-leak-free-tabpfn-fine-tuning-stack) (공개 예정)
+Kaggle Notebook: [Leak-free 2026 TabPFN Stack | Top Public 0.82604](https://www.kaggle.com/code/taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604) (공개 예정)
 
 [English README](README.en.md) / [단계별 실험 기록](docs/02-experiment-journey.md) / [검증과 무결성](docs/03-validation-and-integrity.md) / [재현 방법](docs/05-reproduction.md)
 

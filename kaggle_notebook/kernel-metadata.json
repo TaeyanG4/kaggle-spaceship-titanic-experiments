@@ -1,6 +1,6 @@
 {
-  "id": "taeyangg4/spaceship-titanic-leak-free-tabpfn-fine-tuning-stack",
-  "title": "Spaceship Titanic Leak-free TabPFN Fine-tuning Stack",
+  "id": "taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604",
+  "title": "Leak-free 2026 TabPFN Stack | Top Public 0.82604",
   "code_file": "spaceship_titanic_tabpfn_stack.ipynb",
   "language": "python",
   "kernel_type": "notebook",
@@ -8,8 +8,12 @@
   "enable_gpu": "false",
   "enable_tpu": "false",
   "enable_internet": "false",
-  "dataset_sources": ["taeyangg4/spaceship-titanic-tabpfn-member-predictions"],
-  "competition_sources": ["spaceship-titanic"],
+  "dataset_sources": [
+    "taeyangg4/spaceship-titanic-tabpfn-member-predictions"
+  ],
+  "competition_sources": [
+    "spaceship-titanic"
+  ],
   "kernel_sources": [],
   "model_sources": []
 }

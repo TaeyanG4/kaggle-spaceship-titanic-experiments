@@ -22,8 +22,10 @@ def notebook_namespace(monkeypatch) -> dict:
     cells = json.loads(NOTEBOOK.read_text(encoding="utf-8"))["cells"]
     sources = ["".join(c["source"]) if isinstance(c["source"], list) else c["source"]
                for c in cells if c["cell_type"] == "code"]
+    wanted = ["MODE = ", "def build_features", "def fold_parts"]  # setup, features, folds
     namespace: dict = {}
-    for source in sources[0:3]:  # setup, features, folds
+    for marker in wanted:
+        source = next(src for src in sources if marker in src)
         exec(source, namespace)  # noqa: S102 - executing our own generated notebook
     return namespace
 
