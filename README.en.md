@@ -30,6 +30,10 @@ The rule was fixed from day one: **no recovered labels, no leakage, no leaderboa
 
 The leaderboard of this competition is **calculated on all of the test data**, so the public score is the full test accuracy; there is no hidden private split. The top four scores (0.895–0.965) are far above anything validated in this project (best honest OOF ≈ 0.831); individual entries cannot be verified, so no judgement is made about them.
 
+![Kaggle leaderboard top 8, captured 2026-10-06 09:57 UTC](docs/assets/kaggle-leaderboard.png)
+
+The public leaderboard page, captured logged-out with [`tools/leaderboard-capture`](tools/leaderboard-capture/capture.mjs). The same data against the number of submissions:
+
 ![Leaderboard top 8 on 2026-10-06](docs/assets/leaderboard-position.png)
 
 ## Achieved with standard, leak-free methods only

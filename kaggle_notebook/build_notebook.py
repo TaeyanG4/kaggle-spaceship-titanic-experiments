@@ -74,6 +74,11 @@ md("""
 >   `submission.csv` identical to the submitted file; one switch retrains everything on GPU.
 > * **44 ideas tested, 3 promoted.** The cheat sheet in section 7 tells you what *not* to try.
 
+![leaderboard, 2026-10-06]({RAW}/docs/assets/kaggle-leaderboard.png)
+
+*The public leaderboard on 2026-10-06 (captured logged-out). The same eight entries against the
+number of submissions:*
+
 ![leaderboard position]({RAW}/docs/assets/leaderboard-position.png)
 
 | | Honest OOF accuracy (SGKF seeds 42 / 123 / 2026) | Leaderboard |

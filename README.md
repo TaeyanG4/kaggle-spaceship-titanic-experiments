@@ -33,6 +33,10 @@ Kaggle Notebook: [Leak-free 2026 TabPFN Stack | Top Public 0.82604](https://www.
 
 이 대회의 리더보드는 **test 데이터 전체로 계산**된다. 따라서 public 점수가 곧 test 전체 정확도이고, 따로 숨겨진 private 점수는 없다. 상위 4개 팀의 0.895–0.965는 이 프로젝트에서 검증한 어떤 모델의 정확도(정직한 OOF 최대 약 0.831)보다 훨씬 높다. 개별 제출의 방법은 확인할 수 없으므로 판단하지 않는다.
 
+![Kaggle 리더보드 상위 8개 팀 (2026-10-06 09:57 UTC 촬영)](docs/assets/kaggle-leaderboard.png)
+
+공개 리더보드 화면이다 (로그인하지 않은 상태로 [`tools/leaderboard-capture`](tools/leaderboard-capture/capture.mjs)로 촬영). 같은 데이터를 제출 횟수와 함께 그리면 아래와 같다.
+
 ![2026-10-06 리더보드 상위 8개 팀의 점수와 제출 횟수](docs/assets/leaderboard-position.png)
 
 ## 정석적인 방법으로만 달성했다
