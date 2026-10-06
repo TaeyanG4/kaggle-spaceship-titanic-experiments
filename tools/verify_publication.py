@@ -74,7 +74,8 @@ def check_diagrams() -> None:
 def check_links() -> None:
     pages = [ROOT / "README.md", ROOT / "README.en.md", ROOT / "NOTICE.md",
              ROOT / "submissions/README.md", ROOT / "data/README.md",
-             ROOT / "kaggle_notebook/README.md", *sorted((ROOT / "docs").glob("*.md"))]
+             ROOT / "kaggle_notebook/README.md", ROOT / "kaggle_dataset/README.md",
+             ROOT / "docs/skills/README.md", *sorted((ROOT / "docs").glob("*.md"))]
     pattern = re.compile(r"\]\(([^)\s]+)\)|<img[^>]+src=\"([^\"]+)\"")
     for page in pages:
         for match in pattern.finditer(page.read_text(encoding="utf-8")):

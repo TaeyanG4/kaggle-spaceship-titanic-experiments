@@ -6,7 +6,7 @@ Spaceship Titanic — predict whether a passenger was transported to another dim
 
 Kaggle Notebook: [Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack](https://www.kaggle.com/code/taeyangg4/spaceship-titanic-leak-free-tabpfn-fine-tuning-stack) (to be published)
 
-[한국어](README.md) / [Experiment journey (KO)](docs/02-experiment-journey.md) / [Validation and integrity (KO)](docs/03-validation-and-integrity.md) / [Reproduction (KO)](docs/05-reproduction.md)
+[한국어](README.md) / [Experiment journey (KO)](docs/02-experiment-journey.md) / [Validation and integrity (KO)](docs/03-validation-and-integrity.md) / [Reproduction (KO)](docs/05-reproduction.md) / [Skills used](docs/skills/README.md)
 
 ## About
 
@@ -43,7 +43,7 @@ The leaderboard of this competition is **calculated on all of the test data**, s
 | Overfitting to a split | Every idea had to beat a matched control on 3 split seeds (mean ≥ +0.002, ≥ 2/3 positive), then on 2 fresh seeds (7, 99). Only 3 of the 44 ledger entries were promoted. |
 | External data | None besides pretrained TabPFN weights (synthetic-data pretraining, no Spaceship Titanic labels). |
 
-Stated openly: `GroupSize` and `SurnameSize` count passengers over the combined train + test **feature rows** (no labels; transductive). And 0.82604 is the best of a batch of 8, so it is reported separately from the CV-promoted 0.82020. Remaining limitations (seed reuse across the whole programme, a post hoc combination that was not confirmed, GPU nondeterminism) are listed in [docs/03](docs/03-validation-and-integrity.md).
+`GroupSize` and `SurnameSize` count passengers over the combined train + test **feature rows** (no labels; transductive). And 0.82604 is the best of a batch of 8, so it is reported separately from the CV-promoted 0.82020. Remaining limitations (seed reuse across the whole programme, a post hoc combination that was not confirmed, GPU nondeterminism) are listed in [docs/03](docs/03-validation-and-integrity.md).
 
 ![Validation boundary](docs/assets/validation-boundary.png)
 
@@ -58,6 +58,16 @@ Stated openly: `GroupSize` and `SurnameSize` count passengers over the combined 
 ![Final pipeline](docs/assets/final-pipeline.png)
 
 ![Every idea tested](docs/assets/experiment-landscape.png)
+
+## Skills used
+
+| Skill | Used by | Role | Snapshot |
+|---|---|---|---|
+| [research-orchestrator-skill](https://github.com/TaeyanG4/research-orchestrator-skill) (MIT) | Claude Code, Codex, ChatGPT | the whole research protocol: scored hypothesis queue, one finding per experiment, cross-host review, handoff log, consistency check | [docs/skills/research-orchestrator-skill](docs/skills/research-orchestrator-skill/) (version used during the research) |
+| [kaggle (unofficial)](https://github.com/shepsci/kaggle-skill) 3.0.1 (MIT) | Codex | read-only pulls of public notebooks, submission file checks and logging, leaderboard snapshots | [docs/skills/kaggle](docs/skills/kaggle/) |
+| `update-config` (built into Claude Code) | Claude Code | reviewed notification settings once (no always-on hooks kept) | — |
+
+Skills set *procedures*, not answers: every prediction came from a model trained locally. The protocol was updated several times during the research and the project files were migrated each time; details in [docs/08-skills.md](docs/08-skills.md) (Korean) and [docs/skills/README.md](docs/skills/README.md).
 
 ## Repository layout
 

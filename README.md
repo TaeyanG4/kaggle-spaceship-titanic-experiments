@@ -6,7 +6,7 @@ Spaceship Titanic - 승객이 다른 차원으로 이동(`Transported`)했는지
 
 Kaggle Notebook: [Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack](https://www.kaggle.com/code/taeyangg4/spaceship-titanic-leak-free-tabpfn-fine-tuning-stack) (공개 예정)
 
-[English](README.en.md) / [단계별 실험 기록](docs/02-experiment-journey.md) / [검증과 무결성](docs/03-validation-and-integrity.md) / [재현 방법](docs/05-reproduction.md)
+[English README](README.en.md) / [단계별 실험 기록](docs/02-experiment-journey.md) / [검증과 무결성](docs/03-validation-and-integrity.md) / [재현 방법](docs/05-reproduction.md)
 
 ## 프로젝트 소개
 
@@ -48,7 +48,7 @@ Kaggle Notebook: [Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack](
 | 한 split에 대한 과적합 | 모든 아이디어는 같은 조건의 대조군과 **3개 split seed** 에서 비교했다 (평균 +0.002 이상, 3개 중 2개 이상 개선). 통과하면 선택에 쓰지 않은 **새 seed 2개** (7, 99)에서 다시 확인했다. [실험 원장](docs/evidence/experiment-ledger.csv)의 44건 중 승격된 것은 3건뿐이다. |
 | 외부 데이터 | 사전학습된 TabPFN 가중치 외에는 없음. TabPFN은 합성 데이터로 사전학습된 모델이며 Spaceship Titanic 라벨을 포함하지 않는다. |
 
-숨기지 않고 밝혀 두는 점도 있다. `GroupSize` 와 `SurnameSize` 는 train과 test의 **입력 행을 합쳐서** 센다 (라벨은 쓰지 않는 transductive 계산). 그리고 0.82604는 CV 순위 후보 8개를 한 번에 제출한 결과 중 **최고값**이므로, 규칙으로 승격된 점수(0.82020)와 구분해서 표기한다.
+`GroupSize` 와 `SurnameSize` 는 train과 test의 **입력 행을 합쳐서** 센다 (라벨은 쓰지 않는 transductive 계산). 그리고 0.82604는 CV 순위 후보 8개를 한 번에 제출한 결과 중 **최고값**이므로, 규칙으로 승격된 점수(0.82020)와 구분해서 표기한다.
 
 <p align="center">
   <img src="docs/assets/validation-boundary.png" width="900" alt="각 fold가 볼 수 있는 정보의 경계: 학습 fold 안에서만 인코딩과 조기종료, 검증 fold는 한 번만 예측, 스태커는 다른 fold의 OOF로만 학습">
@@ -56,7 +56,7 @@ Kaggle Notebook: [Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack](
 
 ## 작업 방식
 
-[research-orchestrator](docs/04-workflow-and-agents.md) 라는 작업 규약을 스킬로 만들어 모든 에이전트가 같은 네 파일을 공유하게 했다. `plan.md` 는 점수를 매긴 가설 큐, `discoveries.md` 는 실험마다 하나씩 남기는 발견(실패 포함), `handoff.md` 는 작업 로그와 이어받기 상태, `agents.md` 는 고정 규칙이다. 한 호스트가 만든 발견은 다른 호스트가 한 번 검증한다.
+[research-orchestrator-skill](https://github.com/TaeyanG4/research-orchestrator-skill) 이라는 작업 규약을 스킬로 만들어 모든 에이전트가 같은 네 파일을 공유하게 했다. `plan.md` 는 점수를 매긴 가설 큐, `discoveries.md` 는 실험마다 하나씩 남기는 발견(실패 포함), `handoff.md` 는 작업 로그와 이어받기 상태, `agents.md` 는 고정 규칙이다. 한 호스트가 만든 발견은 다른 호스트가 한 번 검증한다.
 
 <p align="center">
   <img src="docs/assets/workflow.png" width="520" alt="사람의 지시에서 시작해 에이전트, 계획 큐, 실험, 승격 규칙, 발견 기록과 교차 검증으로 이어지는 연구 흐름">
@@ -105,6 +105,7 @@ TabPFN을 fold 안에서 파인튜닝하면 3개 seed 모두 조금씩 좋아졌
 | [재현 방법](docs/05-reproduction.md) | 데이터 준비, 환경, 주요 실험과 최종 제출 재현 |
 | [결과와 교훈](docs/06-results-and-lessons.md) | 배운 점과 후속 과제 |
 | [참고 자료](docs/07-references.md) | 모델·라이브러리·공개 자료 출처 |
+| [사용한 스킬](docs/08-skills.md) | research-orchestrator-skill, Kaggle 스킬의 역할·버전과 [문서 스냅샷](docs/skills/README.md) |
 
 ## 파일 구성
 

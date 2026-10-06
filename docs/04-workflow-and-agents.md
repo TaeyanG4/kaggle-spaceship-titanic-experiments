@@ -4,6 +4,8 @@
 
 ## 연구 규약: research-orchestrator
 
+규약 스킬 자체는 [research-orchestrator-skill](https://github.com/TaeyanG4/research-orchestrator-skill)로 공개되어 있고, 연구 당시 버전은 [skills/research-orchestrator-skill/](skills/research-orchestrator-skill/)에, 사용한 스킬 전체는 [08. 사용한 스킬](08-skills.md)에 정리했다.
+
 여러 에이전트가 같은 저장소에서 일하면 같은 실험을 반복하거나, 이미 실패한 아이디어를 다시 시도하거나, 서로의 결론을 검증 없이 믿기 쉽다. 이를 막기 위해 `research-orchestrator` 라는 작업 규약을 스킬로 만들어 모든 에이전트가 따르게 했다. 규약은 저장소 루트의 네 파일로만 이루어진다.
 
 | 파일 | 역할 |
