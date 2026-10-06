@@ -3,3 +3,5 @@
 *.png binary
 # Submission files are kept byte-for-byte as uploaded to Kaggle (hashes in submission-manifest.json).
 submissions/*.csv -text
+# Skill snapshots are kept byte-for-byte as used (hashes in docs/skills/README.md).
+docs/skills/** -text
