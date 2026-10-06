@@ -4,7 +4,7 @@ Spaceship Titanic — predict whether a passenger was transported to another dim
 
 ![Spaceship Titanic Experiments](docs/assets/hero.svg)
 
-Kaggle Notebook: [Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack](https://www.kaggle.com/code/taeyangg4/spaceship-titanic-leak-free-tabpfn-fine-tuning-stack)
+Kaggle Notebook: [Spaceship Titanic · Leak-free TabPFN v3.5 Fine-tuning Stack](https://www.kaggle.com/code/taeyangg4/spaceship-titanic-leak-free-tabpfn-fine-tuning-stack) (to be published)
 
 [한국어](README.md) / [Experiment journey (KO)](docs/02-experiment-journey.md) / [Validation and integrity (KO)](docs/03-validation-and-integrity.md) / [Reproduction (KO)](docs/05-reproduction.md)
 
@@ -64,6 +64,7 @@ scripts/                  experiment runners and audits, kept as run
 configs/ reports/         experiment configs and per-run metrics (with code and data hashes)
 submissions/              the 12 submitted prediction CSVs
 kaggle_notebook/          self-contained Kaggle notebook and its builder
+kaggle_dataset/           saved member probabilities for the notebook's replay mode (no labels)
 tools/                    chart/diagram builders, evidence snapshot, publication check
 ```
 

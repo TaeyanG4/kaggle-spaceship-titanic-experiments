@@ -73,23 +73,19 @@ test are indistinguishable (AUC 0.483–0.495 vs 0.506–0.520 for permuted labe
 """.replace("{RAW}", RAW))
 
 md("""
-## Setup
+## Setup — two modes
 
-* **Accelerator: GPU** (T4 or P100) and **Internet: on** (to install `tabpfn==9.1.0` and download weights).
-* TabPFN v3.5 weights require a free Prior Labs token: add it as a **Kaggle Secret named
-  `TABPFN_TOKEN`** (Add-ons → Secrets). The token is read into the environment and never printed.
-* Runtime on a T4 is roughly 1.5–2.5 h (the 100-epoch fine-tune dominates). Set `FAST = True`
-  for a 5-minute smoke test.
-""")
+| Mode | When | Needs | Time |
+|---|---|---|---|
+| **replay** (default) | no `TABPFN_TOKEN` secret | CPU only, the attached dataset [spaceship-titanic-tabpfn-member-predictions](https://www.kaggle.com/datasets/taeyangg4/spaceship-titanic-tabpfn-member-predictions) | seconds |
+| **train** | `TABPFN_TOKEN` secret present | GPU (T4/P100), Internet on, a free Prior Labs token | ~1.5–2.5 h on a T4 |
 
-code("""
-import subprocess
-import sys
-
-try:
-    import tabpfn  # noqa: F401
-except ImportError:
-    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "tabpfn==9.1.0"], check=True)
+**Replay** loads the saved out-of-fold and test probabilities of the four TabPFN members (no labels),
+re-checks that their folds match the folds rebuilt below, recomputes the honest nested accuracy from
+`train.csv`, refits the stacker and writes `submission.csv`. It reproduces the submitted files
+**exactly** (checked by hash at the end). **Train** rebuilds the four members from scratch; TabPFN v3.5
+weights need a Prior Labs token added as a Kaggle Secret named `TABPFN_TOKEN` (read into the
+environment, never printed). Set `NB_FAST=1` for a 5-minute smoke test of the train mode.
 """)
 
 code("""
@@ -113,13 +109,15 @@ if "TABPFN_TOKEN" not in os.environ:
     try:
         from kaggle_secrets import UserSecretsClient
         os.environ["TABPFN_TOKEN"] = UserSecretsClient().get_secret("TABPFN_TOKEN")
-    except Exception:  # noqa: BLE001 - not on Kaggle or secret missing
-        print("TABPFN_TOKEN not found: add it as a Kaggle Secret (see Setup).")
+    except Exception:  # noqa: BLE001, S110 - not on Kaggle or no secret: replay mode
+        pass
+MODE = "train" if os.environ.get("TABPFN_TOKEN") and os.environ.get("REPLAY") != "1" else "replay"
+print("mode:", MODE)
 
 FAST = os.environ.get("NB_FAST") == "1"   # smoke test: 1 fold, few epochs
 SEED = 42                                 # outer split seed used for the submission
 N_FOLDS = 5
-FOLDS_TO_RUN = [1] if FAST else list(range(1, N_FOLDS + 1))
+FOLDS_TO_RUN = [1] if FAST and MODE == "train" else list(range(1, N_FOLDS + 1))
 FT_BASE = {"epochs": 2 if FAST else 30, "learning_rate": 1e-5, "early_stopping_patience": 8,
            "time_limit": 600, "eval_metric": "log_loss"}
 FT_LONG = {**FT_BASE, "epochs": 3 if FAST else 100, "early_stopping_patience": 20,
@@ -242,76 +240,105 @@ Each member writes out-of-fold probabilities for `train` and a fold-averaged pro
 """)
 
 code("""
-from tabpfn import TabPFNClassifier
-from tabpfn.constants import ModelVersion
-from tabpfn.finetuning import FinetunedTabPFNClassifier
-
-oof = {m: np.zeros(len(X)) for m in ["frozen", "ft", "ftrefit", "ft_long_ne2"]}
-test_p = {m: np.zeros(len(X_test)) for m in oof}
+MEMBERS = ["frozen", "ft", "ftrefit", "ft_long_ne2"]
+oof = {m: np.zeros(len(X)) for m in MEMBERS}
+test_p = {m: np.zeros(len(X_test)) for m in MEMBERS}
 
 
-class EpochTracker:  # records the slice log loss after every fine-tuning epoch
-    def __init__(self):
-        self.val_loss = []
-    def setup(self, config): pass
-    def log_step(self, metrics, step): pass
-    def log_epoch(self, metrics, step):
-        if "val/log_loss" in metrics:
-            self.val_loss.append((int(step), float(metrics["val/log_loss"])))
-    def finish(self): pass
+def train_members():
+    import subprocess
+    import sys
+    try:
+        import tabpfn  # noqa: F401
+    except ImportError:
+        subprocess.run([sys.executable, "-m", "pip", "install", "-q", "tabpfn==9.1.0"], check=True)
+    from tabpfn import TabPFNClassifier
+    from tabpfn.constants import ModelVersion
+    from tabpfn.finetuning import FinetunedTabPFNClassifier
 
 
-def finetuner(seed, **kwargs):
-    return FinetunedTabPFNClassifier(device="cuda", random_state=seed,
-                                     model_version=ModelVersion.V3_5,
-                                     extra_classifier_kwargs={"categorical_features_indices": CAT_IDX},
-                                     **kwargs)
+    class EpochTracker:  # records the slice log loss after every fine-tuning epoch
+        def __init__(self):
+            self.val_loss = []
+        def setup(self, config): pass
+        def log_step(self, metrics, step): pass
+        def log_epoch(self, metrics, step):
+            if "val/log_loss" in metrics:
+                self.val_loss.append((int(step), float(metrics["val/log_loss"])))
+        def finish(self): pass
 
 
-started = time.time()
-for fold in FOLDS_TO_RUN:
-    fit_idx, valid_idx, tr_idx, es_idx, enc = fold_parts(fold)
-    fs = SEED + fold
-    Xf, Xv, Xt = enc(X.iloc[fit_idx]), enc(X.iloc[valid_idx]), enc(X_test)
-    Xtr, Xes = enc(X.iloc[tr_idx]), enc(X.iloc[es_idx])
+    def finetuner(seed, **kwargs):
+        return FinetunedTabPFNClassifier(device="cuda", random_state=seed,
+                                         model_version=ModelVersion.V3_5,
+                                         extra_classifier_kwargs={"categorical_features_indices": CAT_IDX},
+                                         **kwargs)
 
-    frozen = TabPFNClassifier.create_default_for_version(
-        ModelVersion.V3_5, categorical_features_indices=CAT_IDX, device="cuda", random_state=fs)
-    frozen.fit(Xf, y[fit_idx])
-    oof["frozen"][valid_idx] = frozen.predict_proba(Xv)[:, 1]
-    test_p["frozen"] += frozen.predict_proba(Xt)[:, 1] / len(FOLDS_TO_RUN)
 
-    ft = finetuner(fs, **FT_BASE)
-    ft.fit(Xtr, y[tr_idx], X_val=Xes, y_val=y[es_idx])
-    oof["ft"][valid_idx] = ft.predict_proba(Xv)[:, 1]
-    test_p["ft"] += ft.predict_proba(Xt)[:, 1] / len(FOLDS_TO_RUN)
-    del ft
+    started = time.time()
+    for fold in FOLDS_TO_RUN:
+        fit_idx, valid_idx, tr_idx, es_idx, enc = fold_parts(fold)
+        fs = SEED + fold
+        Xf, Xv, Xt = enc(X.iloc[fit_idx]), enc(X.iloc[valid_idx]), enc(X_test)
+        Xtr, Xes = enc(X.iloc[tr_idx]), enc(X.iloc[es_idx])
 
-    tracker = EpochTracker()
-    stage1 = finetuner(fs, experiment_logger=tracker, **FT_BASE)
-    stage1.fit(Xtr, y[tr_idx], X_val=Xes, y_val=y[es_idx])
-    best_epochs = min(tracker.val_loss, key=lambda t: t[1])[0] if tracker.val_loss else 1
-    del stage1
-    refit = finetuner(fs, epochs=best_epochs, learning_rate=FT_BASE["learning_rate"],
-                      validation_split_ratio=None, early_stopping=False,
-                      time_limit=FT_BASE["time_limit"])
-    refit.fit(Xf, y[fit_idx])
-    oof["ftrefit"][valid_idx] = refit.predict_proba(Xv)[:, 1]
-    test_p["ftrefit"] += refit.predict_proba(Xt)[:, 1] / len(FOLDS_TO_RUN)
-    del refit
+        frozen = TabPFNClassifier.create_default_for_version(
+            ModelVersion.V3_5, categorical_features_indices=CAT_IDX, device="cuda", random_state=fs)
+        frozen.fit(Xf, y[fit_idx])
+        oof["frozen"][valid_idx] = frozen.predict_proba(Xv)[:, 1]
+        test_p["frozen"] += frozen.predict_proba(Xt)[:, 1] / len(FOLDS_TO_RUN)
 
-    long = finetuner(fs, **FT_LONG)
-    long.fit(Xtr, y[tr_idx], X_val=Xes, y_val=y[es_idx])
-    ne2 = copy.deepcopy(long.finetuned_inference_classifier_)  # same fine-tuned weights
-    ne2.n_estimators = 2
-    ne2.fit(Xtr, y[tr_idx])
-    oof["ft_long_ne2"][valid_idx] = ne2.predict_proba(Xv)[:, 1]
-    test_p["ft_long_ne2"] += ne2.predict_proba(Xt)[:, 1] / len(FOLDS_TO_RUN)
-    del long, ne2
+        ft = finetuner(fs, **FT_BASE)
+        ft.fit(Xtr, y[tr_idx], X_val=Xes, y_val=y[es_idx])
+        oof["ft"][valid_idx] = ft.predict_proba(Xv)[:, 1]
+        test_p["ft"] += ft.predict_proba(Xt)[:, 1] / len(FOLDS_TO_RUN)
+        del ft
 
-    print(f"fold {fold}: " + "  ".join(
-        f"{m} {accuracy_score(y[valid_idx], oof[m][valid_idx] >= 0.5):.4f}" for m in oof)
-        + f"  ({(time.time() - started) / 60:.1f} min)")
+        tracker = EpochTracker()
+        stage1 = finetuner(fs, experiment_logger=tracker, **FT_BASE)
+        stage1.fit(Xtr, y[tr_idx], X_val=Xes, y_val=y[es_idx])
+        best_epochs = min(tracker.val_loss, key=lambda t: t[1])[0] if tracker.val_loss else 1
+        del stage1
+        refit = finetuner(fs, epochs=best_epochs, learning_rate=FT_BASE["learning_rate"],
+                          validation_split_ratio=None, early_stopping=False,
+                          time_limit=FT_BASE["time_limit"])
+        refit.fit(Xf, y[fit_idx])
+        oof["ftrefit"][valid_idx] = refit.predict_proba(Xv)[:, 1]
+        test_p["ftrefit"] += refit.predict_proba(Xt)[:, 1] / len(FOLDS_TO_RUN)
+        del refit
+
+        long = finetuner(fs, **FT_LONG)
+        long.fit(Xtr, y[tr_idx], X_val=Xes, y_val=y[es_idx])
+        ne2 = copy.deepcopy(long.finetuned_inference_classifier_)  # same fine-tuned weights
+        ne2.n_estimators = 2
+        ne2.fit(Xtr, y[tr_idx])
+        oof["ft_long_ne2"][valid_idx] = ne2.predict_proba(Xv)[:, 1]
+        test_p["ft_long_ne2"] += ne2.predict_proba(Xt)[:, 1] / len(FOLDS_TO_RUN)
+        del long, ne2
+
+        print(f"fold {fold}: " + "  ".join(
+            f"{m} {accuracy_score(y[valid_idx], oof[m][valid_idx] >= 0.5):.4f}" for m in oof)
+            + f"  ({(time.time() - started) / 60:.1f} min)")
+
+
+if MODE == "train":
+    train_members()
+""")
+
+code("""
+if MODE == "replay":
+    for root in [Path("/kaggle/input/spaceship-titanic-tabpfn-member-predictions"),
+                 Path("kaggle_dataset"), Path("../kaggle_dataset")]:
+        if (root / "member_oof_seed42.csv").exists():
+            break
+    saved_oof = pd.read_csv(root / "member_oof_seed42.csv")
+    saved_test = pd.read_csv(root / "member_test_seed42.csv")
+    assert saved_oof.PassengerId.equals(train.PassengerId)
+    assert saved_test.PassengerId.equals(test.PassengerId)
+    assert np.array_equal(saved_oof.fold.to_numpy(), folds), "saved folds differ from the rebuilt folds"
+    for m in MEMBERS:
+        oof[m], test_p[m] = saved_oof[m].to_numpy(), saved_test[m].to_numpy()
+    print("replayed saved member predictions; folds identical to the rebuilt SGKF folds")
 """)
 
 md("""
@@ -375,6 +402,28 @@ def fit_submission(members, path):
 sub4 = fit_submission(STACK4, "submission.csv")          # best public LB variant (0.82604)
 sub3 = fit_submission(STACK3, "submission_stack3.csv")   # official CV-promoted champion (0.82020)
 print("rows that differ:", int((sub3.Transported != sub4.Transported).sum()))
+""")
+
+md("""
+## Is this the file that was actually submitted?
+
+The submitted CSVs are kept in the GitHub repository with their hashes. Line endings are normalised
+before hashing so the check works on any OS. In replay mode both hashes must match; in train mode
+small GPU-level differences can change a few rows.
+""")
+
+code("""
+import hashlib
+
+SUBMITTED = {  # sha256 of the submitted files (LF line endings)
+    "submission.csv": ("sub_stack3_plus_a1ne2.csv, public 0.82604",
+                       "cba1b98a2a8ad88ed7a5d00113963bb64dfcf9ae9c37bd45bf700f2817953431"),
+    "submission_stack3.csv": ("ha27_stack3.csv, public 0.82020",
+                              "3cdcd62847747557fe4a921ed23f4249afc6bee09e73a20d09da7f61f3880f68"),
+}
+for path, (label, expected) in SUBMITTED.items():
+    digest = hashlib.sha256(Path(path).read_bytes().replace(b"\\r\\n", b"\\n")).hexdigest()
+    print(f"{path}: {'identical to' if digest == expected else 'differs from'} {label}")
 """)
 
 md(f"""

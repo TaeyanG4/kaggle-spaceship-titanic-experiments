@@ -23,7 +23,7 @@ def notebook_namespace(monkeypatch) -> dict:
     sources = ["".join(c["source"]) if isinstance(c["source"], list) else c["source"]
                for c in cells if c["cell_type"] == "code"]
     namespace: dict = {}
-    for source in sources[1:4]:  # setup (without the pip cell), features, folds
+    for source in sources[0:3]:  # setup, features, folds
         exec(source, namespace)  # noqa: S102 - executing our own generated notebook
     return namespace
 

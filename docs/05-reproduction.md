@@ -4,10 +4,10 @@
 
 ## 가장 쉬운 경로: Kaggle 노트북
 
-[kaggle_notebook/](../kaggle_notebook/README.md)의 노트북은 이 저장소 없이 혼자 실행된다. 공식 데이터에서 피처를 만들고, TabPFN v3.5 멤버 4개와 nested 스태커를 학습해 `submission.csv` (최고 제출 변형)와 `submission_stack3.csv` (공식 챔피언)를 만든다.
+[kaggle_notebook/](../kaggle_notebook/README.md)의 노트북은 이 저장소 없이 혼자 실행되며, 두 모드가 있다.
 
-* Kaggle 설정: GPU, Internet on, Kaggle Secret `TABPFN_TOKEN`
-* T4 기준 약 1.5–2.5시간
+* **replay (기본):** 토큰 없이 CPU로 몇 초. 멤버 4개의 저장된 OOF·test 확률([kaggle_dataset/](../kaggle_dataset/README.md), 라벨 없음)을 불러와 fold가 다시 만든 fold와 같은지 확인하고, `train.csv` 로 nested 정확도를 다시 계산한 뒤 스태커를 학습한다. 출력 파일은 실제 제출 파일과 해시가 같다.
+* **train:** Kaggle Secret `TABPFN_TOKEN`, GPU, 인터넷이 있으면 멤버 4개를 처음부터 학습한다. T4 기준 약 1.5–2.5시간.
 
 ## 로컬 환경
 

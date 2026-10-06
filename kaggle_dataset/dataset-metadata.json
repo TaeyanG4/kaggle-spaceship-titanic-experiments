@@ -1,0 +1,7 @@
+{
+  "title": "Spaceship Titanic TabPFN Member Predictions",
+  "id": "taeyangg4/spaceship-titanic-tabpfn-member-predictions",
+  "licenses": [{"name": "CC-BY-4.0"}],
+  "subtitle": "Saved OOF and test probabilities of four TabPFN v3.5 stack members",
+  "description": "Saved predictions of the four TabPFN v3.5 members behind the stacks in https://github.com/TaeyanG4/kaggle-spaceship-titanic-experiments (seed-42 StratifiedGroupKFold by travel group). member_oof_seed42.csv: PassengerId, outer fold, and each member's out-of-fold P(Transported) for train rows. member_test_seed42.csv: each member's fold-averaged P(Transported) for test rows. No labels are included; train labels come from the competition data. Members: frozen (pretrained, in-context), ft (fold-local fine-tune, <=30 epochs), ftrefit (epoch count from a group-split slice, refit on the whole fold), ft_long_ne2 (<=100 epochs, predicted with 2 estimators). A logistic regression on these logits reproduces the submitted files exactly: frozen+ft+ftrefit (public 0.82020) and all four (public 0.82604)."
+}
