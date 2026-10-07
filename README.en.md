@@ -22,7 +22,7 @@ The rule was fixed from day one: **no recovered labels, no leakage, no leaderboa
 | Official champion (promoted by the CV rule) | Nested stack of three TabPFN v3.5 variants, public **0.82020** (4th submission) |
 | Best submission (best of one CV-ranked batch of 8) | Champion stack + 100-epoch fine-tuned member, public **0.82604** |
 | Honest OOF accuracy, official champion | 0.8291 / 0.8288 / 0.8269 (SGKF seeds 42 / 123 / 2026) |
-| Recorded findings | 78, including negative results |
+| Recorded findings | 79, including negative results |
 | Submissions | **12 in total** (2026-10-05 to 10-06 UTC); later, the identical file was submitted once more as the Kaggle notebook's output to attach its score (0.82604) |
 | Leaderboard rank | **8th** on 2026-10-06 with 12 entries; the teams ranked 6th and 7th used 81 and 82 |
 
