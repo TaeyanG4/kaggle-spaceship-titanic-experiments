@@ -22,7 +22,7 @@ Kaggle Notebook: [Leak-free 2026 TabPFN Stack | Top Public 0.82604](https://www.
 | 공식 챔피언 (CV 규칙으로 승격) | TabPFN v3.5 변형 3종의 nested 스택, Public **0.82020** |
 | 최고 제출 (CV 순위 후보 8개 일괄 제출 중 최고) | 위 스택 + 100에폭 파인튜닝 멤버, Public **0.82604** |
 | 정직한 OOF 정확도 (공식 챔피언) | 0.8291 / 0.8288 / 0.8269 (SGKF seed 42 / 123 / 2026) |
-| 기록된 발견 (discovery) | 78건, 실패한 가설 포함 |
+| 기록된 발견 (discovery) | 79건, 실패한 가설 포함 |
 | 실제 제출 수 | **단 12건** (2026년 10월 5~6일 UTC). 이후 Kaggle 노트북에 점수를 붙이려고 같은 파일을 노트북 출력으로 한 번 더 제출(0.82604) |
 | 제출 효율 | 3번째 제출에서 0.81786, **4번째 제출에서 0.82020**. 그 사이 제출은 모두 CV 규칙을 통과한 챔피언 1개씩 |
 | 리더보드 순위 | **8위** (2026-10-06 기준, 12회 제출). 바로 위 6·7위 팀은 81회·82회 제출 |
@@ -100,7 +100,7 @@ TabPFN을 fold 안에서 파인튜닝하면 3개 seed 모두 조금씩 좋아졌
 
 ## 작업 로그와 주목할 발견
 
-[handoff.md](handoff.md)의 작업 로그와 [discoveries.md](discoveries.md)의 발견 78건 중 흐름이 바뀐 순간과 쓸모 있는 결론만 [09. 작업 로그 하이라이트와 주목할 발견](docs/09-log-and-findings.md)에 골라 두었다. 몇 가지만 옮기면 다음과 같다.
+[handoff.md](handoff.md)의 작업 로그와 [discoveries.md](discoveries.md)의 발견 79건 중 흐름이 바뀐 순간과 쓸모 있는 결론만 [09. 작업 로그 하이라이트와 주목할 발견](docs/09-log-and-findings.md)에 골라 두었다. 몇 가지만 옮기면 다음과 같다.
 
 | 시각 (한국) | 일 | 결과 |
 |---|---|---|
@@ -136,7 +136,7 @@ TabPFN을 fold 안에서 파인튜닝하면 3개 seed 모두 조금씩 좋아졌
 README.md / README.en.md     프로젝트 요약
 agents.md                    연구 규약 (고정 규칙)
 plan.md                      남은 가설 큐
-discoveries.md               실험별 발견 78건 (실패 포함, 교차 검증 기록)
+discoveries.md               실험별 발견 79건 (실패 포함, 교차 검증 기록)
 handoff.md                   작업 로그, 점수 원장, 이어받기 상태
 docs/                        실험 보고서
   assets/                    차트와 흐름도 이미지

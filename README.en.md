@@ -110,7 +110,7 @@ Skills set *procedures*, not answers: every prediction came from a model trained
 ## Repository layout
 
 ```text
-agents.md / plan.md / discoveries.md / handoff.md   research protocol, queue, 78 findings, log
+agents.md / plan.md / discoveries.md / handoff.md   research protocol, queue, 79 findings, log
 docs/                     reports (Korean), charts, diagrams, evidence (submissions, ledger, hashes)
 src/spaceship_titanic/    features, frozen folds, experiment utilities
 scripts/                  experiment runners and audits, kept as run

@@ -2,7 +2,7 @@
 
 [프로젝트 홈](../README.md) / [단계별 기록](02-experiment-journey.md) / [사용한 스킬](08-skills.md)
 
-[handoff.md](../handoff.md)의 작업 로그와 [discoveries.md](../discoveries.md)의 발견 78건 중에서, 연구 방향이 바뀐 순간과 다른 사람에게도 쓸모 있는 결론만 골랐다. 전체 기록은 두 파일에 그대로 있다.
+[handoff.md](../handoff.md)의 작업 로그와 [discoveries.md](../discoveries.md)의 발견 79건 중에서, 연구 방향이 바뀐 순간과 다른 사람에게도 쓸모 있는 결론만 골랐다. 전체 기록은 두 파일에 그대로 있다.
 
 ## 작업 로그 하이라이트
 

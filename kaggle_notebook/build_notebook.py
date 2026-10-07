@@ -95,7 +95,7 @@ number of submissions:*
 | GBDT + hand-made rules, tuned on one split | Tabular foundation model, fine-tuned per fold; every idea tested on 3 + 2 split seeds |
 | CV scores that are often optimistic (early stopping or target statistics on the scored fold) | Every number is out-of-fold and nested; the optimism was measured (+0.004) and removed |
 | Many submissions | 12 submissions; leaderboard used once per promoted model |
-| One person's run | Built by a team of AI coding agents (Codex, Claude Code, ChatGPT) under a shared research protocol, 78 recorded findings, cross-checked across platforms |
+| One person's run | Built by a team of AI coding agents (Codex, Claude Code, ChatGPT) under a shared research protocol, 79 recorded findings, cross-checked across platforms |
 
 The full research log, every failed idea and all evidence: **[GitHub · kaggle-spaceship-titanic-experiments]({REPO})**.
 
