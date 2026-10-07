@@ -6,7 +6,8 @@
 
 [kaggle_notebook/](../kaggle_notebook/README.md)의 노트북은 이 저장소 없이 혼자 실행되며, 두 모드가 있다.
 
-* **replay (기본):** 토큰 없이 CPU로 몇 초. 멤버 4개의 저장된 OOF·test 확률([kaggle_dataset/](../kaggle_dataset/README.md), 라벨 없음)을 불러와 fold가 다시 만든 fold와 같은지 확인하고, `train.csv` 로 nested 정확도를 다시 계산한 뒤 스태커를 학습한다. 출력 파일은 실제 제출 파일과 해시가 같다.
+* Kaggle 공개본: https://www.kaggle.com/code/taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604 (Kaggle에서 실행한 출력이 실제 제출 파일과 해시까지 같고, 노트북 출력 제출 점수 0.82604)
+* **replay (기본):** 토큰 없이 CPU로 몇 초. 멤버 4개의 저장된 OOF·test 확률([kaggle_dataset/](../kaggle_dataset/README.md), 라벨 없음)을 불러와 고정 fold 배정을 해시로 확인하고 (scikit-learn 버전이 다르면 `StratifiedGroupKFold` 를 다시 돌린 결과가 달라지므로 다시 만들지 않는다, D-A-044), `train.csv` 로 nested 정확도를 다시 계산한 뒤 스태커를 학습한다. 출력 파일은 실제 제출 파일과 해시가 같다.
 * **train:** Kaggle Secret `TABPFN_TOKEN`, GPU, 인터넷이 있으면 멤버 4개를 처음부터 학습한다. T4 기준 약 1.5–2.5시간.
 
 로컬(RTX 4070 Ti SUPER)에서 train 모드를 처음부터 다시 돌린 결과, frozen 멤버는 기록과 완전히 같았고(0.826182) 파인튜닝 멤버는 ±0.0012 안에서 달랐다. nested 스택은 0.8294 / 0.8309로 기록(0.8291 / 0.8311)과 같은 수준이고, 생성된 제출 파일은 실제 제출 파일과 각각 28행, 43행(4,277행 중) 달랐다. 정확한 재현은 replay 모드가, 레시피 재현은 train 모드가 보여 준다.

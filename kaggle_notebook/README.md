@@ -2,7 +2,7 @@
 
 Self-contained notebook that rebuilds the submitted stacks from the official competition files.
 
-- Kaggle ID: `taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604` (to be published)
+- Kaggle notebook: https://www.kaggle.com/code/taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604 (version 3, public score **0.82604** attached by submitting its output, submission 56897941)
 - Title: `Leak-free 2026 TabPFN Stack | Top Public 0.82604`
 - Sources: competition `spaceship-titanic`, dataset `taeyangg4/spaceship-titanic-tabpfn-member-predictions` (files in [`kaggle_dataset/`](../kaggle_dataset/README.md))
 
@@ -14,6 +14,21 @@ Self-contained notebook that rebuilds the submitted stacks from the official com
 | **train** | `TABPFN_TOKEN` Kaggle Secret present | GPU + Internet, Prior Labs token | installs `tabpfn==9.1.0` and trains the four TabPFN v3.5 members from scratch (~1.5–2.5 h on a T4; `NB_FAST=1` for a smoke test) |
 
 Outputs: `submission.csv` (4-member stack, public 0.82604) and `submission_stack3.csv` (3-member CV-promoted champion, public 0.82020). The last cell compares both files with the hashes of the files actually submitted. The notebook never submits by itself.
+
+## Verified on Kaggle
+
+Version 3 ran on Kaggle (CPU, no internet, replay mode) with numpy 2.1.3, pandas 2.3.3 and
+scikit-learn 1.6.1. Both outputs are **hash-identical** to the submitted files, and the notebook's
+`submission.csv` scored **0.82604** when submitted from the notebook.
+
+Versions 1 and 2 failed, and the fixes are worth knowing:
+
+1. The competition data is mounted under a different path than `/kaggle/input/spaceship-titanic`;
+   the notebook now searches `/kaggle/input` for the files.
+2. `StratifiedGroupKFold(5, shuffle=True, random_state=42)` gives a **different split** under
+   scikit-learn 1.6.1 than under 1.9.1 — rebuilding the folds on Kaggle would move 6,881 of 8,693
+   rows. The notebook's parity check caught it. The outer folds are now the frozen assignment
+   shipped with the dataset, verified by hash; the notebook prints how many rows a rebuild would move.
 
 ## Verified locally
 

@@ -666,6 +666,15 @@ Do not archive this file merely because it grows; merge duplicate discoveries in
 - Implication: the fine-tuning family repeatedly gives about +0.0015-0.002, always 3/3 positive, which three screen seeds cannot separate from the bar. More fresh seeds are needed to settle it (H-A-26); the project rule is not relaxed after the fact.
 - Reviews:
 
+## D-A-044 — StratifiedGroupKFold gives a different split under another scikit-learn version
+- Source: A
+- Host: Claude Code
+- Cross-check: PENDING
+- Finding: `StratifiedGroupKFold(5, shuffle=True, random_state=42)` on the same rows, labels and travel groups assigns 6,881 of 8,693 rows to a different fold under scikit-learn 1.6.1 (Kaggle image: numpy 2.1.3, pandas 2.3.3) than under scikit-learn 1.9.1 (local); a fixed `random_state` does not make the split portable across versions.
+- Evidence: Kaggle notebook versions 2 and 3 (`taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604`): v2 stopped on the notebook's fold-parity assertion; v3 loads the frozen folds from the dataset (SHA256 of the fold vector `8b8d8882…`), prints that a rebuild would move 6,881 rows, and writes outputs hash-identical to the submitted files (submission 56897941 scored 0.82604).
+- Implication: fold assignments are data, not code: ship and hash them (as `data/processed/sgkf_5_seed*.csv` and the Kaggle dataset do) whenever results must be reproduced in another environment; rebuilding folds there silently changes every OOF number.
+- Reviews:
+
 ## D-A-043 — Fine-tuning-variant stacks all beat the champion on the public LB, but LB order does not follow CV order
 - Source: A
 - Host: Claude Code

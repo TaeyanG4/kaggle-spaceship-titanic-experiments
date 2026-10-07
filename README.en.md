@@ -4,7 +4,7 @@ Spaceship Titanic — predict whether a passenger was transported to another dim
 
 ![Spaceship Titanic Experiments](docs/assets/hero.svg)
 
-Kaggle Notebook: [Leak-free 2026 TabPFN Stack | Top Public 0.82604](https://www.kaggle.com/code/taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604) (to be published)
+Kaggle Notebook: [Leak-free 2026 TabPFN Stack | Top Public 0.82604](https://www.kaggle.com/code/taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604)
 
 [한국어](README.md) / [Experiment journey (KO)](docs/02-experiment-journey.md) / [Validation and integrity (KO)](docs/03-validation-and-integrity.md) / [Reproduction (KO)](docs/05-reproduction.md) / [Skills used](docs/skills/README.md)
 
@@ -23,7 +23,7 @@ The rule was fixed from day one: **no recovered labels, no leakage, no leaderboa
 | Best submission (best of one CV-ranked batch of 8) | Champion stack + 100-epoch fine-tuned member, public **0.82604** |
 | Honest OOF accuracy, official champion | 0.8291 / 0.8288 / 0.8269 (SGKF seeds 42 / 123 / 2026) |
 | Recorded findings | 78, including negative results |
-| Submissions | **12 in total** (2026-10-05 to 10-06 UTC) |
+| Submissions | **12 in total** (2026-10-05 to 10-06 UTC); later, the identical file was submitted once more as the Kaggle notebook's output to attach its score (0.82604) |
 | Leaderboard rank | **8th** on 2026-10-06 with 12 entries; the teams ranked 6th and 7th used 81 and 82 |
 
 ![Score progression](docs/assets/score-progression.png)

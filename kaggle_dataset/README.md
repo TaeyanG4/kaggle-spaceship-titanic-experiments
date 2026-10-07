@@ -1,6 +1,6 @@
 # Kaggle dataset: saved TabPFN member predictions
 
-Published as `taeyangg4/spaceship-titanic-tabpfn-member-predictions` so the Kaggle notebook can rebuild the submitted stacks without a TabPFN token or GPU.
+Published as [`taeyangg4/spaceship-titanic-tabpfn-member-predictions`](https://www.kaggle.com/datasets/taeyangg4/spaceship-titanic-tabpfn-member-predictions) so the Kaggle notebook can rebuild the submitted stacks without a TabPFN token or GPU.
 
 | File | Rows | Columns |
 |---|---|---|

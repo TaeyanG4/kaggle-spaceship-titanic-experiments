@@ -4,7 +4,7 @@ Spaceship Titanic - 승객이 다른 차원으로 이동(`Transported`)했는지
 
 ![Spaceship Titanic Experiments](docs/assets/hero.svg)
 
-Kaggle Notebook: [Leak-free 2026 TabPFN Stack | Top Public 0.82604](https://www.kaggle.com/code/taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604) (공개 예정)
+Kaggle Notebook: [Leak-free 2026 TabPFN Stack | Top Public 0.82604](https://www.kaggle.com/code/taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604)
 
 [English README](README.en.md) / [단계별 실험 기록](docs/02-experiment-journey.md) / [검증과 무결성](docs/03-validation-and-integrity.md) / [재현 방법](docs/05-reproduction.md)
 
@@ -23,7 +23,7 @@ Kaggle Notebook: [Leak-free 2026 TabPFN Stack | Top Public 0.82604](https://www.
 | 최고 제출 (CV 순위 후보 8개 일괄 제출 중 최고) | 위 스택 + 100에폭 파인튜닝 멤버, Public **0.82604** |
 | 정직한 OOF 정확도 (공식 챔피언) | 0.8291 / 0.8288 / 0.8269 (SGKF seed 42 / 123 / 2026) |
 | 기록된 발견 (discovery) | 78건, 실패한 가설 포함 |
-| 실제 제출 수 | **단 12건** (2026년 10월 5~6일 UTC) |
+| 실제 제출 수 | **단 12건** (2026년 10월 5~6일 UTC). 이후 Kaggle 노트북에 점수를 붙이려고 같은 파일을 노트북 출력으로 한 번 더 제출(0.82604) |
 | 제출 효율 | 3번째 제출에서 0.81786, **4번째 제출에서 0.82020**. 그 사이 제출은 모두 CV 규칙을 통과한 챔피언 1개씩 |
 | 리더보드 순위 | **8위** (2026-10-06 기준, 12회 제출). 바로 위 6·7위 팀은 81회·82회 제출 |
 

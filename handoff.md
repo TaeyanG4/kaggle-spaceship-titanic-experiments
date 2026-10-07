@@ -1073,6 +1073,17 @@ fields were converted to the current format on 2026-10-05 23:15.
 - Other executor: none
 - New plan items: none — no new hypotheses at close
 
+### 2026-10-07 11:41 — A — none
+- Host: Claude Code
+- Action: at the user's request published the Kaggle dataset `taeyangg4/spaceship-titanic-tabpfn-member-predictions` and the notebook `taeyangg4/leak-free-2026-tabpfn-stack-top-public-0-82604`; v1 failed on the competition data path, v2 on the fold-parity check (scikit-learn 1.6.1 splits differently), v3 uses the hashed frozen folds and ran clean; submitted the notebook output once to attach its score (model: Opus)
+- Result: Kaggle outputs hash-identical to the submitted files; notebook submission 56897941 scored 0.82604; see D-A-044
+- Artifacts: kaggle_notebook/build_notebook.py, kaggle_notebook/README.md, kaggle_dataset/README.md
+- Discovery updates: D-A-044 (new)
+- Review verdict: none
+- Resource: none
+- Other executor: Kaggle (user-requested publication and one notebook submission)
+- New plan items: none — publication step; no new hypothesis
+
 ## Archived history
 
 When this file becomes hard to scan, move older completed-log detail to `docs/<focused-name>.md`

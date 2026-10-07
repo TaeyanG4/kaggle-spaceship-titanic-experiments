@@ -63,8 +63,8 @@ md("""
 
 > **TL;DR**
 > * **0.82604** on the leaderboard (computed on all of the test data) — higher than every score
->   shown in the score-sorted public notebook list when it was surveyed (2026-10-05: top entry
->   0.82137, which overwrites predictions with embedded bits; best clean-looking one 0.81833).
+>   shown in the public notebook list sorted by score (re-checked 2026-10-07: top entry 0.82137,
+>   whose original overwrites predictions with embedded bits; best clean-looking one 0.81833).
 > * **No leaks, no probing.** Group-aware CV, fold-local preprocessing, nested stacking, and a
 >   two-stage promotion rule. The CV-promoted champion scored 0.82020 on only the **4th**
 >   submission; **12 submissions in total**.
@@ -190,10 +190,18 @@ FT_BASE = {"epochs": 2 if FAST else 30, "learning_rate": 1e-5, "early_stopping_p
 FT_LONG = {**FT_BASE, "epochs": 3 if FAST else 100, "early_stopping_patience": 20,
            "time_limit": 900}
 
-for root in [Path("/kaggle/input/spaceship-titanic"), Path("data/raw"), Path("../data/raw")]:
-    if (root / "train.csv").exists():
-        DATA = root
-        break
+
+
+def find_dir(filename, local):
+    # Kaggle mounts inputs under /kaggle/input (the exact sub-path varies); locally use the repo
+    hits = sorted(Path("/kaggle/input").rglob(filename)) if Path("/kaggle/input").exists() else []
+    for candidate in [*(h.parent for h in hits), *map(Path, local)]:
+        if (candidate / filename).exists():
+            return candidate
+    raise FileNotFoundError(f"{filename} not found; attach the competition data / dataset")
+
+
+DATA = find_dir("sample_submission.csv", ["data/raw", "../data/raw"])
 train = pd.read_csv(DATA / "train.csv")
 test = pd.read_csv(DATA / "test.csv")
 sample = pd.read_csv(DATA / "sample_submission.csv")
@@ -375,19 +383,36 @@ pd.DataFrame({"kind": ["categorical" if c in CATEGORICAL else "numeric" for c in
 md("""
 ### 3.2 Validation design: group-aware folds and fold-local preprocessing
 
-`StratifiedGroupKFold(5, shuffle=True, random_state=42)` on travel groups — identical to the
-frozen folds used throughout the project. Inside each training fold, a second group-split
-(1/8 of the fold) is held out for early stopping and epoch choice, and the ordinal encoder is
-fitted on the training fold only. The scored fold is only ever predicted.
+The outer folds are the project's **frozen** `StratifiedGroupKFold(5, shuffle=True,
+random_state=42)` assignment by travel group, shipped with the attached dataset and checked by
+hash. They are frozen rather than rebuilt because `StratifiedGroupKFold` gives a different split
+under other scikit-learn versions (this notebook prints how many rows a rebuild would move). Inside
+each training fold, a second group-split (1/8 of the fold) is held out for early stopping and epoch
+choice, and the ordinal encoder is fitted on the training fold only. The scored fold is only ever
+predicted.
 
 ![validation boundary]({RAW}/docs/assets/validation-boundary.png)
 """)
 
 code("""
-folds = np.zeros(len(train), dtype=int)
+import hashlib
+
+import sklearn
+
+rebuilt = np.zeros(len(train), dtype=int)
 for k, (_, valid) in enumerate(StratifiedGroupKFold(N_FOLDS, shuffle=True, random_state=SEED)
                                .split(X, y, groups), 1):
-    folds[valid] = k
+    rebuilt[valid] = k
+
+FOLD_SHA256 = "8b8d8882968f5a1cb2a8d0b68cfbff1f41d82be1ebaff441aff69fcfc41effca"
+DATASET_DIR = find_dir("member_oof_seed42.csv", ["kaggle_dataset", "../kaggle_dataset"])
+frozen = pd.read_csv(DATASET_DIR / "member_oof_seed42.csv", usecols=["PassengerId", "fold"])
+assert frozen.PassengerId.equals(train.PassengerId)
+folds = frozen.fold.to_numpy()
+assert hashlib.sha256(",".join(map(str, folds)).encode()).hexdigest() == FOLD_SHA256
+print(f"frozen folds: hash OK | numpy {np.__version__}, pandas {pd.__version__}, "
+      f"scikit-learn {sklearn.__version__} | a rebuild here would move "
+      f"{int((rebuilt != folds).sum())} of {len(folds)} rows")
 
 
 def fold_parts(fold):
@@ -529,18 +554,14 @@ if MODE == "train":
 
 code("""
 if MODE == "replay":
-    for root in [Path("/kaggle/input/spaceship-titanic-tabpfn-member-predictions"),
-                 Path("kaggle_dataset"), Path("../kaggle_dataset")]:
-        if (root / "member_oof_seed42.csv").exists():
-            break
-    saved_oof = pd.read_csv(root / "member_oof_seed42.csv")
-    saved_test = pd.read_csv(root / "member_test_seed42.csv")
+    saved_oof = pd.read_csv(DATASET_DIR / "member_oof_seed42.csv")
+    saved_test = pd.read_csv(DATASET_DIR / "member_test_seed42.csv")
     assert saved_oof.PassengerId.equals(train.PassengerId)
     assert saved_test.PassengerId.equals(test.PassengerId)
-    assert np.array_equal(saved_oof.fold.to_numpy(), folds), "saved folds differ from the rebuilt folds"
+    assert np.array_equal(saved_oof.fold.to_numpy(), folds)
     for m in MEMBERS:
         oof[m], test_p[m] = saved_oof[m].to_numpy(), saved_test[m].to_numpy()
-    print("replayed saved member predictions; folds identical to the rebuilt SGKF folds")
+    print("replayed saved member predictions on the frozen folds")
 """)
 
 md("""
